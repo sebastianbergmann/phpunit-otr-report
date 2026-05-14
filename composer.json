@@ -11,7 +11,8 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.5",
-        "sebastian/cli-parser": "^5.0"
+        "sebastian/cli-parser": "^5.0",
+        "sebastian/version": "^7.0"
     },
     "config": {
         "platform": {
