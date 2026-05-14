@@ -1,0 +1,8 @@
+/.ant_targets
+/.idea
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+/.phpunit.cache
+/vendor
+/build/artifacts
+/build/tmp
