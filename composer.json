@@ -1,0 +1,36 @@
+{
+    "name": "phpunit/otr-report",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Sebastian Bergmann",
+            "email": "sebastian@phpunit.de",
+            "role": "lead"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.5"
+    },
+    "config": {
+        "platform": {
+            "php": "8.5.0"
+        },
+        "classmap-authoritative": true,
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "bin": [
+        "otr-report"
+    ],
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        }
+    }
+}
