@@ -1,0 +1,26 @@
+<?php declare(strict_types=1);
+/*
+ * This file is part of phpunit/otr-report.
+ *
+ * (c) Sebastian Bergmann <sebastian@phpunit.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+namespace PHPUnit\OtrReport;
+
+final class HelpCommand implements Command
+{
+    public function run(Arguments $arguments): int
+    {
+        print <<<'EOT'
+Usage:
+  otr-report todo       [options] ...
+
+Options for "otr-report todo":
+
+EOT;
+
+        return 0;
+    }
+}
