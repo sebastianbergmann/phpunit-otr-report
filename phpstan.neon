@@ -5,6 +5,9 @@ parameters:
         - src
         - tests
 
+    bootstrapFiles:
+        - tools/phpunit.phar
+
     resultCachePath: %tmpDir%/phpunit-otr-report-1.0.php
 
     checkTooWideReturnTypesInProtectedAndPublicMethods: true
