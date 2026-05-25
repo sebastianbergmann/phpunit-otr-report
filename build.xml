@@ -80,4 +80,113 @@
             <arg value="--no-ansi"/>
         </exec>
     </target>
+
+    <target name="signed-phar" depends="phar" description="Create signed PHAR archive of otr-report and all its dependencies">
+        <exec executable="gpg" failonerror="true">
+            <arg value="--local-user"/>
+            <arg value="sb@sebastian-bergmann.de"/>
+            <arg value="--armor"/>
+            <arg value="--detach-sign"/>
+            <arg path="${basedir}/build/artifacts/otr-report-${version}.phar"/>
+        </exec>
+    </target>
+
+    <target name="phar" depends="-phar-prepare,-phar-determine-version" description="Create PHAR archive of otr-report and all its dependencies">
+        <antcall target="-phar-build">
+            <param name="type" value="release"/>
+        </antcall>
+    </target>
+
+    <target name="phar-snapshot" depends="-phar-prepare" description="Create PHAR archive of otr-report and all its dependencies (snapshot)">
+        <antcall target="-phar-build">
+            <param name="type" value="snapshot"/>
+        </antcall>
+    </target>
+
+    <target name="-phar-prepare" depends="clean,install-dependencies">
+        <mkdir dir="${basedir}/build/artifacts"/>
+        <mkdir dir="${basedir}/build/tmp/phar"/>
+
+        <copy file="${basedir}/composer.lock" tofile="${basedir}/build/tmp/phar/composer.lock"/>
+
+        <exec executable="${basedir}/build/scripts/phar-manifest.php" failonerror="true">
+            <arg path="${basedir}/build/tmp/phar/manifest.txt"/>
+            <arg path="${basedir}/build/tmp/phar/sbom.xml"/>
+        </exec>
+
+        <copy file="${basedir}/vendor/phpunit/php-text-template/LICENSE" tofile="${basedir}/build/tmp/phar/php-text-template/LICENSE"/>
+        <copy todir="${basedir}/build/tmp/phar/php-text-template">
+            <fileset dir="${basedir}/vendor/phpunit/php-text-template/src">
+                <include name="**/*.php" />
+            </fileset>
+        </copy>
+
+        <copy file="${basedir}/vendor/sebastian/cli-parser/LICENSE" tofile="${basedir}/build/tmp/phar/sebastian-cli-parser/LICENSE"/>
+        <copy todir="${basedir}/build/tmp/phar/sebastian-cli-parser">
+            <fileset dir="${basedir}/vendor/sebastian/cli-parser/src">
+                <include name="**/*.php" />
+            </fileset>
+        </copy>
+
+        <copy file="${basedir}/vendor/sebastian/version/LICENSE" tofile="${basedir}/build/tmp/phar/sebastian-version/LICENSE"/>
+        <copy todir="${basedir}/build/tmp/phar/sebastian-version">
+            <fileset dir="${basedir}/vendor/sebastian/version/src">
+                <include name="**/*.php" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="-phar-build" depends="-phar-determine-version">
+        <copy todir="${basedir}/build/tmp/phar/otr-report">
+            <fileset dir="${basedir}/src">
+                <include name="**/*.php"/>
+                <include name="**/*.html"/>
+            </fileset>
+        </copy>
+
+        <exec executable="${basedir}/build/scripts/phar-version.php" outputproperty="_version" failonerror="true">
+            <arg value="${version}"/>
+            <arg value="${type}"/>
+        </exec>
+
+        <copy file="${basedir}/build/templates/binary-phar-autoload.php.in" tofile="${basedir}/build/tmp/binary-phar-autoload.php"/>
+        <replace file="${basedir}/build/tmp/binary-phar-autoload.php" token="X.Y.Z" value="${_version}"/>
+
+        <exec executable="${basedir}/tools/phpab" taskname="phpab" failonerror="true">
+            <arg value="--all" />
+            <arg value="--tolerant" />
+            <arg value="--nolower" />
+            <arg value="--phar" />
+            <arg value="--hash" />
+            <arg value="SHA-512" />
+            <arg value="--output" />
+            <arg path="${basedir}/build/artifacts/otr-report-${_version}.phar" />
+            <arg value="--template" />
+            <arg path="${basedir}/build/tmp/binary-phar-autoload.php" />
+            <arg path="${basedir}/build/tmp/phar" />
+        </exec>
+
+        <exec executable="${basedir}/build/scripts/phar-set-timestamps/run.php" taskname="phar-set-timestamps" failonerror="true">
+            <arg path="${basedir}/build/artifacts/otr-report-${_version}.phar" />
+        </exec>
+
+        <chmod file="${basedir}/build/artifacts/otr-report-${_version}.phar" perm="ugo+rx"/>
+
+        <delete dir="${basedir}/build/tmp"/>
+    </target>
+
+    <target name="-phar-determine-version">
+        <exec executable="${basedir}/build/scripts/version.php" outputproperty="version" failonerror="true" />
+    </target>
+
+    <target name="publish-phar" description="Publish PHAR on phar.phpunit.de">
+        <exec executable="sh" taskname="scp">
+            <arg value="-c" />
+            <arg value="scp build/artifacts/* phar:"/>
+        </exec>
+
+        <exec executable="ssh">
+            <arg line="phar ./publish-phars.sh" />
+        </exec>
+    </target>
 </project>
