@@ -61,9 +61,17 @@ final class Application
             return (new HelpCommand)->run($arguments);
         }
 
-        (new HelpCommand)->run($arguments);
+        if ($arguments->command() === null) {
+            (new HelpCommand)->run($arguments);
 
-        return 255;
+            return 255;
+        }
+
+        return match ($arguments->command()) {
+            'slowest' => (new SlowestCommand)->run($arguments),
+            'trends'  => (new TrendsCommand)->run($arguments),
+            default   => (new HelpCommand)->run($arguments),
+        };
     }
 
     private function printVersion(): void

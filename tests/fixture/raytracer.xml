@@ -1,0 +1,4046 @@
+<?xml version="1.0"?>
+<e:events xmlns="https://schemas.opentest4j.org/reporting/core/0.2.0" xmlns:e="https://schemas.opentest4j.org/reporting/events/0.2.0" xmlns:git="https://schemas.opentest4j.org/reporting/git/0.2.0" xmlns:php="https://schema.phpunit.de/otr/php/0.1.0" xmlns:phpunit="https://schema.phpunit.de/otr/phpunit/0.2.0">
+ <infrastructure>
+  <hostName>fedora</hostName>
+  <userName>sb</userName>
+  <operatingSystem>Linux fedora 7.0.9-205.fc44.x86_64 #1 SMP PREEMPT_DYNAMIC Thu May 21 16:31:48 UTC 2026 x86_64</operatingSystem>
+  <php:phpVersion>8.5.6</php:phpVersion>
+  <php:threadModel>NTS</php:threadModel>
+  <git:repository originUrl="github.com:sebastianbergmann/raytracer.git"/>
+  <git:branch>main</git:branch>
+  <git:commit>a3c633b2cfae50469a4d120d6a4c60b4c5316d55</git:commit>
+  <git:status clean="true"><![CDATA[]]></git:status>
+ </infrastructure>
+ <e:started id="1" name="/path/to/raytracer/phpunit.xml" time="2026-05-24T08:58:25.786969Z"/>
+ <e:started id="2" parentId="1" name="unit" time="2026-05-24T08:58:25.787180Z"/>
+ <e:started id="3" parentId="2" name="SebastianBergmann\Raytracer\CameraTest" time="2026-05-24T08:58:25.787224Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="30"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\CameraTest"/>
+  </sources>
+ </e:started>
+ <e:started id="4" parentId="3" name="test_constructing_a_camera" time="2026-05-24T08:58:25.787530Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="32"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CameraTest" methodName="test_constructing_a_camera"/>
+  </sources>
+ </e:started>
+ <e:finished id="4" time="2026-05-24T08:58:25.788133Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000549776" memoryUsage="19900256" peakMemoryUsage="19962808" userCpuTime="0.000524000" systemCpuTime="0.000000000" cpuTime="0.000524000"/>
+   <phpunit:assertions count="8"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="5" parentId="3" name="test_the_pixel_size_for_a_horizontal_canvas" time="2026-05-24T08:58:25.788337Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="50"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CameraTest" methodName="test_the_pixel_size_for_a_horizontal_canvas"/>
+  </sources>
+ </e:started>
+ <e:finished id="5" time="2026-05-24T08:58:25.788553Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000196131" memoryUsage="19899960" peakMemoryUsage="19936736" userCpuTime="0.000000000" systemCpuTime="0.000196000" cpuTime="0.000196000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="6" parentId="3" name="test_the_pixel_size_for_a_vertical_canvas" time="2026-05-24T08:58:25.788692Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="57"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CameraTest" methodName="test_the_pixel_size_for_a_vertical_canvas"/>
+  </sources>
+ </e:started>
+ <e:finished id="6" time="2026-05-24T08:58:25.788876Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000156938" memoryUsage="19899448" peakMemoryUsage="19936224" userCpuTime="0.000000000" systemCpuTime="0.000157000" cpuTime="0.000157000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="7" parentId="3" name="test_constructing_a_ray_through_the_center_of_the_canvas" time="2026-05-24T08:58:25.789012Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="64"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CameraTest" methodName="test_constructing_a_ray_through_the_center_of_the_canvas"/>
+  </sources>
+ </e:started>
+ <e:finished id="7" time="2026-05-24T08:58:25.789517Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000459427" memoryUsage="19987696" peakMemoryUsage="20049616" userCpuTime="0.000000000" systemCpuTime="0.000459000" cpuTime="0.000459000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="8" parentId="3" name="test_constructing_a_ray_through_a_corner_of_the_canvas" time="2026-05-24T08:58:25.789676Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="72"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CameraTest" methodName="test_constructing_a_ray_through_a_corner_of_the_canvas"/>
+  </sources>
+ </e:started>
+ <e:finished id="8" time="2026-05-24T08:58:25.789973Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000258230" memoryUsage="19987200" peakMemoryUsage="20023960" userCpuTime="0.000000000" systemCpuTime="0.000258000" cpuTime="0.000258000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="9" parentId="3" name="test_constructing_a_ray_when_the_camera_is_transformed" time="2026-05-24T08:58:25.790115Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="80"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CameraTest" methodName="test_constructing_a_ray_when_the_camera_is_transformed"/>
+  </sources>
+ </e:started>
+ <e:finished id="9" time="2026-05-24T08:58:25.790522Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000375962" memoryUsage="20002944" peakMemoryUsage="20068584" userCpuTime="0.000000000" systemCpuTime="0.000376000" cpuTime="0.000376000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="10" parentId="3" name="test_rendering_a_world_with_a_camera" time="2026-05-24T08:58:25.790669Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
+    <filePosition line="91"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CameraTest" methodName="test_rendering_a_world_with_a_camera"/>
+  </sources>
+ </e:started>
+ <e:finished id="10" time="2026-05-24T08:58:25.814577Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.023849090" memoryUsage="20102648" peakMemoryUsage="20175136" userCpuTime="0.021531000" systemCpuTime="0.002056000" cpuTime="0.023587000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="3" time="2026-05-24T08:58:25.814672Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.027433555" memoryUsage="20099048" peakMemoryUsage="20175136" userCpuTime="0.022286000" systemCpuTime="0.004801000" cpuTime="0.027087000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="11" parentId="2" name="SebastianBergmann\Raytracer\ColorTest" time="2026-05-24T08:58:25.814739Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="11"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\ColorTest"/>
+  </sources>
+ </e:started>
+ <e:started id="12" parentId="11" name="test_colors_are_red_green_blue_tuples" time="2026-05-24T08:58:25.814958Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="14"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ColorTest" methodName="test_colors_are_red_green_blue_tuples"/>
+  </sources>
+ </e:started>
+ <e:finished id="12" time="2026-05-24T08:58:25.815191Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000195107" memoryUsage="20101688" peakMemoryUsage="20138432" userCpuTime="0.000000000" systemCpuTime="0.000196000" cpuTime="0.000196000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="13" parentId="11" name="test_float_components_can_be_represented_as_integers" time="2026-05-24T08:58:25.815321Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="23"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ColorTest" methodName="test_float_components_can_be_represented_as_integers"/>
+  </sources>
+ </e:started>
+ <e:finished id="13" time="2026-05-24T08:58:25.815502Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000156077" memoryUsage="20101512" peakMemoryUsage="20137952" userCpuTime="0.000000000" systemCpuTime="0.000156000" cpuTime="0.000156000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="14" parentId="11" name="test_another_color_can_be_added" time="2026-05-24T08:58:25.815609Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="32"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ColorTest" methodName="test_another_color_can_be_added"/>
+  </sources>
+ </e:started>
+ <e:finished id="14" time="2026-05-24T08:58:25.815768Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000136706" memoryUsage="20100984" peakMemoryUsage="20137744" userCpuTime="0.000000000" systemCpuTime="0.000137000" cpuTime="0.000137000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="15" parentId="11" name="test_another_color_can_be_subtracted" time="2026-05-24T08:58:25.815891Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="44"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ColorTest" methodName="test_another_color_can_be_subtracted"/>
+  </sources>
+ </e:started>
+ <e:finished id="15" time="2026-05-24T08:58:25.816090Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000149921" memoryUsage="20100472" peakMemoryUsage="20137216" userCpuTime="0.000000000" systemCpuTime="0.000150000" cpuTime="0.000150000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="16" parentId="11" name="test_can_be_multiplied_by_a_scalar" time="2026-05-24T08:58:25.816198Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="56"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ColorTest" methodName="test_can_be_multiplied_by_a_scalar"/>
+  </sources>
+ </e:started>
+ <e:finished id="16" time="2026-05-24T08:58:25.816358Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000135119" memoryUsage="20099960" peakMemoryUsage="20136704" userCpuTime="0.000000000" systemCpuTime="0.000135000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="17" parentId="11" name="test_the_product_of_two_colors_can_be_calculated" time="2026-05-24T08:58:25.816462Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="67"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ColorTest" methodName="test_the_product_of_two_colors_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="17" time="2026-05-24T08:58:25.816637Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000148854" memoryUsage="20099448" peakMemoryUsage="20136224" userCpuTime="0.000000000" systemCpuTime="0.000149000" cpuTime="0.000149000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="18" parentId="11" name="test_can_be_compared_to_another_color" time="2026-05-24T08:58:25.816746Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
+    <filePosition line="79"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ColorTest" methodName="test_can_be_compared_to_another_color"/>
+  </sources>
+ </e:started>
+ <e:finished id="18" time="2026-05-24T08:58:25.816907Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000138472" memoryUsage="20098936" peakMemoryUsage="20135680" userCpuTime="0.000000000" systemCpuTime="0.000139000" cpuTime="0.000139000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="11" time="2026-05-24T08:58:25.816960Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.002222018" memoryUsage="20096608" peakMemoryUsage="20135680" userCpuTime="0.000000000" systemCpuTime="0.002189000" cpuTime="0.002189000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="19" parentId="2" name="SebastianBergmann\Raytracer\PointLightTest" time="2026-05-24T08:58:25.817005Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/PointLightTest.php">
+    <filePosition line="13"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\PointLightTest"/>
+  </sources>
+ </e:started>
+ <e:started id="20" parentId="19" name="test_a_point_light_has_a_position_and_intensity" time="2026-05-24T08:58:25.817169Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/PointLightTest.php">
+    <filePosition line="15"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PointLightTest" methodName="test_a_point_light_has_a_position_and_intensity"/>
+  </sources>
+ </e:started>
+ <e:finished id="20" time="2026-05-24T08:58:25.817369Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000161813" memoryUsage="20099440" peakMemoryUsage="20136200" userCpuTime="0.000000000" systemCpuTime="0.000162000" cpuTime="0.000162000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="19" time="2026-05-24T08:58:25.817424Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000418379" memoryUsage="20096784" peakMemoryUsage="20136200" userCpuTime="0.000000000" systemCpuTime="0.000408000" cpuTime="0.000408000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="21" parentId="2" name="SebastianBergmann\Raytracer\WorldTest" time="2026-05-24T08:58:25.817474Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="26"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\WorldTest"/>
+  </sources>
+ </e:started>
+ <e:started id="22" parentId="21" name="test_creating_a_world" time="2026-05-24T08:58:25.817694Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="28"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_creating_a_world"/>
+  </sources>
+ </e:started>
+ <e:finished id="22" time="2026-05-24T08:58:25.818012Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000283070" memoryUsage="20161288" peakMemoryUsage="20203160" userCpuTime="0.000000000" systemCpuTime="0.000283000" cpuTime="0.000283000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="23" parentId="21" name="test_the_default_world" time="2026-05-24T08:58:25.818155Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="40"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_the_default_world"/>
+  </sources>
+ </e:started>
+ <e:finished id="23" time="2026-05-24T08:58:25.818368Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000185667" memoryUsage="20161400" peakMemoryUsage="20197520" userCpuTime="0.000000000" systemCpuTime="0.000186000" cpuTime="0.000186000"/>
+   <phpunit:assertions count="13"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="24" parentId="21" name="test_intersect_a_world_with_a_ray" time="2026-05-24T08:58:25.818501Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="62"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_intersect_a_world_with_a_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="24" time="2026-05-24T08:58:25.818833Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000304088" memoryUsage="20160888" peakMemoryUsage="20197632" userCpuTime="0.000000000" systemCpuTime="0.000304000" cpuTime="0.000304000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="25" parentId="21" name="test_shading_an_intersection" time="2026-05-24T08:58:25.818967Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="77"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_shading_an_intersection"/>
+  </sources>
+ </e:started>
+ <e:finished id="25" time="2026-05-24T08:58:25.819434Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000423639" memoryUsage="20160360" peakMemoryUsage="20197120" userCpuTime="0.000000000" systemCpuTime="0.000424000" cpuTime="0.000424000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="26" parentId="21" name="test_shading_an_intersection_from_the_inside" time="2026-05-24T08:58:25.819571Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="88"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_shading_an_intersection_from_the_inside"/>
+  </sources>
+ </e:started>
+ <e:finished id="26" time="2026-05-24T08:58:25.820062Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000453296" memoryUsage="20159848" peakMemoryUsage="20196624" userCpuTime="0.000000000" systemCpuTime="0.000453000" cpuTime="0.000453000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="27" parentId="21" name="test_the_color_when_a_ray_misses" time="2026-05-24T08:58:25.820205Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="106"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_the_color_when_a_ray_misses"/>
+  </sources>
+ </e:started>
+ <e:finished id="27" time="2026-05-24T08:58:25.820525Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000294692" memoryUsage="20159320" peakMemoryUsage="20196080" userCpuTime="0.000000000" systemCpuTime="0.000295000" cpuTime="0.000295000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="28" parentId="21" name="test_the_color_when_a_ray_hits" time="2026-05-24T08:58:25.820665Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="116"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_the_color_when_a_ray_hits"/>
+  </sources>
+ </e:started>
+ <e:finished id="28" time="2026-05-24T08:58:25.821248Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000547879" memoryUsage="20158792" peakMemoryUsage="20195552" userCpuTime="0.000000000" systemCpuTime="0.000548000" cpuTime="0.000548000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="29" parentId="21" name="test_the_color_with_an_intersection_behind_the_ray" time="2026-05-24T08:58:25.821386Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="126"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_the_color_with_an_intersection_behind_the_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="29" time="2026-05-24T08:58:25.822002Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000580329" memoryUsage="20158296" peakMemoryUsage="20195056" userCpuTime="0.000000000" systemCpuTime="0.000581000" cpuTime="0.000581000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="30" parentId="21" name="test_there_is_no_shadow_when_nothing_is_collinear_with_the_point_and_light" time="2026-05-24T08:58:25.822138Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="142"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_there_is_no_shadow_when_nothing_is_collinear_with_the_point_and_light"/>
+  </sources>
+ </e:started>
+ <e:finished id="30" time="2026-05-24T08:58:25.822455Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000290909" memoryUsage="20157832" peakMemoryUsage="20194592" userCpuTime="0.000000000" systemCpuTime="0.000291000" cpuTime="0.000291000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="31" parentId="21" name="test_the_shadow_when_an_object_is_between_the_point_and_the_light" time="2026-05-24T08:58:25.822589Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="150"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_the_shadow_when_an_object_is_between_the_point_and_the_light"/>
+  </sources>
+ </e:started>
+ <e:finished id="31" time="2026-05-24T08:58:25.822909Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000293031" memoryUsage="20157368" peakMemoryUsage="20194096" userCpuTime="0.000000000" systemCpuTime="0.000293000" cpuTime="0.000293000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="32" parentId="21" name="test_there_is_no_shadow_when_an_object_is_behind_the_light" time="2026-05-24T08:58:25.823042Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="158"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_there_is_no_shadow_when_an_object_is_behind_the_light"/>
+  </sources>
+ </e:started>
+ <e:finished id="32" time="2026-05-24T08:58:25.823392Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000296602" memoryUsage="20156872" peakMemoryUsage="20193632" userCpuTime="0.000000000" systemCpuTime="0.000296000" cpuTime="0.000296000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="33" parentId="21" name="test_there_is_no_shadow_when_an_object_is_behind_the_point" time="2026-05-24T08:58:25.823535Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="166"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_there_is_no_shadow_when_an_object_is_behind_the_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="33" time="2026-05-24T08:58:25.823859Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000295960" memoryUsage="20156376" peakMemoryUsage="20193136" userCpuTime="0.000000000" systemCpuTime="0.000296000" cpuTime="0.000296000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="34" parentId="21" name="test_shadeHit_is_given_an_intersection_in_shadow" time="2026-05-24T08:58:25.824012Z">
+  <metadata>
+   <tags>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
+    <filePosition line="175"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\WorldTest" methodName="test_shadeHit_is_given_an_intersection_in_shadow"/>
+  </sources>
+ </e:started>
+ <e:finished id="34" time="2026-05-24T08:58:25.824487Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000424167" memoryUsage="20155864" peakMemoryUsage="20192640" userCpuTime="0.000000000" systemCpuTime="0.000424000" cpuTime="0.000424000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="21" time="2026-05-24T08:58:25.824545Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.007069434" memoryUsage="20152376" peakMemoryUsage="20192640" userCpuTime="0.000000000" systemCpuTime="0.006972000" cpuTime="0.006972000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="35" parentId="2" name="SebastianBergmann\Raytracer\AnsiMapperTest" time="2026-05-24T08:58:25.824589Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/AnsiMapperTest.php">
+    <filePosition line="15"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\AnsiMapperTest"/>
+  </sources>
+ </e:started>
+ <e:started id="36" parentId="35" name="test_can_map_Canvas_to_ANSI_string" time="2026-05-24T08:58:25.824748Z">
+  <metadata>
+   <tags>
+    <tag>canvas</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/AnsiMapperTest.php">
+    <filePosition line="17"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\AnsiMapperTest" methodName="test_can_map_Canvas_to_ANSI_string"/>
+  </sources>
+ </e:started>
+ <e:finished id="36" time="2026-05-24T08:58:25.825180Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000380987" memoryUsage="20159408" peakMemoryUsage="20228016" userCpuTime="0.000000000" systemCpuTime="0.000381000" cpuTime="0.000381000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="35" time="2026-05-24T08:58:25.825239Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000649054" memoryUsage="20156752" peakMemoryUsage="20228016" userCpuTime="0.000000000" systemCpuTime="0.000627000" cpuTime="0.000627000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="37" parentId="2" name="SebastianBergmann\Raytracer\CanvasTest" time="2026-05-24T08:58:25.825286Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
+    <filePosition line="17"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\CanvasTest"/>
+  </sources>
+ </e:started>
+ <e:started id="38" parentId="37" name="test_has_width_and_height" time="2026-05-24T08:58:25.825449Z">
+  <metadata>
+   <tags>
+    <tag>canvas</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
+    <filePosition line="19"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CanvasTest" methodName="test_has_width_and_height"/>
+  </sources>
+ </e:started>
+ <e:finished id="38" time="2026-05-24T08:58:25.825646Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000169349" memoryUsage="20159064" peakMemoryUsage="20195824" userCpuTime="0.000000000" systemCpuTime="0.000169000" cpuTime="0.000169000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="39" parentId="37" name="test_is_initially_black" time="2026-05-24T08:58:25.825766Z">
+  <metadata>
+   <tags>
+    <tag>canvas</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
+    <filePosition line="27"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CanvasTest" methodName="test_is_initially_black"/>
+  </sources>
+ </e:started>
+ <e:finished id="39" time="2026-05-24T08:58:25.826073Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000257169" memoryUsage="20158536" peakMemoryUsage="20195296" userCpuTime="0.000000000" systemCpuTime="0.000257000" cpuTime="0.000257000"/>
+   <phpunit:assertions count="200"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="40" parentId="37" name="test_a_pixel_can_be_written_to_a_canvas" time="2026-05-24T08:58:25.826191Z">
+  <metadata>
+   <tags>
+    <tag>canvas</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
+    <filePosition line="39"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CanvasTest" methodName="test_a_pixel_can_be_written_to_a_canvas"/>
+  </sources>
+ </e:started>
+ <e:finished id="40" time="2026-05-24T08:58:25.826425Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000210369" memoryUsage="20158024" peakMemoryUsage="20194768" userCpuTime="0.000000000" systemCpuTime="0.000210000" cpuTime="0.000210000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="41" parentId="37" name="test_can_be_iterated" time="2026-05-24T08:58:25.826540Z">
+  <metadata>
+   <tags>
+    <tag>canvas</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
+    <filePosition line="49"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CanvasTest" methodName="test_can_be_iterated"/>
+  </sources>
+ </e:started>
+ <e:finished id="41" time="2026-05-24T08:58:25.826722Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000159187" memoryUsage="20158776" peakMemoryUsage="20194256" userCpuTime="0.000000000" systemCpuTime="0.000159000" cpuTime="0.000159000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="37" time="2026-05-24T08:58:25.826774Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001487855" memoryUsage="20156120" peakMemoryUsage="20194256" userCpuTime="0.000000000" systemCpuTime="0.001465000" cpuTime="0.001465000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="42" parentId="2" name="SebastianBergmann\Raytracer\PortablePixmapMapperTest" time="2026-05-24T08:58:25.826816Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/PortablePixmapMapperTest.php">
+    <filePosition line="16"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\PortablePixmapMapperTest"/>
+  </sources>
+ </e:started>
+ <e:started id="43" parentId="42" name="test_can_map_Canvas_to_PPM_string" time="2026-05-24T08:58:25.826970Z">
+  <metadata>
+   <tags>
+    <tag>canvas</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/canvas/PortablePixmapMapperTest.php">
+    <filePosition line="18"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PortablePixmapMapperTest" methodName="test_can_map_Canvas_to_PPM_string"/>
+  </sources>
+ </e:started>
+ <e:finished id="43" time="2026-05-24T08:58:25.827430Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000399835" memoryUsage="20162008" peakMemoryUsage="20227544" userCpuTime="0.000000000" systemCpuTime="0.000400000" cpuTime="0.000400000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="42" time="2026-05-24T08:58:25.827493Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000674715" memoryUsage="20159264" peakMemoryUsage="20227544" userCpuTime="0.000000000" systemCpuTime="0.000645000" cpuTime="0.000645000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="44" parentId="2" name="SebastianBergmann\Raytracer\IntersectionCollectionTest" time="2026-05-24T08:58:25.827540Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
+    <filePosition line="21"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\IntersectionCollectionTest"/>
+  </sources>
+ </e:started>
+ <e:started id="45" parentId="44" name="test_aggregating_intersections" time="2026-05-24T08:58:25.827743Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
+    <filePosition line="23"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionCollectionTest" methodName="test_aggregating_intersections"/>
+  </sources>
+ </e:started>
+ <e:finished id="45" time="2026-05-24T08:58:25.828039Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000259307" memoryUsage="20161248" peakMemoryUsage="20215904" userCpuTime="0.000000000" systemCpuTime="0.000260000" cpuTime="0.000260000"/>
+   <phpunit:assertions count="10"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="46" parentId="44" name="test_can_be_merged" time="2026-05-24T08:58:25.828167Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
+    <filePosition line="57"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionCollectionTest" methodName="test_can_be_merged"/>
+  </sources>
+ </e:started>
+ <e:finished id="46" time="2026-05-24T08:58:25.828356Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000163286" memoryUsage="20160736" peakMemoryUsage="20197448" userCpuTime="0.000000000" systemCpuTime="0.000163000" cpuTime="0.000163000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="47" parentId="44" name="test_the_hit_when_all_intersections_have_positive_t" time="2026-05-24T08:58:25.828480Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
+    <filePosition line="75"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionCollectionTest" methodName="test_the_hit_when_all_intersections_have_positive_t"/>
+  </sources>
+ </e:started>
+ <e:finished id="47" time="2026-05-24T08:58:25.828653Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000148429" memoryUsage="20160272" peakMemoryUsage="20196968" userCpuTime="0.000000000" systemCpuTime="0.000148000" cpuTime="0.000148000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="48" parentId="44" name="test_the_hit_when_some_intersections_have_negative_t" time="2026-05-24T08:58:25.828774Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
+    <filePosition line="86"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionCollectionTest" methodName="test_the_hit_when_some_intersections_have_negative_t"/>
+  </sources>
+ </e:started>
+ <e:finished id="48" time="2026-05-24T08:58:25.828978Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000154850" memoryUsage="20159808" peakMemoryUsage="20196504" userCpuTime="0.000000000" systemCpuTime="0.000155000" cpuTime="0.000155000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="49" parentId="44" name="test_the_hit_when_all_intersections_have_negative_t" time="2026-05-24T08:58:25.829107Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
+    <filePosition line="97"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionCollectionTest" methodName="test_the_hit_when_all_intersections_have_negative_t"/>
+  </sources>
+ </e:started>
+ <e:finished id="49" time="2026-05-24T08:58:25.829345Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000211383" memoryUsage="20160760" peakMemoryUsage="20215928" userCpuTime="0.000000000" systemCpuTime="0.000212000" cpuTime="0.000212000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="50" parentId="44" name="test_the_hit_is_always_the_lowest_nonnegative_intersection" time="2026-05-24T08:58:25.829469Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
+    <filePosition line="112"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionCollectionTest" methodName="test_the_hit_is_always_the_lowest_nonnegative_intersection"/>
+  </sources>
+ </e:started>
+ <e:finished id="50" time="2026-05-24T08:58:25.829646Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000151554" memoryUsage="20160296" peakMemoryUsage="20197024" userCpuTime="0.000000000" systemCpuTime="0.000151000" cpuTime="0.000151000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="44" time="2026-05-24T08:58:25.829698Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.002158114" memoryUsage="20157272" peakMemoryUsage="20197024" userCpuTime="0.000000000" systemCpuTime="0.002126000" cpuTime="0.002126000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="51" parentId="2" name="SebastianBergmann\Raytracer\IntersectionTest" time="2026-05-24T08:58:25.829742Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
+    <filePosition line="22"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\IntersectionTest"/>
+  </sources>
+ </e:started>
+ <e:started id="52" parentId="51" name="test_an_intersection_encapsulates_t_and_shape" time="2026-05-24T08:58:25.829932Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
+    <filePosition line="24"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionTest" methodName="test_an_intersection_encapsulates_t_and_shape"/>
+  </sources>
+ </e:started>
+ <e:finished id="52" time="2026-05-24T08:58:25.830148Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000185430" memoryUsage="20158400" peakMemoryUsage="20195160" userCpuTime="0.000000000" systemCpuTime="0.000186000" cpuTime="0.000186000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="53" parentId="51" name="test_the_hit_when_an_intersection_occurs_on_the_outside" time="2026-05-24T08:58:25.830303Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
+    <filePosition line="36"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionTest" methodName="test_the_hit_when_an_intersection_occurs_on_the_outside"/>
+  </sources>
+ </e:started>
+ <e:finished id="53" time="2026-05-24T08:58:25.830626Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000299597" memoryUsage="20157904" peakMemoryUsage="20194664" userCpuTime="0.000000000" systemCpuTime="0.000300000" cpuTime="0.000300000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="54" parentId="51" name="test_the_hit_when_an_intersection_occurs_on_the_inside" time="2026-05-24T08:58:25.830754Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
+    <filePosition line="52"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionTest" methodName="test_the_hit_when_an_intersection_occurs_on_the_inside"/>
+  </sources>
+ </e:started>
+ <e:finished id="54" time="2026-05-24T08:58:25.831150Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000341900" memoryUsage="20157408" peakMemoryUsage="20194168" userCpuTime="0.000000000" systemCpuTime="0.000342000" cpuTime="0.000342000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="55" parentId="51" name="test_the_hit_should_offset_the_point" time="2026-05-24T08:58:25.831280Z">
+  <metadata>
+   <tags>
+    <tag>intersection</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
+    <filePosition line="68"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\IntersectionTest" methodName="test_the_hit_should_offset_the_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="55" time="2026-05-24T08:58:25.831597Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000292156" memoryUsage="20156896" peakMemoryUsage="20193672" userCpuTime="0.000000000" systemCpuTime="0.000292000" cpuTime="0.000292000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="51" time="2026-05-24T08:58:25.831652Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001908378" memoryUsage="20153848" peakMemoryUsage="20193672" userCpuTime="0.000000000" systemCpuTime="0.001859000" cpuTime="0.001859000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="56" parentId="2" name="SebastianBergmann\Raytracer\CheckersPatternTest" time="2026-05-24T08:58:25.831696Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
+    <filePosition line="20"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\CheckersPatternTest"/>
+  </sources>
+ </e:started>
+ <e:started id="57" parentId="56" name="test_checkers_should_repeat_in_x" time="2026-05-24T08:58:25.831901Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
+    <filePosition line="31"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CheckersPatternTest" methodName="test_checkers_should_repeat_in_x"/>
+  </sources>
+ </e:started>
+ <e:finished id="57" time="2026-05-24T08:58:25.832643Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000688384" memoryUsage="20165696" peakMemoryUsage="20222176" userCpuTime="0.000000000" systemCpuTime="0.000689000" cpuTime="0.000689000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="58" parentId="56" name="test_checkers_should_repeat_in_y" time="2026-05-24T08:58:25.832806Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
+    <filePosition line="40"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CheckersPatternTest" methodName="test_checkers_should_repeat_in_y"/>
+  </sources>
+ </e:started>
+ <e:finished id="58" time="2026-05-24T08:58:25.833365Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000508152" memoryUsage="20165056" peakMemoryUsage="20201816" userCpuTime="0.000000000" systemCpuTime="0.000508000" cpuTime="0.000508000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="59" parentId="56" name="test_checkers_should_repeat_in_z" time="2026-05-24T08:58:25.833516Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
+    <filePosition line="49"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\CheckersPatternTest" methodName="test_checkers_should_repeat_in_z"/>
+  </sources>
+ </e:started>
+ <e:finished id="59" time="2026-05-24T08:58:25.834091Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000553111" memoryUsage="20164416" peakMemoryUsage="20201176" userCpuTime="0.000000000" systemCpuTime="0.000530000" cpuTime="0.000530000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="56" time="2026-05-24T08:58:25.834146Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.002448578" memoryUsage="20161144" peakMemoryUsage="20201176" userCpuTime="0.000000000" systemCpuTime="0.002382000" cpuTime="0.002382000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="60" parentId="2" name="SebastianBergmann\Raytracer\GradientPatternTest" time="2026-05-24T08:58:25.834188Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/GradientPatternTest.php">
+    <filePosition line="20"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\GradientPatternTest"/>
+  </sources>
+ </e:started>
+ <e:started id="61" parentId="60" name="test_a_gradient_linearly_interpolates_between_colors" time="2026-05-24T08:58:25.834380Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/GradientPatternTest.php">
+    <filePosition line="31"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\GradientPatternTest" methodName="test_a_gradient_linearly_interpolates_between_colors"/>
+  </sources>
+ </e:started>
+ <e:finished id="61" time="2026-05-24T08:58:25.835146Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000706944" memoryUsage="20166256" peakMemoryUsage="20222816" userCpuTime="0.000000000" systemCpuTime="0.000706000" cpuTime="0.000706000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="60" time="2026-05-24T08:58:25.835205Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001014416" memoryUsage="20162984" peakMemoryUsage="20222816" userCpuTime="0.000000000" systemCpuTime="0.000985000" cpuTime="0.000985000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="62" parentId="2" name="SebastianBergmann\Raytracer\MaterialTest" time="2026-05-24T08:58:25.835256Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="23"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\MaterialTest"/>
+  </sources>
+ </e:started>
+ <e:started id="63" parentId="62" name="test_the_default_material" time="2026-05-24T08:58:25.835498Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="34"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_the_default_material"/>
+  </sources>
+ </e:started>
+ <e:finished id="63" time="2026-05-24T08:58:25.835673Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000168293" memoryUsage="20161784" peakMemoryUsage="20198544" userCpuTime="0.000000000" systemCpuTime="0.000168000" cpuTime="0.000168000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="64" parentId="62" name="test_color_can_be_changed" time="2026-05-24T08:58:25.835812Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="43"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_color_can_be_changed"/>
+  </sources>
+ </e:started>
+ <e:finished id="64" time="2026-05-24T08:58:25.835985Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000134956" memoryUsage="20161128" peakMemoryUsage="20197888" userCpuTime="0.000000000" systemCpuTime="0.000135000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="65" parentId="62" name="test_ambient_can_be_changed" time="2026-05-24T08:58:25.836128Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="52"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_ambient_can_be_changed"/>
+  </sources>
+ </e:started>
+ <e:finished id="65" time="2026-05-24T08:58:25.836275Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000143477" memoryUsage="20160472" peakMemoryUsage="20197232" userCpuTime="0.000000000" systemCpuTime="0.000143000" cpuTime="0.000143000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="66" parentId="62" name="test_diffuse_can_be_changed" time="2026-05-24T08:58:25.836407Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="61"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_diffuse_can_be_changed"/>
+  </sources>
+ </e:started>
+ <e:finished id="66" time="2026-05-24T08:58:25.836541Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000130087" memoryUsage="20159816" peakMemoryUsage="20196576" userCpuTime="0.000000000" systemCpuTime="0.000130000" cpuTime="0.000130000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="67" parentId="62" name="test_specular_can_be_changed" time="2026-05-24T08:58:25.836671Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="70"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_specular_can_be_changed"/>
+  </sources>
+ </e:started>
+ <e:finished id="67" time="2026-05-24T08:58:25.836802Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000127634" memoryUsage="20159160" peakMemoryUsage="20195920" userCpuTime="0.000000000" systemCpuTime="0.000128000" cpuTime="0.000128000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="68" parentId="62" name="test_shininess_can_be_changed" time="2026-05-24T08:58:25.836937Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="79"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_shininess_can_be_changed"/>
+  </sources>
+ </e:started>
+ <e:finished id="68" time="2026-05-24T08:58:25.837076Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000134651" memoryUsage="20158504" peakMemoryUsage="20195264" userCpuTime="0.000000000" systemCpuTime="0.000135000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="69" parentId="62" name="test_lighting_with_the_eye_between_the_light_and_the_surface" time="2026-05-24T08:58:25.837205Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="88"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_lighting_with_the_eye_between_the_light_and_the_surface"/>
+  </sources>
+ </e:started>
+ <e:finished id="69" time="2026-05-24T08:58:25.837372Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000163784" memoryUsage="20157880" peakMemoryUsage="20194640" userCpuTime="0.000000000" systemCpuTime="0.000164000" cpuTime="0.000164000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="70" parentId="62" name="test_lighting_with_the_eye_between_the_light_and_the_surface_eye_offset_45_degrees" time="2026-05-24T08:58:25.837506Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="100"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_lighting_with_the_eye_between_the_light_and_the_surface_eye_offset_45_degrees"/>
+  </sources>
+ </e:started>
+ <e:finished id="70" time="2026-05-24T08:58:25.837732Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000219167" memoryUsage="20157288" peakMemoryUsage="20194048" userCpuTime="0.000000000" systemCpuTime="0.000208000" cpuTime="0.000208000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="71" parentId="62" name="test_lighting_with_the_eye_opposite_the_surface_light_offset_45_degrees" time="2026-05-24T08:58:25.837870Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="112"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_lighting_with_the_eye_opposite_the_surface_light_offset_45_degrees"/>
+  </sources>
+ </e:started>
+ <e:finished id="71" time="2026-05-24T08:58:25.838060Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000183724" memoryUsage="20156696" peakMemoryUsage="20193456" userCpuTime="0.000000000" systemCpuTime="0.000175000" cpuTime="0.000175000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="72" parentId="62" name="test_lighting_with_the_eye_in_the_path_of_the_reflection_vector" time="2026-05-24T08:58:25.838196Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="123"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_lighting_with_the_eye_in_the_path_of_the_reflection_vector"/>
+  </sources>
+ </e:started>
+ <e:finished id="72" time="2026-05-24T08:58:25.838359Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000158404" memoryUsage="20156104" peakMemoryUsage="20192832" userCpuTime="0.000000000" systemCpuTime="0.000158000" cpuTime="0.000158000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="73" parentId="62" name="test_lighting_with_the_light_behind_the_surface" time="2026-05-24T08:58:25.838497Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="134"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_lighting_with_the_light_behind_the_surface"/>
+  </sources>
+ </e:started>
+ <e:finished id="73" time="2026-05-24T08:58:25.838648Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000146739" memoryUsage="20155480" peakMemoryUsage="20192240" userCpuTime="0.000000000" systemCpuTime="0.000147000" cpuTime="0.000147000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="74" parentId="62" name="test_lighting_with_the_surface_in_shadow" time="2026-05-24T08:58:25.838778Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="145"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_lighting_with_the_surface_in_shadow"/>
+  </sources>
+ </e:started>
+ <e:finished id="74" time="2026-05-24T08:58:25.838920Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000137937" memoryUsage="20154840" peakMemoryUsage="20191616" userCpuTime="0.000000000" systemCpuTime="0.000138000" cpuTime="0.000138000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="75" parentId="62" name="test_lighting_with_a_pattern_applied" time="2026-05-24T08:58:25.839048Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
+    <filePosition line="156"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MaterialTest" methodName="test_lighting_with_a_pattern_applied"/>
+  </sources>
+ </e:started>
+ <e:finished id="75" time="2026-05-24T08:58:25.839590Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000527606" memoryUsage="20156928" peakMemoryUsage="20213776" userCpuTime="0.000000000" systemCpuTime="0.000517000" cpuTime="0.000517000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="62" time="2026-05-24T08:58:25.839642Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.004385670" memoryUsage="20153440" peakMemoryUsage="20213776" userCpuTime="0.000000000" systemCpuTime="0.004346000" cpuTime="0.004346000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="76" parentId="2" name="SebastianBergmann\Raytracer\PatternTest" time="2026-05-24T08:58:25.839687Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
+    <filePosition line="20"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\PatternTest"/>
+  </sources>
+ </e:started>
+ <e:started id="77" parentId="76" name="test_the_default_pattern_transformation" time="2026-05-24T08:58:25.839857Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
+    <filePosition line="22"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PatternTest" methodName="test_the_default_pattern_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="77" time="2026-05-24T08:58:25.840141Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000273012" memoryUsage="20156200" peakMemoryUsage="20211392" userCpuTime="0.000000000" systemCpuTime="0.000255000" cpuTime="0.000255000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="78" parentId="76" name="test_assigning_a_transformation" time="2026-05-24T08:58:25.840262Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
+    <filePosition line="29"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PatternTest" methodName="test_assigning_a_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="78" time="2026-05-24T08:58:25.840421Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000141914" memoryUsage="20155688" peakMemoryUsage="20192432" userCpuTime="0.000000000" systemCpuTime="0.000141000" cpuTime="0.000141000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="79" parentId="76" name="test_a_pattern_with_an_object_transformation" time="2026-05-24T08:58:25.840531Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
+    <filePosition line="39"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PatternTest" methodName="test_a_pattern_with_an_object_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="79" time="2026-05-24T08:58:25.840806Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000265776" memoryUsage="20155176" peakMemoryUsage="20191952" userCpuTime="0.000000000" systemCpuTime="0.000266000" cpuTime="0.000266000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="80" parentId="76" name="test_a_pattern_with_a_pattern_transformation" time="2026-05-24T08:58:25.840918Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
+    <filePosition line="49"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PatternTest" methodName="test_a_pattern_with_a_pattern_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="80" time="2026-05-24T08:58:25.841187Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000261303" memoryUsage="20160296" peakMemoryUsage="20191440" userCpuTime="0.000000000" systemCpuTime="0.000262000" cpuTime="0.000262000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="81" parentId="76" name="test_a_pattern_with_both_an_object_and_a_pattern_transformation" time="2026-05-24T08:58:25.841299Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
+    <filePosition line="59"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PatternTest" methodName="test_a_pattern_with_both_an_object_and_a_pattern_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="81" time="2026-05-24T08:58:25.841570Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000261950" memoryUsage="20159832" peakMemoryUsage="20196560" userCpuTime="0.000000000" systemCpuTime="0.000262000" cpuTime="0.000262000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="76" time="2026-05-24T08:58:25.841617Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001929583" memoryUsage="20156896" peakMemoryUsage="20196560" userCpuTime="0.000000000" systemCpuTime="0.001911000" cpuTime="0.001911000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="82" parentId="2" name="SebastianBergmann\Raytracer\RingPatternTest" time="2026-05-24T08:58:25.841664Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/RingPatternTest.php">
+    <filePosition line="20"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\RingPatternTest"/>
+  </sources>
+ </e:started>
+ <e:started id="83" parentId="82" name="test_a_ring_should_extend_in_both_x_and_z" time="2026-05-24T08:58:25.841932Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/RingPatternTest.php">
+    <filePosition line="31"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\RingPatternTest" methodName="test_a_ring_should_extend_in_both_x_and_z"/>
+  </sources>
+ </e:started>
+ <e:finished id="83" time="2026-05-24T08:58:25.842686Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000743845" memoryUsage="20161720" peakMemoryUsage="20218168" userCpuTime="0.000000000" systemCpuTime="0.000733000" cpuTime="0.000733000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="82" time="2026-05-24T08:58:25.842739Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001073687" memoryUsage="20158464" peakMemoryUsage="20218168" userCpuTime="0.000000000" systemCpuTime="0.001062000" cpuTime="0.001062000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="84" parentId="2" name="SebastianBergmann\Raytracer\StripePatternTest" time="2026-05-24T08:58:25.842781Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
+    <filePosition line="20"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\StripePatternTest"/>
+  </sources>
+ </e:started>
+ <e:started id="85" parentId="84" name="test_a_stripe_pattern_is_constant_in_y" time="2026-05-24T08:58:25.842974Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
+    <filePosition line="31"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\StripePatternTest" methodName="test_a_stripe_pattern_is_constant_in_y"/>
+  </sources>
+ </e:started>
+ <e:finished id="85" time="2026-05-24T08:58:25.843493Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000509696" memoryUsage="20160080" peakMemoryUsage="20196840" userCpuTime="0.000000000" systemCpuTime="0.000510000" cpuTime="0.000510000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="86" parentId="84" name="test_a_stripe_pattern_is_constant_in_z" time="2026-05-24T08:58:25.843629Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
+    <filePosition line="40"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\StripePatternTest" methodName="test_a_stripe_pattern_is_constant_in_z"/>
+  </sources>
+ </e:started>
+ <e:finished id="86" time="2026-05-24T08:58:25.844181Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000540231" memoryUsage="20159440" peakMemoryUsage="20196200" userCpuTime="0.000000000" systemCpuTime="0.000525000" cpuTime="0.000525000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="87" parentId="84" name="test_a_stripe_pattern_alternates_in_x" time="2026-05-24T08:58:25.844319Z">
+  <metadata>
+   <tags>
+    <tag>material</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
+    <filePosition line="49"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\StripePatternTest" methodName="test_a_stripe_pattern_alternates_in_x"/>
+  </sources>
+ </e:started>
+ <e:finished id="87" time="2026-05-24T08:58:25.845168Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000838602" memoryUsage="20158800" peakMemoryUsage="20195560" userCpuTime="0.000000000" systemCpuTime="0.000838000" cpuTime="0.000838000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="84" time="2026-05-24T08:58:25.845221Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.002439337" memoryUsage="20155528" peakMemoryUsage="20195560" userCpuTime="0.000000000" systemCpuTime="0.002424000" cpuTime="0.002424000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="88" parentId="2" name="SebastianBergmann\Raytracer\MatrixTest" time="2026-05-24T08:58:25.845283Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="16"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\MatrixTest"/>
+  </sources>
+ </e:started>
+ <e:started id="89" parentId="88" name="test_a_2x2_matrix_can_be_represented" time="2026-05-24T08:58:25.845485Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="81"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_2x2_matrix_can_be_represented"/>
+  </sources>
+ </e:started>
+ <e:finished id="89" time="2026-05-24T08:58:25.845646Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000153839" memoryUsage="20154288" peakMemoryUsage="20191032" userCpuTime="0.000000000" systemCpuTime="0.000154000" cpuTime="0.000154000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="90" parentId="88" name="test_a_3x3_matrix_can_be_represented" time="2026-05-24T08:58:25.845748Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="98"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_3x3_matrix_can_be_represented"/>
+  </sources>
+ </e:started>
+ <e:finished id="90" time="2026-05-24T08:58:25.845891Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000135478" memoryUsage="20153776" peakMemoryUsage="20190520" userCpuTime="0.000000000" systemCpuTime="0.000135000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="10"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="91" parentId="88" name="test_a_4x4_matrix_can_be_represented" time="2026-05-24T08:58:25.845989Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="121"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_4x4_matrix_can_be_represented"/>
+  </sources>
+ </e:started>
+ <e:finished id="91" time="2026-05-24T08:58:25.846173Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000178021" memoryUsage="20153264" peakMemoryUsage="20190008" userCpuTime="0.000000000" systemCpuTime="0.000168000" cpuTime="0.000168000"/>
+   <phpunit:assertions count="17"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="92" parentId="88" name="test_the_4x4_identity_matrix_can_be_created" time="2026-05-24T08:58:25.846272Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="152"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_4x4_identity_matrix_can_be_created"/>
+  </sources>
+ </e:started>
+ <e:finished id="92" time="2026-05-24T08:58:25.846423Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000142382" memoryUsage="20152752" peakMemoryUsage="20189528" userCpuTime="0.000000000" systemCpuTime="0.000142000" cpuTime="0.000142000"/>
+   <phpunit:assertions count="17"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="93" parentId="88" name="test_an_MxN_matrix_cannot_be_represented" time="2026-05-24T08:58:25.846525Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="176"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_an_MxN_matrix_cannot_be_represented"/>
+  </sources>
+ </e:started>
+ <e:finished id="93" time="2026-05-24T08:58:25.846728Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000192148" memoryUsage="20153608" peakMemoryUsage="20206472" userCpuTime="0.000000000" systemCpuTime="0.000192000" cpuTime="0.000192000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="94" parentId="88" name="test_two_matrices_can_be_compared" time="2026-05-24T08:58:25.846830Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="188"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_two_matrices_can_be_compared"/>
+  </sources>
+ </e:started>
+ <e:finished id="94" time="2026-05-24T08:58:25.846974Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000135240" memoryUsage="20153096" peakMemoryUsage="20189840" userCpuTime="0.000000000" systemCpuTime="0.000135000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="95" parentId="88" name="test_two_matrices_of_same_size_can_be_multiplied_together" time="2026-05-24T08:58:25.847071Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="217"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_two_matrices_of_same_size_can_be_multiplied_together"/>
+  </sources>
+ </e:started>
+ <e:finished id="95" time="2026-05-24T08:58:25.847217Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000138530" memoryUsage="20152600" peakMemoryUsage="20189360" userCpuTime="0.000000000" systemCpuTime="0.000138000" cpuTime="0.000138000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="96" parentId="88" name="test_a_4x4_matrix_can_be_multiplied_by_the_4x4_identity_matrix" time="2026-05-24T08:58:25.847313Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="253"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_4x4_matrix_can_be_multiplied_by_the_4x4_identity_matrix"/>
+  </sources>
+ </e:started>
+ <e:finished id="96" time="2026-05-24T08:58:25.847457Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000135785" memoryUsage="20152104" peakMemoryUsage="20188864" userCpuTime="0.000000000" systemCpuTime="0.000136000" cpuTime="0.000136000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="97" parentId="88" name="test_a_4x4_matrix_can_be_multiplied_by_a_tuple" time="2026-05-24T08:58:25.847553Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="271"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_4x4_matrix_can_be_multiplied_by_a_tuple"/>
+  </sources>
+ </e:started>
+ <e:finished id="97" time="2026-05-24T08:58:25.847696Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000134468" memoryUsage="20151592" peakMemoryUsage="20188368" userCpuTime="0.000000000" systemCpuTime="0.000134000" cpuTime="0.000134000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="98" parentId="88" name="test_other_matrices_cannot_be_multiplied_by_a_tuple" time="2026-05-24T08:58:25.847798Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="287"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_other_matrices_cannot_be_multiplied_by_a_tuple"/>
+  </sources>
+ </e:started>
+ <e:finished id="98" time="2026-05-24T08:58:25.847984Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000181048" memoryUsage="20152464" peakMemoryUsage="20205360" userCpuTime="0.000000000" systemCpuTime="0.000181000" cpuTime="0.000181000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="99" parentId="88" name="test_a_matrix_can_be_transposed" time="2026-05-24T08:58:25.848127Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="304"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_matrix_can_be_transposed"/>
+  </sources>
+ </e:started>
+ <e:finished id="99" time="2026-05-24T08:58:25.848281Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000147307" memoryUsage="20151936" peakMemoryUsage="20188696" userCpuTime="0.000000000" systemCpuTime="0.000147000" cpuTime="0.000147000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="100" parentId="88" name="test_the_identity_matrix_can_be_transposed" time="2026-05-24T08:58:25.848380Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="331"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_identity_matrix_can_be_transposed"/>
+  </sources>
+ </e:started>
+ <e:finished id="100" time="2026-05-24T08:58:25.848520Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000132734" memoryUsage="20151424" peakMemoryUsage="20188200" userCpuTime="0.000000000" systemCpuTime="0.000132000" cpuTime="0.000132000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="101" parentId="88" name="test_the_determinant_of_a_2x2_matrix_can_be_calculated" time="2026-05-24T08:58:25.848616Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="338"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_determinant_of_a_2x2_matrix_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="101" time="2026-05-24T08:58:25.848749Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000125889" memoryUsage="20150928" peakMemoryUsage="20187688" userCpuTime="0.000000000" systemCpuTime="0.000126000" cpuTime="0.000126000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="102" parentId="88" name="test_a_submatrix_of_a_3x3_matrix_is_a_2x2_matrix" time="2026-05-24T08:58:25.848850Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="350"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_submatrix_of_a_3x3_matrix_is_a_2x2_matrix"/>
+  </sources>
+ </e:started>
+ <e:finished id="102" time="2026-05-24T08:58:25.848993Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000134697" memoryUsage="20150432" peakMemoryUsage="20187192" userCpuTime="0.000000000" systemCpuTime="0.000135000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="103" parentId="88" name="test_a_submatrix_of_a_4x4_matrix_is_a_3x3_matrix" time="2026-05-24T08:58:25.849088Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="372"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_submatrix_of_a_4x4_matrix_is_a_3x3_matrix"/>
+  </sources>
+ </e:started>
+ <e:finished id="103" time="2026-05-24T08:58:25.849224Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000128612" memoryUsage="20149936" peakMemoryUsage="20186696" userCpuTime="0.000000000" systemCpuTime="0.000129000" cpuTime="0.000129000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="104" parentId="88" name="test_the_minor_of_a_3x3_matrix_can_be_calculated" time="2026-05-24T08:58:25.849318Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="396"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_minor_of_a_3x3_matrix_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="104" time="2026-05-24T08:58:25.849453Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000127481" memoryUsage="20149440" peakMemoryUsage="20186200" userCpuTime="0.000000000" systemCpuTime="0.000128000" cpuTime="0.000128000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="105" parentId="88" name="test_the_cofactor_of_a_3x3_matrix_can_be_calculated" time="2026-05-24T08:58:25.849547Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="412"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_cofactor_of_a_3x3_matrix_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="105" time="2026-05-24T08:58:25.849685Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000129211" memoryUsage="20148944" peakMemoryUsage="20185704" userCpuTime="0.000000000" systemCpuTime="0.000130000" cpuTime="0.000130000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="106" parentId="88" name="test_the_determinant_of_a_3x3_matrix_can_be_calculated" time="2026-05-24T08:58:25.849779Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="428"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_determinant_of_a_3x3_matrix_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="106" time="2026-05-24T08:58:25.849926Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000138970" memoryUsage="20148448" peakMemoryUsage="20185208" userCpuTime="0.000000000" systemCpuTime="0.000139000" cpuTime="0.000139000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="107" parentId="88" name="test_the_determinant_of_a_4x4_matrix_can_be_calculated" time="2026-05-24T08:58:25.850026Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="444"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_determinant_of_a_4x4_matrix_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="107" time="2026-05-24T08:58:25.850251Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000215135" memoryUsage="20147952" peakMemoryUsage="20184712" userCpuTime="0.000000000" systemCpuTime="0.000196000" cpuTime="0.000196000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="108" parentId="88" name="test_an_invertible_matrix_is_recognized_as_invertible" time="2026-05-24T08:58:25.850351Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="462"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_an_invertible_matrix_is_recognized_as_invertible"/>
+  </sources>
+ </e:started>
+ <e:finished id="108" time="2026-05-24T08:58:25.850511Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000152528" memoryUsage="20147456" peakMemoryUsage="20184216" userCpuTime="0.000000000" systemCpuTime="0.000152000" cpuTime="0.000152000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="109" parentId="88" name="test_a_noninvertible_matrix_is_recognized_as_noninvertible" time="2026-05-24T08:58:25.850611Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="478"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_a_noninvertible_matrix_is_recognized_as_noninvertible"/>
+  </sources>
+ </e:started>
+ <e:finished id="109" time="2026-05-24T08:58:25.850801Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000172116" memoryUsage="20146960" peakMemoryUsage="20183720" userCpuTime="0.000000000" systemCpuTime="0.000172000" cpuTime="0.000172000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="110" parentId="88" name="SebastianBergmann\Raytracer\MatrixTest::test_the_inverse_of_a_matrix_can_be_calculated_for" time="2026-05-24T08:58:25.850869Z"/>
+ <e:started id="111" parentId="110" name="test_the_inverse_of_a_matrix_can_be_calculated_for with data set &quot;4x4 matrix&quot;" time="2026-05-24T08:58:25.850983Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="494"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_inverse_of_a_matrix_can_be_calculated_for"/>
+  </sources>
+ </e:started>
+ <e:finished id="111" time="2026-05-24T08:58:25.851212Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000220707" memoryUsage="20145760" peakMemoryUsage="20182592" userCpuTime="0.000000000" systemCpuTime="0.000220000" cpuTime="0.000220000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="112" parentId="110" name="test_the_inverse_of_a_matrix_can_be_calculated_for with data set &quot;another 4x4 matrix&quot;" time="2026-05-24T08:58:25.851332Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="494"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_inverse_of_a_matrix_can_be_calculated_for"/>
+  </sources>
+ </e:started>
+ <e:finished id="112" time="2026-05-24T08:58:25.851560Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000219488" memoryUsage="20144136" peakMemoryUsage="20180968" userCpuTime="0.000000000" systemCpuTime="0.000220000" cpuTime="0.000220000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="113" parentId="110" name="test_the_inverse_of_a_matrix_can_be_calculated_for with data set &quot;yet another 4x4 matrix&quot;" time="2026-05-24T08:58:25.851674Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="494"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_inverse_of_a_matrix_can_be_calculated_for"/>
+  </sources>
+ </e:started>
+ <e:finished id="113" time="2026-05-24T08:58:25.851886Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000204494" memoryUsage="20142512" peakMemoryUsage="20179344" userCpuTime="0.000000000" systemCpuTime="0.000205000" cpuTime="0.000205000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="110" time="2026-05-24T08:58:25.851939Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001064170" memoryUsage="20138728" peakMemoryUsage="20179344" userCpuTime="0.000000000" systemCpuTime="0.001065000" cpuTime="0.001065000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="114" parentId="88" name="test_the_product_of_two_matrices_can_be_multiplied_by_its_inverse" time="2026-05-24T08:58:25.852029Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
+    <filePosition line="499"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\MatrixTest" methodName="test_the_product_of_two_matrices_can_be_multiplied_by_its_inverse"/>
+  </sources>
+ </e:started>
+ <e:finished id="114" time="2026-05-24T08:58:25.852296Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000256618" memoryUsage="20139728" peakMemoryUsage="20176456" userCpuTime="0.000000000" systemCpuTime="0.000242000" cpuTime="0.000242000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="88" time="2026-05-24T08:58:25.852344Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.007060971" memoryUsage="20137128" peakMemoryUsage="20176456" userCpuTime="0.000000000" systemCpuTime="0.006998000" cpuTime="0.006998000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="115" parentId="2" name="SebastianBergmann\Raytracer\RayTest" time="2026-05-24T08:58:25.852390Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
+    <filePosition line="16"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\RayTest"/>
+  </sources>
+ </e:started>
+ <e:started id="116" parentId="115" name="test_creating_and_querying_a_ray" time="2026-05-24T08:58:25.852556Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
+    <filePosition line="18"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\RayTest" methodName="test_creating_and_querying_a_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="116" time="2026-05-24T08:58:25.852720Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000156828" memoryUsage="20138480" peakMemoryUsage="20175256" userCpuTime="0.000000000" systemCpuTime="0.000157000" cpuTime="0.000157000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="117" parentId="115" name="test_computing_a_point_from_a_distance" time="2026-05-24T08:58:25.852831Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
+    <filePosition line="29"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\RayTest" methodName="test_computing_a_point_from_a_distance"/>
+  </sources>
+ </e:started>
+ <e:finished id="117" time="2026-05-24T08:58:25.852989Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000149360" memoryUsage="20137968" peakMemoryUsage="20174728" userCpuTime="0.000000000" systemCpuTime="0.000150000" cpuTime="0.000150000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="118" parentId="115" name="test_translating_a_ray" time="2026-05-24T08:58:25.853093Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
+    <filePosition line="42"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\RayTest" methodName="test_translating_a_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="118" time="2026-05-24T08:58:25.853239Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000137354" memoryUsage="20137440" peakMemoryUsage="20174216" userCpuTime="0.000000000" systemCpuTime="0.000138000" cpuTime="0.000138000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="119" parentId="115" name="test_scaling_a_ray" time="2026-05-24T08:58:25.853341Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
+    <filePosition line="57"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\RayTest" methodName="test_scaling_a_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="119" time="2026-05-24T08:58:25.853485Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000135676" memoryUsage="20136896" peakMemoryUsage="20173688" userCpuTime="0.000000000" systemCpuTime="0.000135000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="115" time="2026-05-24T08:58:25.853529Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001138819" memoryUsage="20134200" peakMemoryUsage="20173688" userCpuTime="0.000000000" systemCpuTime="0.001139000" cpuTime="0.001139000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="120" parentId="2" name="SebastianBergmann\Raytracer\TransformationsTest" time="2026-05-24T08:58:25.853582Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="18"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\TransformationsTest"/>
+  </sources>
+ </e:started>
+ <e:started id="121" parentId="120" name="test_multiplying_a_point_by_a_translation_matrix_moves_the_point" time="2026-05-24T08:58:25.853777Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="20"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_multiplying_a_point_by_a_translation_matrix_moves_the_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="121" time="2026-05-24T08:58:25.853944Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000158340" memoryUsage="20131920" peakMemoryUsage="20168664" userCpuTime="0.000000000" systemCpuTime="0.000159000" cpuTime="0.000159000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="122" parentId="120" name="test_multiplying_a_point_by_a_the_inverse_of_a_translation_matrix_moves_the_point_in_reverse" time="2026-05-24T08:58:25.854052Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="29"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_multiplying_a_point_by_a_the_inverse_of_a_translation_matrix_moves_the_point_in_reverse"/>
+  </sources>
+ </e:started>
+ <e:finished id="122" time="2026-05-24T08:58:25.854322Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000259825" memoryUsage="20131488" peakMemoryUsage="20168200" userCpuTime="0.000239000" systemCpuTime="0.000000000" cpuTime="0.000239000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="123" parentId="120" name="test_translation_does_not_affect_vectors" time="2026-05-24T08:58:25.854427Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="38"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_translation_does_not_affect_vectors"/>
+  </sources>
+ </e:started>
+ <e:finished id="123" time="2026-05-24T08:58:25.854572Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000136801" memoryUsage="20130992" peakMemoryUsage="20167736" userCpuTime="0.000136000" systemCpuTime="0.000000000" cpuTime="0.000136000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="124" parentId="120" name="test_applying_a_scaling_matrix_to_a_point_scales_the_point" time="2026-05-24T08:58:25.854672Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="47"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_applying_a_scaling_matrix_to_a_point_scales_the_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="124" time="2026-05-24T08:58:25.854813Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000133382" memoryUsage="20130528" peakMemoryUsage="20167240" userCpuTime="0.000133000" systemCpuTime="0.000000000" cpuTime="0.000133000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="125" parentId="120" name="test_applying_a_scaling_matrix_to_a_vector_scales_the_vector" time="2026-05-24T08:58:25.854912Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="56"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_applying_a_scaling_matrix_to_a_vector_scales_the_vector"/>
+  </sources>
+ </e:started>
+ <e:finished id="125" time="2026-05-24T08:58:25.855051Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000131635" memoryUsage="20130064" peakMemoryUsage="20166776" userCpuTime="0.000131000" systemCpuTime="0.000000000" cpuTime="0.000131000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="126" parentId="120" name="test_applying_the_inverse_of_a_scaling_matrix_to_a_vector_scales_the_vector_in_reverse" time="2026-05-24T08:58:25.855148Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="65"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_applying_the_inverse_of_a_scaling_matrix_to_a_vector_scales_the_vector_in_reverse"/>
+  </sources>
+ </e:started>
+ <e:finished id="126" time="2026-05-24T08:58:25.855361Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000202779" memoryUsage="20129600" peakMemoryUsage="20166344" userCpuTime="0.000202000" systemCpuTime="0.000000000" cpuTime="0.000202000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="127" parentId="120" name="test_reflection_is_scaling_by_a_negative_value" time="2026-05-24T08:58:25.855467Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="74"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_reflection_is_scaling_by_a_negative_value"/>
+  </sources>
+ </e:started>
+ <e:finished id="127" time="2026-05-24T08:58:25.855610Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000134948" memoryUsage="20129104" peakMemoryUsage="20165848" userCpuTime="0.000096000" systemCpuTime="0.000039000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="128" parentId="120" name="test_a_point_can_be_rotated_around_the_X_axis" time="2026-05-24T08:58:25.855709Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="83"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_point_can_be_rotated_around_the_X_axis"/>
+  </sources>
+ </e:started>
+ <e:finished id="128" time="2026-05-24T08:58:25.855856Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000139059" memoryUsage="20128608" peakMemoryUsage="20165352" userCpuTime="0.000093000" systemCpuTime="0.000045000" cpuTime="0.000138000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="129" parentId="120" name="test_the_inverse_of_an_X_rotation_rotates_in_the_opposite_direction" time="2026-05-24T08:58:25.855957Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="94"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_the_inverse_of_an_X_rotation_rotates_in_the_opposite_direction"/>
+  </sources>
+ </e:started>
+ <e:finished id="129" time="2026-05-24T08:58:25.856213Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000245564" memoryUsage="20128144" peakMemoryUsage="20164888" userCpuTime="0.000230000" systemCpuTime="0.000000000" cpuTime="0.000230000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="130" parentId="120" name="test_a_point_can_be_rotated_around_the_Y_axis" time="2026-05-24T08:58:25.856321Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="103"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_point_can_be_rotated_around_the_Y_axis"/>
+  </sources>
+ </e:started>
+ <e:finished id="130" time="2026-05-24T08:58:25.856482Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000152979" memoryUsage="20127648" peakMemoryUsage="20164392" userCpuTime="0.000153000" systemCpuTime="0.000000000" cpuTime="0.000153000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="131" parentId="120" name="test_a_point_can_be_rotated_around_the_Z_axis" time="2026-05-24T08:58:25.856589Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="114"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_point_can_be_rotated_around_the_Z_axis"/>
+  </sources>
+ </e:started>
+ <e:finished id="131" time="2026-05-24T08:58:25.856795Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000196493" memoryUsage="20127152" peakMemoryUsage="20163896" userCpuTime="0.000197000" systemCpuTime="0.000000000" cpuTime="0.000197000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="132" parentId="120" name="test_a_shearing_transformation_moves_X_in_proportion_to_Y" time="2026-05-24T08:58:25.856901Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="125"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_shearing_transformation_moves_X_in_proportion_to_Y"/>
+  </sources>
+ </e:started>
+ <e:finished id="132" time="2026-05-24T08:58:25.857040Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000135529" memoryUsage="20126688" peakMemoryUsage="20163400" userCpuTime="0.000135000" systemCpuTime="0.000000000" cpuTime="0.000135000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="133" parentId="120" name="test_a_shearing_transformation_moves_X_in_proportion_to_Z" time="2026-05-24T08:58:25.857138Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="134"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_shearing_transformation_moves_X_in_proportion_to_Z"/>
+  </sources>
+ </e:started>
+ <e:finished id="133" time="2026-05-24T08:58:25.857277Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000130413" memoryUsage="20126224" peakMemoryUsage="20162936" userCpuTime="0.000130000" systemCpuTime="0.000000000" cpuTime="0.000130000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="134" parentId="120" name="test_a_shearing_transformation_moves_Y_in_proportion_to_X" time="2026-05-24T08:58:25.857413Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="143"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_shearing_transformation_moves_Y_in_proportion_to_X"/>
+  </sources>
+ </e:started>
+ <e:finished id="134" time="2026-05-24T08:58:25.857563Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000145419" memoryUsage="20125760" peakMemoryUsage="20162472" userCpuTime="0.000146000" systemCpuTime="0.000000000" cpuTime="0.000146000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="135" parentId="120" name="test_a_shearing_transformation_moves_Y_in_proportion_to_Z" time="2026-05-24T08:58:25.857663Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="152"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_shearing_transformation_moves_Y_in_proportion_to_Z"/>
+  </sources>
+ </e:started>
+ <e:finished id="135" time="2026-05-24T08:58:25.857811Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000139868" memoryUsage="20125296" peakMemoryUsage="20162008" userCpuTime="0.000094000" systemCpuTime="0.000045000" cpuTime="0.000139000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="136" parentId="120" name="test_a_shearing_transformation_moves_Z_in_proportion_to_X" time="2026-05-24T08:58:25.857914Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="161"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_shearing_transformation_moves_Z_in_proportion_to_X"/>
+  </sources>
+ </e:started>
+ <e:finished id="136" time="2026-05-24T08:58:25.858053Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000131667" memoryUsage="20124832" peakMemoryUsage="20161544" userCpuTime="0.000089000" systemCpuTime="0.000042000" cpuTime="0.000131000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="137" parentId="120" name="test_a_shearing_transformation_moves_Z_in_proportion_to_Y" time="2026-05-24T08:58:25.858202Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="170"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_shearing_transformation_moves_Z_in_proportion_to_Y"/>
+  </sources>
+ </e:started>
+ <e:finished id="137" time="2026-05-24T08:58:25.858355Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000150209" memoryUsage="20124368" peakMemoryUsage="20161080" userCpuTime="0.000150000" systemCpuTime="0.000000000" cpuTime="0.000150000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="138" parentId="120" name="test_individual_transformations_are_applied_in_sequence" time="2026-05-24T08:58:25.858453Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="179"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_individual_transformations_are_applied_in_sequence"/>
+  </sources>
+ </e:started>
+ <e:finished id="138" time="2026-05-24T08:58:25.858600Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000137998" memoryUsage="20123904" peakMemoryUsage="20160616" userCpuTime="0.000137000" systemCpuTime="0.000000000" cpuTime="0.000137000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="139" parentId="120" name="test_chained_transformations_must_be_applied_in_reverse_order" time="2026-05-24T08:58:25.858699Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="196"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_chained_transformations_must_be_applied_in_reverse_order"/>
+  </sources>
+ </e:started>
+ <e:finished id="139" time="2026-05-24T08:58:25.858855Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000147514" memoryUsage="20123440" peakMemoryUsage="20160152" userCpuTime="0.000147000" systemCpuTime="0.000000000" cpuTime="0.000147000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="140" parentId="120" name="test_the_view_transformation_matrix_for_the_default_orientation" time="2026-05-24T08:58:25.858961Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="208"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_the_view_transformation_matrix_for_the_default_orientation"/>
+  </sources>
+ </e:started>
+ <e:finished id="140" time="2026-05-24T08:58:25.859126Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000160873" memoryUsage="20122976" peakMemoryUsage="20159720" userCpuTime="0.000161000" systemCpuTime="0.000000000" cpuTime="0.000161000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="141" parentId="120" name="test_a_view_transformation_matrix_looking_in_positive_Z_direction" time="2026-05-24T08:58:25.859228Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="219"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_a_view_transformation_matrix_looking_in_positive_Z_direction"/>
+  </sources>
+ </e:started>
+ <e:finished id="141" time="2026-05-24T08:58:25.859393Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000156576" memoryUsage="20122512" peakMemoryUsage="20159256" userCpuTime="0.000156000" systemCpuTime="0.000000000" cpuTime="0.000156000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="142" parentId="120" name="test_the_view_transformation_moves_the_world" time="2026-05-24T08:58:25.859493Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="230"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_the_view_transformation_moves_the_world"/>
+  </sources>
+ </e:started>
+ <e:finished id="142" time="2026-05-24T08:58:25.859642Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000145672" memoryUsage="20122016" peakMemoryUsage="20158760" userCpuTime="0.000146000" systemCpuTime="0.000000000" cpuTime="0.000146000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="143" parentId="120" name="test_an_arbitrary_view_transformation" time="2026-05-24T08:58:25.859741Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
+    <filePosition line="241"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TransformationsTest" methodName="test_an_arbitrary_view_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="143" time="2026-05-24T08:58:25.859888Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000143363" memoryUsage="20121504" peakMemoryUsage="20158264" userCpuTime="0.000097000" systemCpuTime="0.000046000" cpuTime="0.000143000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="120" time="2026-05-24T08:58:25.859932Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.006349713" memoryUsage="20118832" peakMemoryUsage="20158264" userCpuTime="0.005439000" systemCpuTime="0.000850000" cpuTime="0.006289000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="144" parentId="2" name="SebastianBergmann\Raytracer\TupleTest" time="2026-05-24T08:58:25.859999Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="15"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\TupleTest"/>
+  </sources>
+ </e:started>
+ <e:started id="145" parentId="144" name="test_a_tuple_with_w_equal_to_one_is_a_point" time="2026-05-24T08:58:25.860285Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="43"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_tuple_with_w_equal_to_one_is_a_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="145" time="2026-05-24T08:58:25.860463Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000172344" memoryUsage="20117232" peakMemoryUsage="20154008" userCpuTime="0.000169000" systemCpuTime="0.000000000" cpuTime="0.000169000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="146" parentId="144" name="test_a_tuple_with_w_equal_to_zero_is_a_vector" time="2026-05-24T08:58:25.860564Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="56"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_tuple_with_w_equal_to_zero_is_a_vector"/>
+  </sources>
+ </e:started>
+ <e:finished id="146" time="2026-05-24T08:58:25.860761Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000186803" memoryUsage="20116720" peakMemoryUsage="20153496" userCpuTime="0.000187000" systemCpuTime="0.000000000" cpuTime="0.000187000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="147" parentId="144" name="test_can_be_generic" time="2026-05-24T08:58:25.860863Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="69"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_can_be_generic"/>
+  </sources>
+ </e:started>
+ <e:finished id="147" time="2026-05-24T08:58:25.861003Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000132252" memoryUsage="20116192" peakMemoryUsage="20152952" userCpuTime="0.000132000" systemCpuTime="0.000000000" cpuTime="0.000132000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="148" parentId="144" name="test_a_vector_can_be_added_to_a_point" time="2026-05-24T08:58:25.861097Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="81"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_vector_can_be_added_to_a_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="148" time="2026-05-24T08:58:25.861239Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000126682" memoryUsage="20115680" peakMemoryUsage="20152424" userCpuTime="0.000126000" systemCpuTime="0.000000000" cpuTime="0.000126000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="149" parentId="144" name="test_a_vector_can_be_added_to_another_vector" time="2026-05-24T08:58:25.861332Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="94"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_vector_can_be_added_to_another_vector"/>
+  </sources>
+ </e:started>
+ <e:finished id="149" time="2026-05-24T08:58:25.861475Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000133877" memoryUsage="20115168" peakMemoryUsage="20151944" userCpuTime="0.000134000" systemCpuTime="0.000000000" cpuTime="0.000134000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="150" parentId="144" name="test_a_point_cannot_be_added_to_a_point" time="2026-05-24T08:58:25.861572Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="107"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_point_cannot_be_added_to_a_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="150" time="2026-05-24T08:58:25.861719Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000137994" memoryUsage="20114656" peakMemoryUsage="20156528" userCpuTime="0.000114000" systemCpuTime="0.000025000" cpuTime="0.000139000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="151" parentId="144" name="test_a_point_can_be_subtracted_from_another_point" time="2026-05-24T08:58:25.861812Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="117"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_point_can_be_subtracted_from_another_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="151" time="2026-05-24T08:58:25.861945Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000125181" memoryUsage="20114160" peakMemoryUsage="20150920" userCpuTime="0.000085000" systemCpuTime="0.000040000" cpuTime="0.000125000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="152" parentId="144" name="test_a_vector_can_be_subtracted_from_a_point" time="2026-05-24T08:58:25.862038Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="130"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_vector_can_be_subtracted_from_a_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="152" time="2026-05-24T08:58:25.862218Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000169871" memoryUsage="20113648" peakMemoryUsage="20150424" userCpuTime="0.000152000" systemCpuTime="0.000000000" cpuTime="0.000152000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="153" parentId="144" name="test_a_vector_can_be_subtracted_from_another_vector" time="2026-05-24T08:58:25.862315Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="143"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_vector_can_be_subtracted_from_another_vector"/>
+  </sources>
+ </e:started>
+ <e:finished id="153" time="2026-05-24T08:58:25.862466Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000142616" memoryUsage="20117248" peakMemoryUsage="20149912" userCpuTime="0.000142000" systemCpuTime="0.000000000" cpuTime="0.000142000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="154" parentId="144" name="test_a_point_cannot_be_subtracted_from_a_vector" time="2026-05-24T08:58:25.862562Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="156"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_point_cannot_be_subtracted_from_a_vector"/>
+  </sources>
+ </e:started>
+ <e:finished id="154" time="2026-05-24T08:58:25.862717Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000145961" memoryUsage="20116736" peakMemoryUsage="20158640" userCpuTime="0.000146000" systemCpuTime="0.000000000" cpuTime="0.000146000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="155" parentId="144" name="test_can_be_negated" time="2026-05-24T08:58:25.862816Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="167"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_can_be_negated"/>
+  </sources>
+ </e:started>
+ <e:finished id="155" time="2026-05-24T08:58:25.862958Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000134152" memoryUsage="20116208" peakMemoryUsage="20152968" userCpuTime="0.000134000" systemCpuTime="0.000000000" cpuTime="0.000134000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="156" parentId="144" name="test_can_be_multiplied_by_a_scalar" time="2026-05-24T08:58:25.863051Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="179"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_can_be_multiplied_by_a_scalar"/>
+  </sources>
+ </e:started>
+ <e:finished id="156" time="2026-05-24T08:58:25.863191Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000131264" memoryUsage="20115696" peakMemoryUsage="20152440" userCpuTime="0.000131000" systemCpuTime="0.000000000" cpuTime="0.000131000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="157" parentId="144" name="test_can_be_divided_by_a_scalar" time="2026-05-24T08:58:25.863283Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="191"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_can_be_divided_by_a_scalar"/>
+  </sources>
+ </e:started>
+ <e:finished id="157" time="2026-05-24T08:58:25.863416Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000125466" memoryUsage="20115168" peakMemoryUsage="20151928" userCpuTime="0.000125000" systemCpuTime="0.000000000" cpuTime="0.000125000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="158" parentId="144" name="SebastianBergmann\Raytracer\TupleTest::test_the_magnitude_of_a_vector_can_be_calculated" time="2026-05-24T08:58:25.863476Z"/>
+ <e:started id="159" parentId="158" name="test_the_magnitude_of_a_vector_can_be_calculated with data set #0" time="2026-05-24T08:58:25.863580Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="205"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_the_magnitude_of_a_vector_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="159" time="2026-05-24T08:58:25.863744Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000155329" memoryUsage="20113816" peakMemoryUsage="20150728" userCpuTime="0.000139000" systemCpuTime="0.000017000" cpuTime="0.000156000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="160" parentId="158" name="test_the_magnitude_of_a_vector_can_be_calculated with data set #1" time="2026-05-24T08:58:25.863862Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="205"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_the_magnitude_of_a_vector_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="160" time="2026-05-24T08:58:25.864053Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000149311" memoryUsage="20112520" peakMemoryUsage="20149432" userCpuTime="0.000101000" systemCpuTime="0.000047000" cpuTime="0.000148000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="161" parentId="158" name="test_the_magnitude_of_a_vector_can_be_calculated with data set #2" time="2026-05-24T08:58:25.864194Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="205"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_the_magnitude_of_a_vector_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="161" time="2026-05-24T08:58:25.864349Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000151517" memoryUsage="20111224" peakMemoryUsage="20148136" userCpuTime="0.000000000" systemCpuTime="0.000152000" cpuTime="0.000152000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="162" parentId="158" name="test_the_magnitude_of_a_vector_can_be_calculated with data set #3" time="2026-05-24T08:58:25.864460Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="205"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_the_magnitude_of_a_vector_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="162" time="2026-05-24T08:58:25.864636Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000150649" memoryUsage="20109960" peakMemoryUsage="20146840" userCpuTime="0.000000000" systemCpuTime="0.000150000" cpuTime="0.000150000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="163" parentId="158" name="test_the_magnitude_of_a_vector_can_be_calculated with data set #4" time="2026-05-24T08:58:25.864757Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="205"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_the_magnitude_of_a_vector_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="163" time="2026-05-24T08:58:25.864910Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000146424" memoryUsage="20108448" peakMemoryUsage="20145328" userCpuTime="0.000000000" systemCpuTime="0.000146000" cpuTime="0.000146000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="158" time="2026-05-24T08:58:25.864959Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.001479409" memoryUsage="20105192" peakMemoryUsage="20145328" userCpuTime="0.000431000" systemCpuTime="0.001037000" cpuTime="0.001468000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="164" parentId="144" name="SebastianBergmann\Raytracer\TupleTest::test_a_vector_can_be_normalized" time="2026-05-24T08:58:25.865002Z"/>
+ <e:started id="165" parentId="164" name="test_a_vector_can_be_normalized with data set #0" time="2026-05-24T08:58:25.865104Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="212"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_vector_can_be_normalized"/>
+  </sources>
+ </e:started>
+ <e:finished id="165" time="2026-05-24T08:58:25.865321Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000158083" memoryUsage="20105456" peakMemoryUsage="20142336" userCpuTime="0.000000000" systemCpuTime="0.000158000" cpuTime="0.000158000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="166" parentId="164" name="test_a_vector_can_be_normalized with data set #1" time="2026-05-24T08:58:25.865450Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="212"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_a_vector_can_be_normalized"/>
+  </sources>
+ </e:started>
+ <e:finished id="166" time="2026-05-24T08:58:25.865633Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000157491" memoryUsage="20104280" peakMemoryUsage="20141096" userCpuTime="0.000000000" systemCpuTime="0.000158000" cpuTime="0.000158000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="164" time="2026-05-24T08:58:25.865685Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000678925" memoryUsage="20100952" peakMemoryUsage="20141096" userCpuTime="0.000000000" systemCpuTime="0.000650000" cpuTime="0.000650000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="167" parentId="144" name="test_the_dot_product_of_two_vectors_can_be_calculated" time="2026-05-24T08:58:25.865776Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="222"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_the_dot_product_of_two_vectors_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="167" time="2026-05-24T08:58:25.865934Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000132757" memoryUsage="20101672" peakMemoryUsage="20138432" userCpuTime="0.000000000" systemCpuTime="0.000133000" cpuTime="0.000133000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="168" parentId="144" name="test_the_cross_product_of_two_vectors_can_be_calculated" time="2026-05-24T08:58:25.866038Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="230"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_the_cross_product_of_two_vectors_can_be_calculated"/>
+  </sources>
+ </e:started>
+ <e:finished id="168" time="2026-05-24T08:58:25.866229Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000167064" memoryUsage="20101176" peakMemoryUsage="20137936" userCpuTime="0.000000000" systemCpuTime="0.000156000" cpuTime="0.000156000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="169" parentId="144" name="test_two_tuples_can_be_compared" time="2026-05-24T08:58:25.866334Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="246"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_two_tuples_can_be_compared"/>
+  </sources>
+ </e:started>
+ <e:finished id="169" time="2026-05-24T08:58:25.866500Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000141422" memoryUsage="20100648" peakMemoryUsage="20137408" userCpuTime="0.000000000" systemCpuTime="0.000142000" cpuTime="0.000142000"/>
+   <phpunit:assertions count="4"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="170" parentId="144" name="test_reflecting_a_vector_approaching_at_45_degrees" time="2026-05-24T08:58:25.866609Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="260"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_reflecting_a_vector_approaching_at_45_degrees"/>
+  </sources>
+ </e:started>
+ <e:finished id="170" time="2026-05-24T08:58:25.866770Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000136002" memoryUsage="20100152" peakMemoryUsage="20136912" userCpuTime="0.000092000" systemCpuTime="0.000044000" cpuTime="0.000136000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="171" parentId="144" name="test_reflecting_a_vector_off_a_slanted_surface" time="2026-05-24T08:58:25.866873Z">
+  <metadata>
+   <tags>
+    <tag>math</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
+    <filePosition line="270"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\TupleTest" methodName="test_reflecting_a_vector_off_a_slanted_surface"/>
+  </sources>
+ </e:started>
+ <e:finished id="171" time="2026-05-24T08:58:25.867042Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000133131" memoryUsage="20099640" peakMemoryUsage="20136416" userCpuTime="0.000090000" systemCpuTime="0.000043000" cpuTime="0.000133000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="144" time="2026-05-24T08:58:25.867094Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.007093243" memoryUsage="20097312" peakMemoryUsage="20136416" userCpuTime="0.004054000" systemCpuTime="0.002947000" cpuTime="0.007001000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="172" parentId="2" name="SebastianBergmann\Raytracer\PlaneTest" time="2026-05-24T08:58:25.867142Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
+    <filePosition line="21"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\PlaneTest"/>
+  </sources>
+ </e:started>
+ <e:started id="173" parentId="172" name="test_the_normal_of_a_plane_is_constant_everywhere" time="2026-05-24T08:58:25.867323Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
+    <filePosition line="23"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PlaneTest" methodName="test_the_normal_of_a_plane_is_constant_everywhere"/>
+  </sources>
+ </e:started>
+ <e:finished id="173" time="2026-05-24T08:58:25.868019Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000632161" memoryUsage="20100224" peakMemoryUsage="20156552" userCpuTime="0.000000000" systemCpuTime="0.000632000" cpuTime="0.000632000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="174" parentId="172" name="test_intersect_with_a_ray_parallel_to_the_plane" time="2026-05-24T08:58:25.868166Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
+    <filePosition line="32"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PlaneTest" methodName="test_intersect_with_a_ray_parallel_to_the_plane"/>
+  </sources>
+ </e:started>
+ <e:finished id="174" time="2026-05-24T08:58:25.868370Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000194042" memoryUsage="20099712" peakMemoryUsage="20136488" userCpuTime="0.000000000" systemCpuTime="0.000194000" cpuTime="0.000194000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="175" parentId="172" name="test_intersect_with_a_coplanar_ray" time="2026-05-24T08:58:25.868497Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
+    <filePosition line="42"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PlaneTest" methodName="test_intersect_with_a_coplanar_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="175" time="2026-05-24T08:58:25.868671Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000150327" memoryUsage="20099200" peakMemoryUsage="20135944" userCpuTime="0.000000000" systemCpuTime="0.000150000" cpuTime="0.000150000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="176" parentId="172" name="test_a_ray_intersecting_a_plane_from_above" time="2026-05-24T08:58:25.868790Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
+    <filePosition line="52"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PlaneTest" methodName="test_a_ray_intersecting_a_plane_from_above"/>
+  </sources>
+ </e:started>
+ <e:finished id="176" time="2026-05-24T08:58:25.868981Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000154552" memoryUsage="20098688" peakMemoryUsage="20135464" userCpuTime="0.000000000" systemCpuTime="0.000154000" cpuTime="0.000154000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="177" parentId="172" name="test_a_ray_intersecting_a_plane_from_below" time="2026-05-24T08:58:25.869103Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
+    <filePosition line="65"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PlaneTest" methodName="test_a_ray_intersecting_a_plane_from_below"/>
+  </sources>
+ </e:started>
+ <e:finished id="177" time="2026-05-24T08:58:25.869280Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000152406" memoryUsage="20098176" peakMemoryUsage="20134952" userCpuTime="0.000000000" systemCpuTime="0.000152000" cpuTime="0.000152000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="172" time="2026-05-24T08:58:25.869332Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.002189705" memoryUsage="20095184" peakMemoryUsage="20134952" userCpuTime="0.000000000" systemCpuTime="0.002147000" cpuTime="0.002147000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="178" parentId="2" name="SebastianBergmann\Raytracer\ShapeCollectionTest" time="2026-05-24T08:58:25.869375Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeCollectionTest.php">
+    <filePosition line="20"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\ShapeCollectionTest"/>
+  </sources>
+ </e:started>
+ <e:started id="179" parentId="178" name="test_aggregating_objects" time="2026-05-24T08:58:25.869545Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeCollectionTest.php">
+    <filePosition line="22"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeCollectionTest" methodName="test_aggregating_objects"/>
+  </sources>
+ </e:started>
+ <e:finished id="179" time="2026-05-24T08:58:25.869765Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000194717" memoryUsage="20096696" peakMemoryUsage="20138552" userCpuTime="0.000000000" systemCpuTime="0.000195000" cpuTime="0.000195000"/>
+   <phpunit:assertions count="10"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="178" time="2026-05-24T08:58:25.869824Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000447660" memoryUsage="20093744" peakMemoryUsage="20138552" userCpuTime="0.000000000" systemCpuTime="0.000448000" cpuTime="0.000448000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="180" parentId="2" name="SebastianBergmann\Raytracer\ShapeTest" time="2026-05-24T08:58:25.869870Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="22"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\ShapeTest"/>
+  </sources>
+ </e:started>
+ <e:started id="181" parentId="180" name="test_the_default_transformation" time="2026-05-24T08:58:25.870051Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="24"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_the_default_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="181" time="2026-05-24T08:58:25.870346Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000285241" memoryUsage="20097296" peakMemoryUsage="20153304" userCpuTime="0.000000000" systemCpuTime="0.000275000" cpuTime="0.000275000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="182" parentId="180" name="test_assigning_a_transformation" time="2026-05-24T08:58:25.870465Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="31"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_assigning_a_transformation"/>
+  </sources>
+ </e:started>
+ <e:finished id="182" time="2026-05-24T08:58:25.870645Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000155462" memoryUsage="20096768" peakMemoryUsage="20133528" userCpuTime="0.000000000" systemCpuTime="0.000155000" cpuTime="0.000155000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="183" parentId="180" name="test_the_default_material" time="2026-05-24T08:58:25.870764Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="41"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_the_default_material"/>
+  </sources>
+ </e:started>
+ <e:finished id="183" time="2026-05-24T08:58:25.870935Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000146710" memoryUsage="20096240" peakMemoryUsage="20133000" userCpuTime="0.000000000" systemCpuTime="0.000147000" cpuTime="0.000147000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="184" parentId="180" name="test_assigning_a_material" time="2026-05-24T08:58:25.871052Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="52"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_assigning_a_material"/>
+  </sources>
+ </e:started>
+ <e:finished id="184" time="2026-05-24T08:58:25.871336Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000151783" memoryUsage="20095712" peakMemoryUsage="20132472" userCpuTime="0.000080000" systemCpuTime="0.000070000" cpuTime="0.000150000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="185" parentId="180" name="test_intersecting_a_scaled_shape_with_a_ray" time="2026-05-24T08:58:25.871466Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="62"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_intersecting_a_scaled_shape_with_a_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="185" time="2026-05-24T08:58:25.871721Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000232901" memoryUsage="20095200" peakMemoryUsage="20131976" userCpuTime="0.000000000" systemCpuTime="0.000233000" cpuTime="0.000233000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="186" parentId="180" name="test_intersecting_a_translated_shape_with_a_ray" time="2026-05-24T08:58:25.871842Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="76"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_intersecting_a_translated_shape_with_a_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="186" time="2026-05-24T08:58:25.872093Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000214408" memoryUsage="20094688" peakMemoryUsage="20131464" userCpuTime="0.000000000" systemCpuTime="0.000214000" cpuTime="0.000214000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="187" parentId="180" name="test_computing_the_normal_on_a_translated_shape" time="2026-05-24T08:58:25.872234Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="90"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_computing_the_normal_on_a_translated_shape"/>
+  </sources>
+ </e:started>
+ <e:finished id="187" time="2026-05-24T08:58:25.872531Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000273687" memoryUsage="20094176" peakMemoryUsage="20130952" userCpuTime="0.000000000" systemCpuTime="0.000273000" cpuTime="0.000273000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="188" parentId="180" name="test_computing_the_normal_on_a_transformed_shape" time="2026-05-24T08:58:25.872651Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
+    <filePosition line="100"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\ShapeTest" methodName="test_computing_the_normal_on_a_transformed_shape"/>
+  </sources>
+ </e:started>
+ <e:finished id="188" time="2026-05-24T08:58:25.872985Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000275815" memoryUsage="20093664" peakMemoryUsage="20130440" userCpuTime="0.000000000" systemCpuTime="0.000276000" cpuTime="0.000276000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="180" time="2026-05-24T08:58:25.873040Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.003168809" memoryUsage="20090728" peakMemoryUsage="20130440" userCpuTime="0.000081000" systemCpuTime="0.002936000" cpuTime="0.003017000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="189" parentId="2" name="SebastianBergmann\Raytracer\SphereTest" time="2026-05-24T08:58:25.873096Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="23"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\SphereTest"/>
+  </sources>
+ </e:started>
+ <e:started id="190" parentId="189" name="test_creating_and_querying_a_sphere" time="2026-05-24T08:58:25.873294Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="25"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_creating_and_querying_a_sphere"/>
+  </sources>
+ </e:started>
+ <e:finished id="190" time="2026-05-24T08:58:25.873489Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000171939" memoryUsage="20089008" peakMemoryUsage="20125752" userCpuTime="0.000000000" systemCpuTime="0.000171000" cpuTime="0.000171000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="191" parentId="189" name="test_a_ray_intersects_a_sphere_at_two_points" time="2026-05-24T08:58:25.873615Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="33"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_a_ray_intersects_a_sphere_at_two_points"/>
+  </sources>
+ </e:started>
+ <e:finished id="191" time="2026-05-24T08:58:25.873867Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000227125" memoryUsage="20088496" peakMemoryUsage="20125272" userCpuTime="0.000000000" systemCpuTime="0.000227000" cpuTime="0.000227000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="192" parentId="189" name="test_a_ray_intersects_a_sphere_at_a_tangent" time="2026-05-24T08:58:25.873992Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="53"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_a_ray_intersects_a_sphere_at_a_tangent"/>
+  </sources>
+ </e:started>
+ <e:finished id="192" time="2026-05-24T08:58:25.874283Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000267645" memoryUsage="20087984" peakMemoryUsage="20124760" userCpuTime="0.000000000" systemCpuTime="0.000245000" cpuTime="0.000245000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="193" parentId="189" name="test_a_ray_misses_a_sphere" time="2026-05-24T08:58:25.874407Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="73"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_a_ray_misses_a_sphere"/>
+  </sources>
+ </e:started>
+ <e:finished id="193" time="2026-05-24T08:58:25.874647Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000214993" memoryUsage="20087456" peakMemoryUsage="20124216" userCpuTime="0.000000000" systemCpuTime="0.000215000" cpuTime="0.000215000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="194" parentId="189" name="test_a_ray_originates_inside_a_sphere" time="2026-05-24T08:58:25.874771Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="85"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_a_ray_originates_inside_a_sphere"/>
+  </sources>
+ </e:started>
+ <e:finished id="194" time="2026-05-24T08:58:25.875035Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000227158" memoryUsage="20086944" peakMemoryUsage="20123688" userCpuTime="0.000000000" systemCpuTime="0.000227000" cpuTime="0.000227000"/>
+   <phpunit:assertions count="5"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="195" parentId="189" name="test_a_sphere_is_behind_a_ray" time="2026-05-24T08:58:25.875166Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="105"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_a_sphere_is_behind_a_ray"/>
+  </sources>
+ </e:started>
+ <e:finished id="195" time="2026-05-24T08:58:25.875411Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000220709" memoryUsage="20086416" peakMemoryUsage="20123176" userCpuTime="0.000000000" systemCpuTime="0.000221000" cpuTime="0.000221000"/>
+   <phpunit:assertions count="3"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="196" parentId="189" name="test_the_normal_on_a_sphere_at_a_point_on_the_x_axis" time="2026-05-24T08:58:25.875536Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="120"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_the_normal_on_a_sphere_at_a_point_on_the_x_axis"/>
+  </sources>
+ </e:started>
+ <e:finished id="196" time="2026-05-24T08:58:25.875830Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000267778" memoryUsage="20085920" peakMemoryUsage="20122680" userCpuTime="0.000000000" systemCpuTime="0.000267000" cpuTime="0.000267000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="197" parentId="189" name="test_the_normal_on_a_sphere_at_a_point_on_the_y_axis" time="2026-05-24T08:58:25.875954Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="127"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_the_normal_on_a_sphere_at_a_point_on_the_y_axis"/>
+  </sources>
+ </e:started>
+ <e:finished id="197" time="2026-05-24T08:58:25.876287Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000311139" memoryUsage="20085424" peakMemoryUsage="20122184" userCpuTime="0.000066000" systemCpuTime="0.000218000" cpuTime="0.000284000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="198" parentId="189" name="test_the_normal_on_a_sphere_at_a_point_on_the_z_axis" time="2026-05-24T08:58:25.876412Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="134"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_the_normal_on_a_sphere_at_a_point_on_the_z_axis"/>
+  </sources>
+ </e:started>
+ <e:finished id="198" time="2026-05-24T08:58:25.876704Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000266381" memoryUsage="20084928" peakMemoryUsage="20121688" userCpuTime="0.000174000" systemCpuTime="0.000092000" cpuTime="0.000266000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="199" parentId="189" name="test_the_normal_on_a_sphere_at_a_nonaxial_point" time="2026-05-24T08:58:25.876828Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="141"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_the_normal_on_a_sphere_at_a_nonaxial_point"/>
+  </sources>
+ </e:started>
+ <e:finished id="199" time="2026-05-24T08:58:25.877146Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000272906" memoryUsage="20084416" peakMemoryUsage="20121192" userCpuTime="0.000178000" systemCpuTime="0.000095000" cpuTime="0.000273000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="200" parentId="189" name="test_the_normal_is_a_normalized_vector" time="2026-05-24T08:58:25.877276Z">
+  <metadata>
+   <tags>
+    <tag>shape</tag>
+    <tag>small</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
+    <filePosition line="148"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\SphereTest" methodName="test_the_normal_is_a_normalized_vector"/>
+  </sources>
+ </e:started>
+ <e:finished id="200" time="2026-05-24T08:58:25.877570Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000267467" memoryUsage="20083904" peakMemoryUsage="20120648" userCpuTime="0.000000000" systemCpuTime="0.000268000" cpuTime="0.000268000"/>
+   <phpunit:assertions count="2"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="189" time="2026-05-24T08:58:25.877625Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.004527932" memoryUsage="20080696" peakMemoryUsage="20120648" userCpuTime="0.000639000" systemCpuTime="0.003816000" cpuTime="0.004455000"/>
+  </attachments>
+ </e:finished>
+ <e:finished id="2" time="2026-05-24T08:58:25.877653Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.090481426" memoryUsage="20078840" peakMemoryUsage="20120648" userCpuTime="0.032586000" systemCpuTime="0.056591000" cpuTime="0.089177000"/>
+  </attachments>
+ </e:finished>
+ <e:started id="201" parentId="1" name="integration" time="2026-05-24T08:58:25.877728Z"/>
+ <e:started id="202" parentId="201" name="SebastianBergmann\Raytracer\PuttingItTogetherTest" time="2026-05-24T08:58:25.877759Z">
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
+    <filePosition line="10"/>
+   </fileSource>
+   <phpunit:classSource className="SebastianBergmann\Raytracer\PuttingItTogetherTest"/>
+  </sources>
+ </e:started>
+ <e:started id="203" parentId="202" name="test_chapter_4" time="2026-05-24T08:58:25.877921Z">
+  <metadata>
+   <tags>
+    <tag>medium</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
+    <filePosition line="12"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PuttingItTogetherTest" methodName="test_chapter_4"/>
+  </sources>
+ </e:started>
+ <e:finished id="203" time="2026-05-24T08:58:25.917365Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.039408477" memoryUsage="20061432" peakMemoryUsage="22907872" userCpuTime="0.035178000" systemCpuTime="0.003978000" cpuTime="0.039156000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="204" parentId="202" name="test_chapter_5" time="2026-05-24T08:58:25.917547Z">
+  <metadata>
+   <tags>
+    <tag>medium</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
+    <filePosition line="27"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PuttingItTogetherTest" methodName="test_chapter_5"/>
+  </sources>
+ </e:started>
+ <e:finished id="204" time="2026-05-24T08:58:27.292857Z">
+  <attachments>
+   <phpunit:resourceUsage time="1.375264818" memoryUsage="20060904" peakMemoryUsage="22044384" userCpuTime="1.360393000" systemCpuTime="0.009567000" cpuTime="1.369960000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="205" parentId="202" name="test_chapter_6" time="2026-05-24T08:58:27.293113Z">
+  <metadata>
+   <tags>
+    <tag>medium</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
+    <filePosition line="42"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PuttingItTogetherTest" methodName="test_chapter_6"/>
+  </sources>
+ </e:started>
+ <e:finished id="205" time="2026-05-24T08:58:31.064504Z">
+  <attachments>
+   <phpunit:resourceUsage time="3.771325474" memoryUsage="20158680" peakMemoryUsage="23489616" userCpuTime="3.747224000" systemCpuTime="0.009488000" cpuTime="3.756712000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="206" parentId="202" name="test_chapter_8" time="2026-05-24T08:58:31.064713Z">
+  <metadata>
+   <tags>
+    <tag>medium</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
+    <filePosition line="57"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PuttingItTogetherTest" methodName="test_chapter_8"/>
+  </sources>
+ </e:started>
+ <e:finished id="206" time="2026-05-24T08:58:35.506308Z">
+  <attachments>
+   <phpunit:resourceUsage time="4.441529384" memoryUsage="20158152" peakMemoryUsage="20996112" userCpuTime="4.423203000" systemCpuTime="0.001289000" cpuTime="4.424492000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="207" parentId="202" name="test_chapter_10" time="2026-05-24T08:58:35.506521Z">
+  <metadata>
+   <tags>
+    <tag>medium</tag>
+   </tags>
+  </metadata>
+  <sources>
+   <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
+    <filePosition line="72"/>
+   </fileSource>
+   <phpunit:methodSource className="SebastianBergmann\Raytracer\PuttingItTogetherTest" methodName="test_chapter_10"/>
+  </sources>
+ </e:started>
+ <e:finished id="207" time="2026-05-24T08:58:36.352043Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.845473370" memoryUsage="20157624" peakMemoryUsage="20954624" userCpuTime="0.840047000" systemCpuTime="0.001940000" cpuTime="0.841987000"/>
+   <phpunit:assertions count="6"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="202" time="2026-05-24T08:58:36.352153Z">
+  <attachments>
+   <phpunit:resourceUsage time="10.474383872" memoryUsage="20155552" peakMemoryUsage="20954624" userCpuTime="10.406195000" systemCpuTime="0.027439000" cpuTime="10.433634000"/>
+  </attachments>
+ </e:finished>
+ <e:finished id="201" time="2026-05-24T08:58:36.352190Z">
+  <attachments>
+   <phpunit:resourceUsage time="10.474464010" memoryUsage="20154176" peakMemoryUsage="20954624" userCpuTime="10.406195000" systemCpuTime="0.027519000" cpuTime="10.433714000"/>
+  </attachments>
+ </e:finished>
+ <e:finished id="1" time="2026-05-24T08:58:36.352216Z">
+  <attachments>
+   <phpunit:resourceUsage time="10.565320160" memoryUsage="20151296" peakMemoryUsage="20954624" userCpuTime="10.438999000" systemCpuTime="0.084266000" cpuTime="10.523265000"/>
+  </attachments>
+ </e:finished>
+</e:events>

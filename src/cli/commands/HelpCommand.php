@@ -15,9 +15,18 @@ final class HelpCommand implements Command
     {
         print <<<'EOT'
 Usage:
-  otr-report todo       [options] ...
+  otr-report slowest [--mean] <file>
+  otr-report trends <directory> <output>
 
-Options for "otr-report todo":
+Arguments for "otr-report slowest":
+  <file>        OTR XML logfile of a single test-suite run
+
+Options for "otr-report slowest":
+  --mean        Only list tests slower than the mean runtime (with x-mean factor)
+
+Arguments for "otr-report trends":
+  <directory>   Directory containing OTR XML logfiles
+  <output>      HTML file the trend report is written to
 
 EOT;
 

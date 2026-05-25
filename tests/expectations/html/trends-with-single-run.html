@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Test Suite Trends</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            margin: 2em auto;
+            max-width: 1100px;
+            color: #2d3748;
+            padding: 0 1em;
+            line-height: 1.4
+        }
+
+        h1 {
+            font-weight: 600;
+            margin: 0 0 .5em
+        }
+
+        h2 {
+            font-weight: 600;
+            margin: 0 0 .8em;
+            font-size: 1.2em;
+            color: #4a5568
+        }
+
+        .summary {
+            display: flex;
+            gap: 1em;
+            margin: 1em 0 2em;
+            flex-wrap: wrap
+        }
+
+        .card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: .7em 1.2em;
+            min-width: 140px
+        }
+
+        .card .v {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2b6cb0
+        }
+
+        .card .l {
+            font-size: .8em;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: .04em
+        }
+
+        section {
+            margin: 2.5em 0
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%
+        }
+
+        th, td {
+            padding: .45em .7em;
+            text-align: left;
+            border-bottom: 1px solid #edf2f7;
+            font-size: .9em
+        }
+
+        th {
+            font-weight: 600;
+            color: #4a5568;
+            background: #f7fafc
+        }
+
+        td.num, th.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums
+        }
+
+        td.test {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: .82em
+        }
+
+        .chart {
+            display: block;
+            max-width: 100%
+        }
+
+        .spark {
+            vertical-align: middle;
+            display: inline-block
+        }
+    </style>
+</head>
+<body>
+<h1>Test Suite Trends</h1>
+<div class="summary">
+    <div class="card">
+        <div class="v">1</div>
+        <div class="l">runs</div>
+    </div>
+    <div class="card">
+        <div class="v">2026-01-01</div>
+        <div class="l">first run</div>
+    </div>
+    <div class="card">
+        <div class="v">2026-01-01</div>
+        <div class="l">latest run</div>
+    </div>
+    <div class="card">
+        <div class="v">2</div>
+        <div class="l">tests (latest)</div>
+    </div>
+    <div class="card">
+        <div class="v">1.10 s</div>
+        <div class="l">total (latest)</div>
+    </div>
+</div>
+<section>
+    <h2>Total suite runtime</h2>
+    <svg width="1040" height="300" viewBox="0 0 1040 300" class="chart"><line x1="70" y1="250.0" x2="1020" y2="250.0" stroke="#e2e8f0"/><text x="62" y="254.0" font-size="11" text-anchor="end" fill="#718096">0.0000 s</text><line x1="70" y1="192.5" x2="1020" y2="192.5" stroke="#e2e8f0"/><text x="62" y="196.5" font-size="11" text-anchor="end" fill="#718096">0.303 s</text><line x1="70" y1="135.0" x2="1020" y2="135.0" stroke="#e2e8f0"/><text x="62" y="139.0" font-size="11" text-anchor="end" fill="#718096">0.605 s</text><line x1="70" y1="77.5" x2="1020" y2="77.5" stroke="#e2e8f0"/><text x="62" y="81.5" font-size="11" text-anchor="end" fill="#718096">0.908 s</text><line x1="70" y1="20.0" x2="1020" y2="20.0" stroke="#e2e8f0"/><text x="62" y="24.0" font-size="11" text-anchor="end" fill="#718096">1.21 s</text><path d="M545.0,40.9" fill="none" stroke="#2b6cb0" stroke-width="1.5"/><circle cx="545.0" cy="40.9" r="3" fill="#2b6cb0"><title>1.10 s @ 2026-01-01 10:00</title></circle><text x="545.0" y="268" font-size="11" text-anchor="middle" fill="#718096">2026-01-01 10:00</text></svg>
+</section>
+<section>
+    <h2>Test count</h2>
+    <svg width="1040" height="240" viewBox="0 0 1040 240" class="chart"><line x1="70" y1="190.0" x2="1020" y2="190.0" stroke="#e2e8f0"/><text x="62" y="194.0" font-size="11" text-anchor="end" fill="#718096">0.0000</text><line x1="70" y1="147.5" x2="1020" y2="147.5" stroke="#e2e8f0"/><text x="62" y="151.5" font-size="11" text-anchor="end" fill="#718096">0.550</text><line x1="70" y1="105.0" x2="1020" y2="105.0" stroke="#e2e8f0"/><text x="62" y="109.0" font-size="11" text-anchor="end" fill="#718096">1.10</text><line x1="70" y1="62.5" x2="1020" y2="62.5" stroke="#e2e8f0"/><text x="62" y="66.5" font-size="11" text-anchor="end" fill="#718096">1.65</text><line x1="70" y1="20.0" x2="1020" y2="20.0" stroke="#e2e8f0"/><text x="62" y="24.0" font-size="11" text-anchor="end" fill="#718096">2.20</text><path d="M545.0,35.5" fill="none" stroke="#2b6cb0" stroke-width="1.5"/><circle cx="545.0" cy="35.5" r="3" fill="#2b6cb0"><title>2.00 @ 2026-01-01 10:00</title></circle><text x="545.0" y="208" font-size="11" text-anchor="middle" fill="#718096">2026-01-01 10:00</text></svg>
+</section>
+<section>
+    <h2>10 slowest tests (latest run)</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Test</th>
+            <th class="num">Time (s)</th>
+            <th>History</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td class="test">Slow::a</td><td class="num">1.000000</td><td><span class="spark"><svg width="220" height="28" viewBox="0 0 220 28"><path d="M110.0,3.0" fill="none" stroke="#2b6cb0" stroke-width="1.2"/><circle cx="110.0" cy="3.0" r="1.8" fill="#2b6cb0"/></svg></span></td></tr>
+<tr><td class="test">Fast::b</td><td class="num">0.100000</td><td><span class="spark"><svg width="220" height="28" viewBox="0 0 220 28"><path d="M110.0,3.0" fill="none" stroke="#2b6cb0" stroke-width="1.2"/><circle cx="110.0" cy="3.0" r="1.8" fill="#2b6cb0"/></svg></span></td></tr>
+
+        </tbody>
+    </table>
+</section>
+<section>
+    <h2>Runs</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Started</th>
+            <th class="num">Total (s)</th>
+            <th class="num">Tests</th>
+            <th>File</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td>2026-01-01 10:00:00</td><td class="num">1.100</td><td class="num">2</td><td class="test">run1.xml</td></tr>
+
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<e:events xmlns:e="https://schemas.opentest4j.org/reporting/events/0.2.0" xmlns:phpunit="https://schema.phpunit.de/otr/phpunit/0.2.0">
+ <e:started id="1" name="suite" time="2026-04-04T12:00:00.000000Z"/>
+ <e:finished id="1" time="2026-04-04T12:00:05.000000Z">
+  <attachments>
+   <phpunit:resourceUsage time="5.000000"/>
+  </attachments>
+ </e:finished>
+</e:events>

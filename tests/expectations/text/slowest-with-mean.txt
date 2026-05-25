@@ -1,0 +1,5 @@
+Mean test runtime: 2.000000 s (3 tests, 1 slower than mean)
+
+Time(s)   x mean    Test
+-------   ------    ----
+3.000000     1.50x  C::c

@@ -12,14 +12,25 @@ namespace PHPUnit\OtrReport;
 final class Arguments
 {
     private ?string $command;
+
+    /**
+     * @var list<string>
+     */
+    private array $arguments;
     private bool $help;
+    private bool $mean;
     private bool $version;
 
-    public function __construct(?string $command, bool $help, bool $version)
+    /**
+     * @param list<string> $arguments
+     */
+    public function __construct(?string $command, array $arguments, bool $help, bool $mean, bool $version)
     {
-        $this->command = $command;
-        $this->help    = $help;
-        $this->version = $version;
+        $this->command   = $command;
+        $this->arguments = $arguments;
+        $this->help      = $help;
+        $this->mean      = $mean;
+        $this->version   = $version;
     }
 
     public function command(): ?string
@@ -27,9 +38,22 @@ final class Arguments
         return $this->command;
     }
 
+    /**
+     * @return list<string>
+     */
+    public function arguments(): array
+    {
+        return $this->arguments;
+    }
+
     public function help(): bool
     {
         return $this->help;
+    }
+
+    public function mean(): bool
+    {
+        return $this->mean;
     }
 
     public function version(): bool

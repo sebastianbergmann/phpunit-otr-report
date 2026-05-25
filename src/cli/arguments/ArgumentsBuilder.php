@@ -10,16 +10,28 @@
 namespace PHPUnit\OtrReport;
 
 use function array_merge;
+use function array_slice;
+use function array_values;
 use SebastianBergmann\CliParser\Exception as CliParserException;
 use SebastianBergmann\CliParser\Parser as CliParser;
 
 final class ArgumentsBuilder
 {
     private const array COMMANDS = [
-        'todo' => [
+        'slowest' => [
+            'longOptions' => [
+                'mean',
+            ],
+            'arguments' => [
+                'file',
+            ],
+        ],
+        'trends' => [
             'longOptions' => [
             ],
             'arguments' => [
+                'directory',
+                'output',
             ],
         ],
     ];
@@ -65,12 +77,10 @@ final class ArgumentsBuilder
             }
         }
 
-        switch ($command) {
-            case 'todo':
-                break;
-        }
+        $arguments = $command !== null ? array_values(array_slice($options[1], 1)) : [];
 
         $help    = false;
+        $mean    = false;
         $version = false;
 
         foreach ($options[0] as $option) {
@@ -78,6 +88,11 @@ final class ArgumentsBuilder
                 case 'h':
                 case '--help':
                     $help = true;
+
+                    break;
+
+                case '--mean':
+                    $mean = true;
 
                     break;
 
@@ -91,7 +106,9 @@ final class ArgumentsBuilder
 
         return new Arguments(
             $command,
+            $arguments,
             $help,
+            $mean,
             $version,
         );
     }

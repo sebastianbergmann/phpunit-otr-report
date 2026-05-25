@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<e:events xmlns:e="https://schemas.opentest4j.org/reporting/events/0.2.0" xmlns:phpunit="https://schema.phpunit.de/otr/phpunit/0.2.0">
+ <e:started id="1" name="suite" time="2026-01-01T10:00:00.000000Z"/>
+ <e:started id="2" parentId="1" name="test_x" time="2026-01-01T10:00:00.100000Z">
+  <sources>
+   <phpunit:methodSource className="Vendor\ExampleTest" methodName="test_x"/>
+  </sources>
+ </e:started>
+ <e:finished id="2" time="2026-01-01T10:00:00.200000Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.100000"/>
+  </attachments>
+ </e:finished>
+ <e:finished id="1" time="2026-01-01T10:00:01.000000Z">
+  <attachments>
+   <phpunit:resourceUsage time="1.000000"/>
+  </attachments>
+ </e:finished>
+</e:events>
