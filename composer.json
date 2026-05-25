@@ -1,6 +1,7 @@
 {
     "name": "phpunit/otr-report",
     "type": "project",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Sebastian Bergmann",
