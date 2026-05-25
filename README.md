@@ -1,0 +1,116 @@
+# otr-report
+
+**otr-report** generates reports from test result data in the Open Test Reporting (OTR) format produced by PHPUnit >= 13.2.
+
+## Installation
+
+This tool is distributed as a [PHP Archive (PHAR)](https://php.net/phar):
+
+```bash
+$ wget https://phar.phpunit.de/otr-report-X.Y.phar
+
+$ php otr-report-X.Y.phar --version
+```
+
+Please replace `X.Y` with the version of otr-report you are interested in.
+
+Using [Phive](https://phar.io/) is the recommended way for managing the tool dependencies of your project:
+
+```
+$ phive install otr-report
+
+$ ./tools/otr-report --version
+```
+
+**[It is not recommended to use Composer to download and install this tool.](https://phpunit.readthedocs.io/en/13.1/installation.html#phar-or-composer)**
+
+## Generating OTR data
+
+This tool operates on test result data that PHPUnit writes in the Open Test Reporting (OTR) XML format.
+
+Use PHPUnit's `--log-otr` option to write an OTR XML logfile for a test-suite run:
+
+```
+$ phpunit --log-otr /tmp/otr/run.xml
+```
+
+The logfile records, among other things, how long each test took to run.
+
+## Usage
+
+### Listing the slowest tests
+
+The `otr-report slowest` command reads the OTR XML logfile of a single test-suite run and prints the ten slowest tests, ordered from slowest to fastest.
+
+This is useful for finding the tests that dominate the runtime of your test suite.
+
+#### Example
+
+```
+$ otr-report slowest /tmp/otr/run.xml
+otr-report 1.0 by Sebastian Bergmann.
+
+Time(s)   Test
+-------   ----
+4.441529  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_8
+3.771325  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_6
+1.375265  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5
+0.845473  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_10
+0.039408  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_4
+0.023849  SebastianBergmann\Raytracer\CameraTest::test_rendering_a_world_with_a_camera
+0.000839  SebastianBergmann\Raytracer\StripePatternTest::test_a_stripe_pattern_alternates_in_x
+0.000744  SebastianBergmann\Raytracer\RingPatternTest::test_a_ring_should_extend_in_both_x_and_z
+0.000707  SebastianBergmann\Raytracer\GradientPatternTest::test_a_gradient_linearly_interpolates_between_colors
+0.000688  SebastianBergmann\Raytracer\CheckersPatternTest::test_checkers_should_repeat_in_x
+```
+
+#### The `--mean` option
+
+With the `--mean` option, the report first calculates the mean runtime across all tests and then lists only the tests that are slower than the mean. Each listed test is annotated with a factor that shows how many times slower than the mean it is.
+
+```
+$ otr-report slowest --mean /tmp/otr/run.xml
+otr-report 1.0 by Sebastian Bergmann.
+
+Mean test runtime: 0.059520 s (177 tests, 4 slower than mean)
+
+Time(s)   x mean    Test
+-------   ------    ----
+4.441529    74.62x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_8
+3.771325    63.36x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_6
+1.375265    23.11x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5
+0.845473    14.20x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_10
+```
+
+### Generating a trend report
+
+The `otr-report trends` command reads all OTR XML logfiles in a directory and generates a single HTML report that visualizes how your test suite evolves across runs.
+
+This is useful for tracking the runtime and the number of tests of your test suite over time, for example by archiving one OTR XML logfile per CI run into a shared directory.
+
+The generated HTML report includes:
+
+* The total runtime of the test suite across all runs, as a chart
+* The number of tests across all runs, as a chart
+* The ten slowest tests of the most recent run, each with a sparkline of its runtime across all runs and the change relative to its first recorded runtime
+* A table of all runs, with their start time, total runtime, and number of tests
+
+The runs are ordered by their start time, which is read from the OTR XML logfiles.
+
+#### Example
+
+Collect one OTR XML logfile per run into a directory:
+
+```
+$ phpunit --log-otr /tmp/otr/2026-02-02.xml
+$ phpunit --log-otr /tmp/otr/2026-02-09.xml
+$ phpunit --log-otr /tmp/otr/2026-02-16.xml
+```
+
+Then generate the trend report:
+
+```
+$ otr-report trends /tmp/otr /tmp/trends.html
+```
+
+The first argument is the directory containing the OTR XML logfiles, the second argument is the HTML file the trend report is written to.
