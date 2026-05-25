@@ -10,6 +10,10 @@
             "role": "lead"
         }
     ],
+    "support": {
+        "issues": "https://github.com/sebastianbergmann/phpunit-otr-report/issues",
+        "security": "https://github.com/sebastianbergmann/phpunit-otr-report/security/policy"
+    },
     "prefer-stable": true,
     "require": {
         "php": ">=8.5",
