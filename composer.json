@@ -1,5 +1,6 @@
 {
     "name": "phpunit/otr-report",
+    "description": "Generates reports from test result data in the Open Test Reporting (OTR) format produced by PHPUnit",
     "type": "project",
     "license": "BSD-3-Clause",
     "authors": [
