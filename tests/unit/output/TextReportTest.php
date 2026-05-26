@@ -28,7 +28,7 @@ final class TextReportTest extends TestCase
     {
         $this->assertSame(
             $this->expectation('text/slowest.txt'),
-            (new TextReport)->render($this->createTestRun(), false),
+            (new TextReport)->render($this->createTestRun(), false, 10),
         );
     }
 
@@ -36,7 +36,15 @@ final class TextReportTest extends TestCase
     {
         $this->assertSame(
             $this->expectation('text/slowest-with-mean.txt'),
-            (new TextReport)->render($this->createTestRun(), true),
+            (new TextReport)->render($this->createTestRun(), true, 10),
+        );
+    }
+
+    public function testLimitsTheNumberOfTestsListed(): void
+    {
+        $this->assertSame(
+            $this->expectation('text/slowest-with-limit.txt'),
+            (new TextReport)->render($this->createTestRun(), false, 2),
         );
     }
 
@@ -49,8 +57,8 @@ final class TextReportTest extends TestCase
             [],
         );
 
-        $this->assertSame('', (new TextReport)->render($run, false));
-        $this->assertSame('', (new TextReport)->render($run, true));
+        $this->assertSame('', (new TextReport)->render($run, false, 10));
+        $this->assertSame('', (new TextReport)->render($run, true, 10));
     }
 
     private function createTestRun(): TestRun

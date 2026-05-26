@@ -44,6 +44,8 @@ The `otr-report slowest` command reads the OTR XML logfile of a single test-suit
 
 This is useful for finding the tests that dominate the runtime of your test suite.
 
+Use the `--limit` option to list a different number of tests; it defaults to `10`.
+
 #### Example
 
 ```
@@ -81,6 +83,23 @@ Time(s)   x mean    Test
 1.375265    23.11x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5
 0.845473    14.20x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_10
 ```
+
+#### The `--limit` option
+
+By default, the ten slowest tests are listed. Use the `--limit` option to list a different number of tests:
+
+```
+$ otr-report slowest --limit 3 /tmp/otr/run.xml
+otr-report 1.0 by Sebastian Bergmann.
+
+Time(s)   Test
+-------   ----
+4.441529  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_8
+3.771325  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_6
+1.375265  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5
+```
+
+The option also applies to `--above-mean`. The value must be a positive integer.
 
 ### Generating a trend report
 

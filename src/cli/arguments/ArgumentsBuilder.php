@@ -12,6 +12,8 @@ namespace PHPUnit\OtrReport;
 use function array_merge;
 use function array_slice;
 use function array_values;
+use function ctype_digit;
+use function sprintf;
 use SebastianBergmann\CliParser\Exception as CliParserException;
 use SebastianBergmann\CliParser\Parser as CliParser;
 
@@ -21,6 +23,7 @@ final class ArgumentsBuilder
         'slowest' => [
             'longOptions' => [
                 'above-mean',
+                'limit=',
             ],
             'arguments' => [
                 'file',
@@ -81,6 +84,7 @@ final class ArgumentsBuilder
 
         $help      = false;
         $aboveMean = false;
+        $limit     = 10;
         $version   = false;
 
         foreach ($options[0] as $option) {
@@ -93,6 +97,11 @@ final class ArgumentsBuilder
 
                 case '--above-mean':
                     $aboveMean = true;
+
+                    break;
+
+                case '--limit':
+                    $limit = $this->limit($option[1]);
 
                     break;
 
@@ -109,7 +118,27 @@ final class ArgumentsBuilder
             $arguments,
             $help,
             $aboveMean,
+            $limit,
             $version,
         );
+    }
+
+    /**
+     * @throws ArgumentsBuilderException
+     *
+     * @return positive-int
+     */
+    private function limit(?string $value): int
+    {
+        if ($value === null || !ctype_digit($value) || (int) $value < 1) {
+            throw new ArgumentsBuilderException(
+                sprintf(
+                    'Value of --limit must be a positive integer, got "%s"',
+                    (string) $value,
+                ),
+            );
+        }
+
+        return (int) $value;
     }
 }

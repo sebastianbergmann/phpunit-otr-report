@@ -18,7 +18,10 @@ use function sprintf;
 
 final class TextReport
 {
-    public function render(TestRun $run, bool $aboveMean): string
+    /**
+     * @param positive-int $limit
+     */
+    public function render(TestRun $run, bool $aboveMean, int $limit): string
     {
         $runtimes = $run->tests();
 
@@ -29,20 +32,21 @@ final class TextReport
         arsort($runtimes);
 
         if ($aboveMean) {
-            return $this->renderWithMean($runtimes);
+            return $this->renderWithMean($runtimes, $limit);
         }
 
-        return $this->renderPlain($runtimes);
+        return $this->renderPlain($runtimes, $limit);
     }
 
     /**
      * @param non-empty-array<string, float> $runtimes
+     * @param positive-int                   $limit
      */
-    private function renderWithMean(array $runtimes): string
+    private function renderWithMean(array $runtimes, int $limit): string
     {
         $mean    = array_sum($runtimes) / count($runtimes);
         $slower  = array_filter($runtimes, static fn (float $time): bool => $time > $mean);
-        $slowest = array_slice($slower, 0, 10, true);
+        $slowest = array_slice($slower, 0, $limit, true);
 
         $output = sprintf(
             "Mean test runtime: %.6f s (%d tests, %d slower than mean)\n\n",
@@ -63,10 +67,11 @@ final class TextReport
 
     /**
      * @param non-empty-array<string, float> $runtimes
+     * @param positive-int                   $limit
      */
-    private function renderPlain(array $runtimes): string
+    private function renderPlain(array $runtimes, int $limit): string
     {
-        $slowest = array_slice($runtimes, 0, 10, true);
+        $slowest = array_slice($runtimes, 0, $limit, true);
 
         $output = sprintf("%-8s  %s\n", 'Time(s)', 'Test');
         $output .= sprintf("%-8s  %s\n", '-------', '----');
