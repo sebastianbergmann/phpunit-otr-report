@@ -111,6 +111,9 @@ Then generate the trend report:
 
 ```
 $ otr-report trends /tmp/otr /tmp/trends.html
+otr-report 1.0 by Sebastian Bergmann.
+
+Wrote trends report to /tmp/trends.html
 ```
 
 The first argument is the directory containing the OTR XML logfiles, the second argument is the HTML file the trend report is written to.

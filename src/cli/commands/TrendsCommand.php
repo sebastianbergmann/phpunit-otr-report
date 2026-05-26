@@ -15,6 +15,7 @@ use function assert;
 use function file_put_contents;
 use function fwrite;
 use function is_dir;
+use function printf;
 
 final class TrendsCommand implements Command
 {
@@ -42,6 +43,11 @@ final class TrendsCommand implements Command
         }
 
         file_put_contents($output, (new HtmlReport)->render($runs));
+
+        printf(
+            'Wrote trends report to %s' . PHP_EOL,
+            $output,
+        );
 
         return 0;
     }
