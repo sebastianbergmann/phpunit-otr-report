@@ -18,18 +18,18 @@ final class Arguments
      */
     private array $arguments;
     private bool $help;
-    private bool $mean;
+    private bool $aboveMean;
     private bool $version;
 
     /**
      * @param list<string> $arguments
      */
-    public function __construct(?string $command, array $arguments, bool $help, bool $mean, bool $version)
+    public function __construct(?string $command, array $arguments, bool $help, bool $aboveMean, bool $version)
     {
         $this->command   = $command;
         $this->arguments = $arguments;
         $this->help      = $help;
-        $this->mean      = $mean;
+        $this->aboveMean = $aboveMean;
         $this->version   = $version;
     }
 
@@ -51,9 +51,9 @@ final class Arguments
         return $this->help;
     }
 
-    public function mean(): bool
+    public function aboveMean(): bool
     {
-        return $this->mean;
+        return $this->aboveMean;
     }
 
     public function version(): bool

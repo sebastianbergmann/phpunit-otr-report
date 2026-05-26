@@ -64,12 +64,12 @@ Time(s)   Test
 0.000688  SebastianBergmann\Raytracer\CheckersPatternTest::test_checkers_should_repeat_in_x
 ```
 
-#### The `--mean` option
+#### The `--above-mean` option
 
-With the `--mean` option, the report first calculates the mean runtime across all tests and then lists only the tests that are slower than the mean. Each listed test is annotated with a factor that shows how many times slower than the mean it is.
+With the `--above-mean` option, the report first calculates the mean runtime across all tests and then lists only the tests that are slower than the mean. Each listed test is annotated with a factor that shows how many times slower than the mean it is.
 
 ```
-$ otr-report slowest --mean /tmp/otr/run.xml
+$ otr-report slowest --above-mean /tmp/otr/run.xml
 otr-report 1.0 by Sebastian Bergmann.
 
 Mean test runtime: 0.059520 s (177 tests, 4 slower than mean)

@@ -20,7 +20,7 @@ final class ArgumentsBuilder
     private const array COMMANDS = [
         'slowest' => [
             'longOptions' => [
-                'mean',
+                'above-mean',
             ],
             'arguments' => [
                 'file',
@@ -79,9 +79,9 @@ final class ArgumentsBuilder
 
         $arguments = $command !== null ? array_values(array_slice($options[1], 1)) : [];
 
-        $help    = false;
-        $mean    = false;
-        $version = false;
+        $help      = false;
+        $aboveMean = false;
+        $version   = false;
 
         foreach ($options[0] as $option) {
             switch ($option[0]) {
@@ -91,8 +91,8 @@ final class ArgumentsBuilder
 
                     break;
 
-                case '--mean':
-                    $mean = true;
+                case '--above-mean':
+                    $aboveMean = true;
 
                     break;
 
@@ -108,7 +108,7 @@ final class ArgumentsBuilder
             $command,
             $arguments,
             $help,
-            $mean,
+            $aboveMean,
             $version,
         );
     }

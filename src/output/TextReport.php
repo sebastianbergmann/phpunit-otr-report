@@ -18,7 +18,7 @@ use function sprintf;
 
 final class TextReport
 {
-    public function render(TestRun $run, bool $mean): string
+    public function render(TestRun $run, bool $aboveMean): string
     {
         $runtimes = $run->tests();
 
@@ -28,7 +28,7 @@ final class TextReport
 
         arsort($runtimes);
 
-        if ($mean) {
+        if ($aboveMean) {
             return $this->renderWithMean($runtimes);
         }
 

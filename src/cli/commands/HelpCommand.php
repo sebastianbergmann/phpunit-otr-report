@@ -15,14 +15,14 @@ final class HelpCommand implements Command
     {
         print <<<'EOT'
 Usage:
-  otr-report slowest [--mean] <file>
+  otr-report slowest [--above-mean] <file>
   otr-report trends <directory> <output>
 
 Arguments for "otr-report slowest":
   <file>        OTR XML logfile of a single test-suite run
 
 Options for "otr-report slowest":
-  --mean        Only list tests slower than the mean runtime (with x-mean factor)
+  --above-mean  Only list tests slower than the mean runtime (with x-mean factor)
 
 Arguments for "otr-report trends":
   <directory>   Directory containing OTR XML logfiles
