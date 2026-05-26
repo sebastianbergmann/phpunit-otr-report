@@ -19,6 +19,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(TextReport::class)]
+#[UsesClass(Metric::class)]
 #[UsesClass(TestRun::class)]
 #[TestDox('TextReport')]
 #[Small]
@@ -28,7 +29,7 @@ final class TextReportTest extends TestCase
     {
         $this->assertSame(
             $this->expectation('text/slowest.txt'),
-            (new TextReport)->render($this->createTestRun(), false, 10),
+            (new TextReport)->render($this->createTestRun(), false, 10, Metric::Time),
         );
     }
 
@@ -36,7 +37,7 @@ final class TextReportTest extends TestCase
     {
         $this->assertSame(
             $this->expectation('text/slowest-with-mean.txt'),
-            (new TextReport)->render($this->createTestRun(), true, 10),
+            (new TextReport)->render($this->createTestRun(), true, 10, Metric::Time),
         );
     }
 
@@ -44,7 +45,39 @@ final class TextReportTest extends TestCase
     {
         $this->assertSame(
             $this->expectation('text/slowest-with-limit.txt'),
-            (new TextReport)->render($this->createTestRun(), false, 2),
+            (new TextReport)->render($this->createTestRun(), false, 2, Metric::Time),
+        );
+    }
+
+    public function testSortsByCpuTime(): void
+    {
+        $this->assertSame(
+            $this->expectation('text/slowest-by-cpu.txt'),
+            (new TextReport)->render($this->createTestRun(), false, 10, Metric::Cpu),
+        );
+    }
+
+    public function testSortsByCpuTimeAboveTheMean(): void
+    {
+        $this->assertSame(
+            $this->expectation('text/slowest-by-cpu-above-mean.txt'),
+            (new TextReport)->render($this->createTestRun(), true, 10, Metric::Cpu),
+        );
+    }
+
+    public function testSortsByPeakMemory(): void
+    {
+        $this->assertSame(
+            $this->expectation('text/slowest-by-memory.txt'),
+            (new TextReport)->render($this->createTestRun(), false, 10, Metric::Memory),
+        );
+    }
+
+    public function testSortsByPeakMemoryAboveTheMean(): void
+    {
+        $this->assertSame(
+            $this->expectation('text/slowest-by-memory-above-mean.txt'),
+            (new TextReport)->render($this->createTestRun(), true, 10, Metric::Memory),
         );
     }
 
@@ -55,10 +88,13 @@ final class TextReportTest extends TestCase
             new DateTimeImmutable('2026-01-01T08:00:00.000000Z'),
             0.0,
             [],
+            [],
+            [],
         );
 
-        $this->assertSame('', (new TextReport)->render($run, false, 10));
-        $this->assertSame('', (new TextReport)->render($run, true, 10));
+        $this->assertSame('', (new TextReport)->render($run, false, 10, Metric::Time));
+        $this->assertSame('', (new TextReport)->render($run, true, 10, Metric::Time));
+        $this->assertSame('', (new TextReport)->render($run, false, 10, Metric::Memory));
     }
 
     private function createTestRun(): TestRun
@@ -71,6 +107,16 @@ final class TextReportTest extends TestCase
                 'A::a' => 1.0,
                 'B::b' => 2.0,
                 'C::c' => 3.0,
+            ],
+            [
+                'A::a' => 3.0,
+                'B::b' => 1.0,
+                'C::c' => 2.0,
+            ],
+            [
+                'A::a' => 2000.0,
+                'B::b' => 4000.0,
+                'C::c' => 1000.0,
             ],
         );
     }

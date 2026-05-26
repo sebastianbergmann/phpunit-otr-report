@@ -101,6 +101,27 @@ Time(s)   Test
 
 The option also applies to `--above-mean`. The value must be a positive integer.
 
+#### The `--sort` option
+
+By default, tests are sorted by their wall-clock runtime. Use the `--sort` option to sort by a different metric:
+
+* `time` (default) sorts by wall-clock runtime (the `time` attribute), in seconds
+* `cpu` sorts by CPU time (the `cpuTime` attribute, i.e. user plus system CPU time), in seconds
+* `memory` sorts by peak memory usage (the `peakMemoryUsage` attribute), in bytes
+
+```
+$ otr-report slowest --sort memory --limit 3 /tmp/otr/run.xml
+otr-report 1.0 by Sebastian Bergmann.
+
+Memory    Test
+-------   ----
+23489616  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_6
+22907872  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_4
+22044384  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5
+```
+
+The option combines with `--above-mean`, which then lists the tests beyond the mean of the chosen metric.
+
 ### Generating a trend report
 
 The `otr-report trends` command reads all OTR XML logfiles in a directory and generates a single HTML report that visualizes how your test suite evolves across runs.

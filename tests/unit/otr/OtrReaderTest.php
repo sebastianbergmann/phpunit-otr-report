@@ -24,6 +24,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(OtrReader::class)]
+#[UsesClass(Metric::class)]
 #[UsesClass(TestRun::class)]
 #[UsesClass(TestRunCollection::class)]
 #[TestDox('OtrReader')]
@@ -38,14 +39,20 @@ final class OtrReaderTest extends TestCase
         $this->assertSame(177, $run->testCount());
         $this->assertEqualsWithDelta(10.56532016, $run->totalTime(), 1e-9);
 
-        $tests = $run->tests();
-        $name  = 'SebastianBergmann\Raytracer\CameraTest::test_constructing_a_camera';
+        $tests      = $run->tests();
+        $cpuTimes   = $run->valuesFor(Metric::Cpu);
+        $peakMemory = $run->valuesFor(Metric::Memory);
+        $name       = 'SebastianBergmann\Raytracer\CameraTest::test_constructing_a_camera';
 
-        if (!array_key_exists($name, $tests)) {
-            $this->fail('Expected test was not found in the parsed runtimes');
+        if (!array_key_exists($name, $tests) ||
+            !array_key_exists($name, $cpuTimes) ||
+            !array_key_exists($name, $peakMemory)) {
+            $this->fail('Expected test was not found in the parsed metrics');
         }
 
         $this->assertEqualsWithDelta(0.000549776, $tests[$name], 1e-12);
+        $this->assertEqualsWithDelta(0.000524, $cpuTimes[$name], 1e-9);
+        $this->assertSame(19962808.0, $peakMemory[$name]);
     }
 
     public function testCollectsTotalTimeAndOnlyTestsWithAMethodSourceAndResourceUsage(): void

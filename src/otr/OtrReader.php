@@ -51,8 +51,10 @@ final class OtrReader
             $tests[$id] = $source->getAttribute('className') . '::' . $started->getAttribute('name');
         }
 
-        $runtimes  = [];
-        $totalTime = 0.0;
+        $times      = [];
+        $cpuTimes   = [];
+        $peakMemory = [];
+        $totalTime  = 0.0;
 
         $finishedNodes = $xpath->query('//e:finished');
 
@@ -76,10 +78,14 @@ final class OtrReader
                 continue;
             }
 
-            $runtimes[$tests[$id]] = (float) $usage->getAttribute('time');
+            $name = $tests[$id];
+
+            $times[$name]      = (float) $usage->getAttribute('time');
+            $cpuTimes[$name]   = (float) $usage->getAttribute('cpuTime');
+            $peakMemory[$name] = (float) $usage->getAttribute('peakMemoryUsage');
         }
 
-        return new TestRun($file, $startedAt, $totalTime, $runtimes);
+        return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory);
     }
 
     public function readDirectory(string $directory): TestRunCollection

@@ -24,19 +24,21 @@ final class Arguments
      * @var positive-int
      */
     private int $limit;
+    private Metric $sort;
     private bool $version;
 
     /**
      * @param list<string> $arguments
      * @param positive-int $limit
      */
-    public function __construct(?string $command, array $arguments, bool $help, bool $aboveMean, int $limit, bool $version)
+    public function __construct(?string $command, array $arguments, bool $help, bool $aboveMean, int $limit, Metric $sort, bool $version)
     {
         $this->command   = $command;
         $this->arguments = $arguments;
         $this->help      = $help;
         $this->aboveMean = $aboveMean;
         $this->limit     = $limit;
+        $this->sort      = $sort;
         $this->version   = $version;
     }
 
@@ -69,6 +71,11 @@ final class Arguments
     public function limit(): int
     {
         return $this->limit;
+    }
+
+    public function sort(): Metric
+    {
+        return $this->sort;
     }
 
     public function version(): bool

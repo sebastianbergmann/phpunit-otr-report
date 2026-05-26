@@ -21,17 +21,31 @@ final class TestRun
     /**
      * @var array<string, float>
      */
-    private array $tests;
+    private array $times;
 
     /**
-     * @param array<string, float> $tests
+     * @var array<string, float>
      */
-    public function __construct(string $file, DateTimeImmutable $startedAt, float $totalTime, array $tests)
+    private array $cpuTimes;
+
+    /**
+     * @var array<string, float>
+     */
+    private array $peakMemory;
+
+    /**
+     * @param array<string, float> $times
+     * @param array<string, float> $cpuTimes
+     * @param array<string, float> $peakMemory
+     */
+    public function __construct(string $file, DateTimeImmutable $startedAt, float $totalTime, array $times, array $cpuTimes, array $peakMemory)
     {
-        $this->file      = $file;
-        $this->startedAt = $startedAt;
-        $this->totalTime = $totalTime;
-        $this->tests     = $tests;
+        $this->file       = $file;
+        $this->startedAt  = $startedAt;
+        $this->totalTime  = $totalTime;
+        $this->times      = $times;
+        $this->cpuTimes   = $cpuTimes;
+        $this->peakMemory = $peakMemory;
     }
 
     public function file(): string
@@ -54,16 +68,28 @@ final class TestRun
      */
     public function tests(): array
     {
-        return $this->tests;
+        return $this->times;
+    }
+
+    /**
+     * @return array<string, float>
+     */
+    public function valuesFor(Metric $metric): array
+    {
+        return match ($metric) {
+            Metric::Time   => $this->times,
+            Metric::Cpu    => $this->cpuTimes,
+            Metric::Memory => $this->peakMemory,
+        };
     }
 
     public function testCount(): int
     {
-        return count($this->tests);
+        return count($this->times);
     }
 
     public function isEmpty(): bool
     {
-        return $this->tests === [];
+        return $this->times === [];
     }
 }

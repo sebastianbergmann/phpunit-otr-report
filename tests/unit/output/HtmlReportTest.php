@@ -84,7 +84,7 @@ final class HtmlReportTest extends TestCase
      */
     private function createTestRun(string $startedAt, float $totalTime, array $tests, string $file): TestRun
     {
-        return new TestRun($file, new DateTimeImmutable($startedAt), $totalTime, $tests);
+        return new TestRun($file, new DateTimeImmutable($startedAt), $totalTime, $tests, [], []);
     }
 
     /**

@@ -63,6 +63,8 @@ final class TestRunCollectionIteratorTest extends TestCase
             new DateTimeImmutable($startedAt),
             1.0,
             ['Vendor\ExampleTest::test_one' => 0.5],
+            [],
+            [],
         );
     }
 }

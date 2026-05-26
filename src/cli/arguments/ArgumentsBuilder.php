@@ -9,10 +9,12 @@
  */
 namespace PHPUnit\OtrReport;
 
+use function array_map;
 use function array_merge;
 use function array_slice;
 use function array_values;
 use function ctype_digit;
+use function implode;
 use function sprintf;
 use SebastianBergmann\CliParser\Exception as CliParserException;
 use SebastianBergmann\CliParser\Parser as CliParser;
@@ -24,6 +26,7 @@ final class ArgumentsBuilder
             'longOptions' => [
                 'above-mean',
                 'limit=',
+                'sort=',
             ],
             'arguments' => [
                 'file',
@@ -85,6 +88,7 @@ final class ArgumentsBuilder
         $help      = false;
         $aboveMean = false;
         $limit     = 10;
+        $sort      = Metric::Time;
         $version   = false;
 
         foreach ($options[0] as $option) {
@@ -105,6 +109,11 @@ final class ArgumentsBuilder
 
                     break;
 
+                case '--sort':
+                    $sort = $this->sort($option[1]);
+
+                    break;
+
                 case 'v':
                 case '--version':
                     $version = true;
@@ -119,6 +128,7 @@ final class ArgumentsBuilder
             $help,
             $aboveMean,
             $limit,
+            $sort,
             $version,
         );
     }
@@ -140,5 +150,25 @@ final class ArgumentsBuilder
         }
 
         return (int) $value;
+    }
+
+    /**
+     * @throws ArgumentsBuilderException
+     */
+    private function sort(?string $value): Metric
+    {
+        $metric = $value !== null ? Metric::tryFrom($value) : null;
+
+        if ($metric === null) {
+            throw new ArgumentsBuilderException(
+                sprintf(
+                    'Value of --sort must be one of "%s", got "%s"',
+                    implode('", "', array_map(static fn (Metric $case): string => $case->value, Metric::cases())),
+                    (string) $value,
+                ),
+            );
+        }
+
+        return $metric;
     }
 }

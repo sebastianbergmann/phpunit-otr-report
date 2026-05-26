@@ -40,7 +40,7 @@ final class SlowestCommand implements Command
             return 1;
         }
 
-        print (new TextReport)->render($run, $arguments->aboveMean(), $arguments->limit());
+        print (new TextReport)->render($run, $arguments->aboveMean(), $arguments->limit(), $arguments->sort());
 
         return 0;
     }
