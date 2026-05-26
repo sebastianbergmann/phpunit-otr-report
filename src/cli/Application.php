@@ -28,7 +28,9 @@ final class Application
     public static function version(): string
     {
         if (self::$pharVersion !== '') {
+            // @codeCoverageIgnoreStart
             return self::$pharVersion;
+            // @codeCoverageIgnoreEnd
         }
 
         $directory = dirname(__DIR__);
