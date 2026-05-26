@@ -16,10 +16,10 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(ArgumentsBuilder::class)]
+#[CoversClass(RequiredArgumentMissingException::class)]
 #[UsesClass(Arguments::class)]
 #[UsesClass(ArgumentsBuilderException::class)]
 #[UsesClass(Metric::class)]
-#[UsesClass(RequiredArgumentMissingException::class)]
 #[TestDox('ArgumentsBuilder')]
 #[Small]
 final class ArgumentsBuilderTest extends TestCase
