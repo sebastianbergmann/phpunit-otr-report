@@ -10,9 +10,11 @@
 namespace PHPUnit\OtrReport;
 
 use const PHP_EOL;
+use const STDERR;
 use function assert;
 use function dirname;
-use function printf;
+use function fwrite;
+use function sprintf;
 use SebastianBergmann\Version;
 
 final class Application
@@ -46,7 +48,7 @@ final class Application
         try {
             $arguments = (new ArgumentsBuilder)->build($argv);
         } catch (Exception $e) {
-            print PHP_EOL . $e->getMessage() . PHP_EOL;
+            fwrite(STDERR, PHP_EOL . $e->getMessage() . PHP_EOL);
 
             return 255;
         }
@@ -55,7 +57,7 @@ final class Application
             return 0;
         }
 
-        print PHP_EOL;
+        fwrite(STDERR, PHP_EOL);
 
         if ($arguments->help()) {
             return (new HelpCommand)->run($arguments);
@@ -76,9 +78,12 @@ final class Application
 
     private function printVersion(): void
     {
-        printf(
-            'otr-report %s by Sebastian Bergmann.' . PHP_EOL,
-            self::version(),
+        fwrite(
+            STDERR,
+            sprintf(
+                'otr-report %s by Sebastian Bergmann.' . PHP_EOL,
+                self::version(),
+            ),
         );
     }
 }
