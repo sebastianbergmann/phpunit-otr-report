@@ -17,7 +17,9 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.5",
+        "ext-ctype": "*",
         "ext-dom": "*",
+        "ext-libxml": "*",
         "phpunit/php-text-template": "^6.0",
         "sebastian/cli-parser": "^5.0",
         "sebastian/version": "^7.0"

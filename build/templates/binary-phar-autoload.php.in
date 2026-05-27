@@ -30,7 +30,7 @@ if (version_compare('8.5.0', PHP_VERSION, '>')) {
     die(1);
 }
 
-$requiredExtensions = ['dom'];
+$requiredExtensions = ['ctype', 'dom', 'libxml'];
 
 $unavailableExtensions = array_filter(
     $requiredExtensions,
