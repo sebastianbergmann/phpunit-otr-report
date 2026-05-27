@@ -4,4 +4,5 @@
   <phar name="php-cs-fixer" version="^3.95" installed="3.95.2" location="./tools/php-cs-fixer" copy="true"/>
   <phar name="humbug/php-scoper" version="^0.18" installed="0.18.19" location="./tools/php-scoper" copy="true"/>
   <phar name="phpunit" version="^13.1" installed="13.1.12" location="./tools/phpunit" copy="true"/>
+  <phar name="infection" version="^0.33" installed="0.33.2" location="./tools/infection" copy="true"/>
 </phive>
