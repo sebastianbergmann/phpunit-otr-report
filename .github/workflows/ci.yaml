@@ -234,4 +234,4 @@ jobs:
         run: ./tools/composer install --no-ansi --no-interaction --no-progress
 
       - name: Run mutation testing with Infection
-        run: ./tools/infection --only-covering-test-cases --no-progress
+        run: ./tools/infection --only-covering-test-cases
