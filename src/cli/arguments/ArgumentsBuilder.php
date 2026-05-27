@@ -12,7 +12,6 @@ namespace PHPUnit\OtrReport;
 use function array_map;
 use function array_merge;
 use function array_slice;
-use function array_values;
 use function ctype_digit;
 use function implode;
 use function sprintf;
@@ -83,7 +82,7 @@ final class ArgumentsBuilder
             }
         }
 
-        $arguments = $command !== null ? array_values(array_slice($options[1], 1)) : [];
+        $arguments = $command !== null ? array_slice($options[1], 1) : [];
 
         $help      = false;
         $aboveMean = false;

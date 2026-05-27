@@ -117,6 +117,25 @@ final class OtrReaderTest extends TestCase
         $this->assertSame([], $run->tests());
     }
 
+    public function testParsesLogfilesRegardlessOfTheNamespacePrefixesUsed(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('prefixed.xml'));
+
+        $this->assertSame(1, $run->testCount());
+        $this->assertSame(1.5, $run->totalTime());
+        $this->assertSame(['Vendor\GroupTest::test_alpha' => 0.25], $run->tests());
+        $this->assertSame(['Vendor\GroupTest::test_alpha' => 0.2], $run->valuesFor(Metric::Cpu));
+        $this->assertSame(['Vendor\GroupTest::test_alpha' => 1048576.0], $run->valuesFor(Metric::Memory));
+    }
+
+    public function testReportsZeroTotalTimeWhenTheSuiteHasNoResourceUsage(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('without-total-time.xml'));
+
+        $this->assertSame(0.0, $run->totalTime());
+        $this->assertSame(1, $run->testCount());
+    }
+
     public function testReadsADirectoryOfLogfilesSortedByStartTime(): void
     {
         $collection = (new OtrReader)->readDirectory($this->fixture('runs'));

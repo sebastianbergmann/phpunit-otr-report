@@ -74,23 +74,19 @@ final class OtrReader
             $id    = $finished->getAttribute('id');
             $usage = $this->queryFirst($xpath, './/phpunit:resourceUsage', $finished);
 
+            if (!($usage instanceof DOMElement)) {
+                continue;
+            }
+
             if ($id === '1') {
-                if ($usage instanceof DOMElement) {
-                    $totalTime = (float) $usage->getAttribute('time');
-                }
+                $totalTime = (float) $usage->getAttribute('time');
+            } elseif (isset($tests[$id])) {
+                $name = $tests[$id];
 
-                continue;
+                $times[$name]      = (float) $usage->getAttribute('time');
+                $cpuTimes[$name]   = (float) $usage->getAttribute('cpuTime');
+                $peakMemory[$name] = (float) $usage->getAttribute('peakMemoryUsage');
             }
-
-            if (!isset($tests[$id]) || !($usage instanceof DOMElement)) {
-                continue;
-            }
-
-            $name = $tests[$id];
-
-            $times[$name]      = (float) $usage->getAttribute('time');
-            $cpuTimes[$name]   = (float) $usage->getAttribute('cpuTime');
-            $peakMemory[$name] = (float) $usage->getAttribute('peakMemoryUsage');
         }
 
         return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory);

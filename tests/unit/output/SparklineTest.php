@@ -42,6 +42,11 @@ final class SparklineTest extends TestCase
         $this->assertSame('<svg width="220" height="28"></svg>', (new Sparkline)->render([], 220, 28));
     }
 
+    public function testUsesItsDefaultDimensionsWhenNoneAreGiven(): void
+    {
+        $this->assertStringContainsString('width="200" height="30"', (new Sparkline)->render([1.0, 2.0]));
+    }
+
     /**
      * @param non-empty-string $path
      *

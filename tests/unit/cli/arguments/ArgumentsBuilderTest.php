@@ -88,6 +88,21 @@ final class ArgumentsBuilderTest extends TestCase
         $this->assertSame(Metric::Cpu, $arguments->sort());
     }
 
+    public function testKeepsGlobalOptionsAvailableAfterACommand(): void
+    {
+        $this->assertTrue(
+            (new ArgumentsBuilder)->build(['otr-report', 'slowest', '--help', 'logfile.xml'])->help(),
+        );
+    }
+
+    public function testAcceptsALimitOfOne(): void
+    {
+        $this->assertSame(
+            1,
+            (new ArgumentsBuilder)->build(['otr-report', 'slowest', '--limit', '1', 'logfile.xml'])->limit(),
+        );
+    }
+
     public function testParsesTheTrendsCommand(): void
     {
         $arguments = (new ArgumentsBuilder)->build(['otr-report', 'trends', 'logfiles', 'report.html']);

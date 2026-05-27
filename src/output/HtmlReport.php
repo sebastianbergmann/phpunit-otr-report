@@ -35,7 +35,7 @@ final class HtmlReport
         $first      = $runsArray[0];
         $runLabels  = array_map(static fn (TestRun $run): string => $run->startedAt()->format('Y-m-d H:i'), $runsArray);
         $totalTimes = array_map(static fn (TestRun $run): float => $run->totalTime(), $runsArray);
-        $testCounts = array_map(static fn (TestRun $run): float => (float) $run->testCount(), $runsArray);
+        $testCounts = array_map(static fn (TestRun $run): float => $run->testCount(), $runsArray);
 
         $latestTests = $latest->tests();
 
@@ -84,7 +84,6 @@ final class HtmlReport
                     'delta'     => $this->delta($values, $time, $nRuns),
                     'sparkline' => $sparkline->render($values, 220, 28),
                 ],
-                false,
             );
 
             $rows .= $template->render();
@@ -109,7 +108,6 @@ final class HtmlReport
                     'testCount' => (string) $run->testCount(),
                     'file'      => $this->escape(basename($run->file())),
                 ],
-                false,
             );
 
             $rows .= $template->render();

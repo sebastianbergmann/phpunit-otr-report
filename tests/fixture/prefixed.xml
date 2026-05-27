@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ot:events xmlns="https://schemas.opentest4j.org/reporting/core/0.2.0" xmlns:ot="https://schemas.opentest4j.org/reporting/events/0.2.0" xmlns:pu="https://schema.phpunit.de/otr/phpunit/0.2.0">
+ <ot:started id="1" name="suite" time="2026-03-03T09:00:00.000000Z"/>
+ <ot:started id="3" parentId="1" name="test_alpha" time="2026-03-03T09:00:00.200000Z">
+  <sources>
+   <pu:methodSource className="Vendor\GroupTest" methodName="test_alpha"/>
+  </sources>
+ </ot:started>
+ <ot:finished id="3" time="2026-03-03T09:00:00.400000Z">
+  <attachments>
+   <pu:resourceUsage time="0.250000" memoryUsage="1000000" peakMemoryUsage="1048576" userCpuTime="0.150000" systemCpuTime="0.050000" cpuTime="0.200000"/>
+  </attachments>
+ </ot:finished>
+ <ot:finished id="1" time="2026-03-03T09:00:01.000000Z">
+  <attachments>
+   <pu:resourceUsage time="1.500000" memoryUsage="4000000" peakMemoryUsage="4000000" userCpuTime="1.200000" systemCpuTime="0.300000" cpuTime="1.500000"/>
+  </attachments>
+ </ot:finished>
+</ot:events>

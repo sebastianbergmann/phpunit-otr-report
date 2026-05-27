@@ -10,7 +10,6 @@
 namespace PHPUnit\OtrReport;
 
 use const ENT_QUOTES;
-use function array_unique;
 use function count;
 use function htmlspecialchars;
 use function max;
@@ -88,7 +87,7 @@ final class Chart
             $ticks[] = $count - 1;
         }
 
-        foreach (array_unique($ticks) as $tick) {
+        foreach ($ticks as $tick) {
             $tickX = $paddingLeft + ($count <= 1 ? $plotWidth / 2 : $tick * $plotWidth / ($count - 1));
             $svg .= sprintf('<text x="%.1f" y="%d" font-size="11" text-anchor="middle" fill="#718096">%s</text>', $tickX, $height - $paddingBottom + 18, htmlspecialchars($labels[$tick] ?? '', ENT_QUOTES));
         }

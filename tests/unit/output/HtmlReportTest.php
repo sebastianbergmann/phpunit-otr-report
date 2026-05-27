@@ -11,6 +11,8 @@ namespace PHPUnit\OtrReport;
 
 use function assert;
 use function file_get_contents;
+use function sprintf;
+use function substr_count;
 use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
@@ -72,6 +74,50 @@ final class HtmlReportTest extends TestCase
             $this->expectation('html/trends-with-single-run.html'),
             (new HtmlReport)->render($collection),
         );
+    }
+
+    public function testListsAtMostTheTenSlowestTests(): void
+    {
+        $tests = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $tests[sprintf('Test%02d::test', $i)] = $i / 100;
+        }
+
+        $collection = TestRunCollection::fromArray(
+            [
+                $this->createTestRun('2026-01-01T10:00:00.000000Z', 1.0, $tests, '/path/run1.xml'),
+            ],
+        );
+
+        $this->assertSame(10, substr_count((new HtmlReport)->render($collection), 'class="spark"'));
+    }
+
+    public function testHighlightsTestsThatChangedByAtLeastTenPercent(): void
+    {
+        $collection = TestRunCollection::fromArray(
+            [
+                $this->createTestRun('2026-01-01T10:00:00.000000Z', 1.0, ['Grew::a' => 10.0, 'Shrank::b' => 10.0], '/path/run1.xml'),
+                $this->createTestRun('2026-01-02T10:00:00.000000Z', 1.0, ['Grew::a' => 11.0, 'Shrank::b' => 9.0], '/path/run2.xml'),
+            ],
+        );
+
+        $html = (new HtmlReport)->render($collection);
+
+        $this->assertStringContainsString('#c53030', $html);
+        $this->assertStringContainsString('#2f855a', $html);
+    }
+
+    public function testOmitsTheDeltaWhenTheBaselineValueIsZero(): void
+    {
+        $collection = TestRunCollection::fromArray(
+            [
+                $this->createTestRun('2026-01-01T10:00:00.000000Z', 1.0, ['Zero::a' => 0.0], '/path/run1.xml'),
+                $this->createTestRun('2026-01-02T10:00:00.000000Z', 1.0, ['Zero::a' => 1.0], '/path/run2.xml'),
+            ],
+        );
+
+        $this->assertStringNotContainsString('style="color:', (new HtmlReport)->render($collection));
     }
 
     public function testRendersNothingForAnEmptyCollection(): void

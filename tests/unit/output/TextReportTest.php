@@ -49,6 +49,27 @@ final class TextReportTest extends TestCase
         );
     }
 
+    public function testLimitsTheNumberOfTestsListedAboveTheMean(): void
+    {
+        $run = new TestRun(
+            '/path/to/logfile.xml',
+            new DateTimeImmutable('2026-01-01T08:00:00.000000Z'),
+            12.0,
+            [
+                'Slow::a'   => 6.0,
+                'Medium::b' => 5.0,
+                'Fast::c'   => 1.0,
+            ],
+            [],
+            [],
+        );
+
+        $report = (new TextReport)->render($run, true, 1, Metric::Time);
+
+        $this->assertStringContainsString('Slow::a', $report);
+        $this->assertStringNotContainsString('Medium::b', $report);
+    }
+
     public function testSortsByCpuTime(): void
     {
         $this->assertSame(
