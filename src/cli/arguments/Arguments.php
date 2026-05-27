@@ -9,8 +9,11 @@
  */
 namespace PHPUnit\OtrReport;
 
-final class Arguments
+final readonly class Arguments
 {
+    /**
+     * @var null|non-empty-string
+     */
     private ?string $command;
 
     /**
@@ -28,8 +31,9 @@ final class Arguments
     private bool $version;
 
     /**
-     * @param list<string> $arguments
-     * @param positive-int $limit
+     * @param null|non-empty-string $command
+     * @param list<string>          $arguments
+     * @param positive-int          $limit
      */
     public function __construct(?string $command, array $arguments, bool $help, bool $aboveMean, int $limit, Metric $sort, bool $version)
     {
@@ -42,6 +46,9 @@ final class Arguments
         $this->version   = $version;
     }
 
+    /**
+     * @return null|non-empty-string
+     */
     public function command(): ?string
     {
         return $this->command;

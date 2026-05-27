@@ -11,8 +11,11 @@ namespace PHPUnit\OtrReport;
 
 use function sprintf;
 
-final class NumberFormatter
+final readonly class NumberFormatter
 {
+    /**
+     * @return non-empty-string
+     */
     public function format(float $value): string
     {
         if ($value >= 100) {

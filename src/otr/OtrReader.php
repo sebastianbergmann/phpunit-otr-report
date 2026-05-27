@@ -20,7 +20,7 @@ use DOMDocument;
 use DOMElement;
 use DOMXPath;
 
-final class OtrReader
+final readonly class OtrReader
 {
     /**
      * @throws SchemaValidationException

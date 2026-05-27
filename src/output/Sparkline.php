@@ -14,10 +14,15 @@ use function count;
 use function max;
 use function sprintf;
 
-final class Sparkline
+final readonly class Sparkline
 {
     /**
      * @param list<null|float> $values
+     * @param positive-int     $width
+     * @param positive-int     $height
+     * @param non-negative-int $padding
+     *
+     * @return non-empty-string
      */
     public function render(array $values, int $width = 200, int $height = 30, int $padding = 3): string
     {

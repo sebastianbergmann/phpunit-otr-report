@@ -9,7 +9,7 @@
  */
 namespace PHPUnit\OtrReport;
 
-final class HelpCommand implements Command
+final readonly class HelpCommand implements Command
 {
     public function run(Arguments $arguments): int
     {

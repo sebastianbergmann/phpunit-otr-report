@@ -15,11 +15,13 @@ use function htmlspecialchars;
 use function max;
 use function sprintf;
 
-final class Chart
+final readonly class Chart
 {
     /**
      * @param list<null|float> $values
      * @param list<string>     $labels
+     * @param positive-int     $width
+     * @param positive-int     $height
      */
     public function render(array $values, array $labels, int $width = 1000, int $height = 300, string $unit = ''): string
     {

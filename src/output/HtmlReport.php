@@ -20,7 +20,7 @@ use function htmlspecialchars;
 use function sprintf;
 use SebastianBergmann\Template\Template;
 
-final class HtmlReport
+final readonly class HtmlReport
 {
     public function render(TestRunCollection $runs): string
     {
@@ -65,8 +65,9 @@ final class HtmlReport
     }
 
     /**
-     * @param array<string, float> $slowest
-     * @param list<TestRun>        $runs
+     * @param array<non-empty-string, float> $slowest
+     * @param list<TestRun>                  $runs
+     * @param positive-int                   $nRuns
      */
     private function slowestRows(array $slowest, array $runs, int $nRuns): string
     {
@@ -118,6 +119,7 @@ final class HtmlReport
 
     /**
      * @param list<null|float> $values
+     * @param positive-int     $nRuns
      */
     private function delta(array $values, float $time, int $nRuns): string
     {

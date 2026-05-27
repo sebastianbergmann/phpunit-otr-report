@@ -17,7 +17,7 @@ use function fwrite;
 use function is_dir;
 use function printf;
 
-final class TrendsCommand implements Command
+final readonly class TrendsCommand implements Command
 {
     public function run(Arguments $arguments): int
     {

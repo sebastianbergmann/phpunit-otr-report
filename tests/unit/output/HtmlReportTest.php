@@ -126,7 +126,7 @@ final class HtmlReportTest extends TestCase
     }
 
     /**
-     * @param array<string, float> $tests
+     * @param array<non-empty-string, float> $tests
      */
     private function createTestRun(string $startedAt, float $totalTime, array $tests, string $file): TestRun
     {

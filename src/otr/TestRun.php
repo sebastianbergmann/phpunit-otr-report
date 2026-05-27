@@ -12,31 +12,31 @@ namespace PHPUnit\OtrReport;
 use function count;
 use DateTimeImmutable;
 
-final class TestRun
+final readonly class TestRun
 {
     private string $file;
     private DateTimeImmutable $startedAt;
     private float $totalTime;
 
     /**
-     * @var array<string, float>
+     * @var array<non-empty-string, float>
      */
     private array $times;
 
     /**
-     * @var array<string, float>
+     * @var array<non-empty-string, float>
      */
     private array $cpuTimes;
 
     /**
-     * @var array<string, float>
+     * @var array<non-empty-string, float>
      */
     private array $peakMemory;
 
     /**
-     * @param array<string, float> $times
-     * @param array<string, float> $cpuTimes
-     * @param array<string, float> $peakMemory
+     * @param array<non-empty-string, float> $times
+     * @param array<non-empty-string, float> $cpuTimes
+     * @param array<non-empty-string, float> $peakMemory
      */
     public function __construct(string $file, DateTimeImmutable $startedAt, float $totalTime, array $times, array $cpuTimes, array $peakMemory)
     {
@@ -64,7 +64,7 @@ final class TestRun
     }
 
     /**
-     * @return array<string, float>
+     * @return array<non-empty-string, float>
      */
     public function tests(): array
     {
@@ -72,7 +72,7 @@ final class TestRun
     }
 
     /**
-     * @return array<string, float>
+     * @return array<non-empty-string, float>
      */
     public function valuesFor(Metric $metric): array
     {
@@ -83,6 +83,9 @@ final class TestRun
         };
     }
 
+    /**
+     * @return non-negative-int
+     */
     public function testCount(): int
     {
         return count($this->times);

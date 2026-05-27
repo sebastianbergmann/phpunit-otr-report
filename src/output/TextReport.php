@@ -16,7 +16,7 @@ use function arsort;
 use function count;
 use function sprintf;
 
-final class TextReport
+final readonly class TextReport
 {
     /**
      * @param positive-int $limit
@@ -39,8 +39,8 @@ final class TextReport
     }
 
     /**
-     * @param non-empty-array<string, float> $values
-     * @param positive-int                   $limit
+     * @param non-empty-array<non-empty-string, float> $values
+     * @param positive-int                             $limit
      */
     private function renderWithMean(array $values, int $limit, Metric $metric): string
     {
@@ -61,8 +61,8 @@ final class TextReport
     }
 
     /**
-     * @param non-empty-array<string, float> $values
-     * @param positive-int                   $limit
+     * @param non-empty-array<non-empty-string, float> $values
+     * @param positive-int                             $limit
      */
     private function renderPlain(array $values, int $limit, Metric $metric): string
     {

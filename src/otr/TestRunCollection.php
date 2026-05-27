@@ -50,6 +50,9 @@ final readonly class TestRunCollection implements IteratorAggregate
         return $this->runs;
     }
 
+    /**
+     * @return non-negative-int
+     */
     public function count(): int
     {
         return count($this->runs);

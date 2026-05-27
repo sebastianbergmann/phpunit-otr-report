@@ -16,7 +16,7 @@ use function fwrite;
 use function is_file;
 use function is_readable;
 
-final class SlowestCommand implements Command
+final readonly class SlowestCommand implements Command
 {
     public function run(Arguments $arguments): int
     {

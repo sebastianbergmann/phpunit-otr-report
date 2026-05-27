@@ -18,7 +18,7 @@ use function sprintf;
 use SebastianBergmann\CliParser\Exception as CliParserException;
 use SebastianBergmann\CliParser\Parser as CliParser;
 
-final class ArgumentsBuilder
+final readonly class ArgumentsBuilder
 {
     private const array COMMANDS = [
         'slowest' => [
