@@ -32,7 +32,13 @@ final class SlowestCommand implements Command
             return 1;
         }
 
-        $run = (new OtrReader)->read($file);
+        try {
+            $run = (new OtrReader)->read($file);
+        } catch (Exception $e) {
+            fwrite(STDERR, $e->getMessage() . PHP_EOL);
+
+            return 1;
+        }
 
         if ($run->isEmpty()) {
             fwrite(STDERR, 'No tests found in ' . $file . PHP_EOL);

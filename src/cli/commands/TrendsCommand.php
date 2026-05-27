@@ -34,7 +34,13 @@ final class TrendsCommand implements Command
             return 1;
         }
 
-        $runs = (new OtrReader)->readDirectory($directory);
+        try {
+            $runs = (new OtrReader)->readDirectory($directory);
+        } catch (Exception $e) {
+            fwrite(STDERR, $e->getMessage() . PHP_EOL);
+
+            return 1;
+        }
 
         if ($runs->isEmpty()) {
             fwrite(STDERR, 'No OTR XML files found in ' . $directory . PHP_EOL);

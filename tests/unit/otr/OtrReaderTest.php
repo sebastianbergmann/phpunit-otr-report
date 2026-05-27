@@ -12,6 +12,9 @@ namespace PHPUnit\OtrReport;
 use function array_key_exists;
 use function basename;
 use function count;
+use function libxml_clear_errors;
+use function libxml_get_errors;
+use function libxml_use_internal_errors;
 use function mkdir;
 use function rmdir;
 use function sys_get_temp_dir;
@@ -25,12 +28,51 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(OtrReader::class)]
 #[UsesClass(Metric::class)]
+#[UsesClass(SchemaValidationException::class)]
 #[UsesClass(TestRun::class)]
 #[UsesClass(TestRunCollection::class)]
 #[TestDox('OtrReader')]
 #[Small]
 final class OtrReaderTest extends TestCase
 {
+    public function testRejectsALogfileThatIsNotValidOtrXml(): void
+    {
+        $this->expectException(SchemaValidationException::class);
+        $this->expectExceptionMessage('invalid.xml is not a valid OTR XML logfile');
+
+        (new OtrReader)->read($this->fixture('invalid.xml'));
+    }
+
+    public function testRestoresLibxmlErrorHandlingAfterValidatingALogfile(): void
+    {
+        $previous = libxml_use_internal_errors(false);
+
+        try {
+            (new OtrReader)->read($this->fixture('minimal.xml'));
+
+            $this->assertFalse(libxml_use_internal_errors(true));
+        } finally {
+            libxml_use_internal_errors($previous);
+        }
+    }
+
+    public function testDoesNotLeaveValidationErrorsInTheGlobalLibxmlErrorBuffer(): void
+    {
+        $previous = libxml_use_internal_errors(true);
+
+        try {
+            try {
+                (new OtrReader)->read($this->fixture('invalid.xml'));
+            } catch (SchemaValidationException) {
+            }
+
+            $this->assertSame([], libxml_get_errors());
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($previous);
+        }
+    }
+
     public function testReadsARealLogfileIntoATestRun(): void
     {
         $run = (new OtrReader)->read($this->fixture('raytracer.xml'));

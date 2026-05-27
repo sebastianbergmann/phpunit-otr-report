@@ -11,6 +11,9 @@ namespace PHPUnit\OtrReport;
 
 use function assert;
 use function glob;
+use function libxml_clear_errors;
+use function libxml_get_errors;
+use function libxml_use_internal_errors;
 use function usort;
 use DateTimeImmutable;
 use DOMDocument;
@@ -19,10 +22,15 @@ use DOMXPath;
 
 final class OtrReader
 {
+    /**
+     * @throws SchemaValidationException
+     */
     public function read(string $file): TestRun
     {
         $dom = new DOMDocument;
         $dom->load($file);
+
+        $this->validate($dom, $file);
 
         $xpath = new DOMXPath($dom);
         $xpath->registerNamespace('e', 'https://schemas.opentest4j.org/reporting/events/0.2.0');
@@ -88,6 +96,9 @@ final class OtrReader
         return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory);
     }
 
+    /**
+     * @throws SchemaValidationException
+     */
     public function readDirectory(string $directory): TestRunCollection
     {
         $files = glob($directory . '/*.xml');
@@ -110,6 +121,24 @@ final class OtrReader
         );
 
         return TestRunCollection::fromArray($runs);
+    }
+
+    /**
+     * @throws SchemaValidationException
+     */
+    private function validate(DOMDocument $dom, string $file): void
+    {
+        $previousUseInternalErrors = libxml_use_internal_errors(true);
+
+        $valid  = $dom->schemaValidate(__DIR__ . '/../../schema/otr.xsd');
+        $errors = libxml_get_errors();
+
+        libxml_clear_errors();
+        libxml_use_internal_errors($previousUseInternalErrors);
+
+        if (!$valid) {
+            throw new SchemaValidationException($file, $errors);
+        }
     }
 
     private function queryFirst(DOMXPath $xpath, string $expression, ?DOMElement $context = null): ?DOMElement

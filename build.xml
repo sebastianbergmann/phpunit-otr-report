@@ -144,6 +144,12 @@
             </fileset>
         </copy>
 
+        <copy todir="${basedir}/build/tmp/phar/schema">
+            <fileset dir="${basedir}/schema">
+                <include name="**/*.xsd"/>
+            </fileset>
+        </copy>
+
         <exec executable="${basedir}/build/scripts/phar-version.php" outputproperty="_version" failonerror="true">
             <arg value="${version}"/>
             <arg value="${type}"/>
