@@ -1,6 +1,8 @@
 # otr-report
 
-**otr-report** generates reports from test result data in the Open Test Reporting (OTR) format produced by PHPUnit >= 13.2.
+This tool generates reports from test result data in the Open Test Reporting (OTR) format produced by PHPUnit >= 13.2.
+
+> **Note:** [Open Test Reporting](https://github.com/ota4j-team/open-test-reporting) is language-agnostic and tool-agnostic. This tool, however, is specialised for the OTR XML produced by PHPUnit 13.2 and newer, which contains additional information specific to PHP and PHPUnit.
 
 ## Installation
 
