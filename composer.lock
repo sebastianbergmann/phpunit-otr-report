@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c0e8edd9f605bee595a4d5472cce898",
+    "content-hash": "0800936a9ff57c1dae1908ef8682f6c0",
     "packages": [
         {
             "name": "phpunit/php-text-template",
@@ -222,7 +222,9 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.5",
-        "ext-dom": "*"
+        "ext-ctype": "*",
+        "ext-dom": "*",
+        "ext-libxml": "*"
     },
     "platform-dev": {},
     "platform-overrides": {
