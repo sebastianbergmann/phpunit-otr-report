@@ -8,6 +8,9 @@
   <php:threadModel>NTS</php:threadModel>
  </infrastructure>
  <e:started id="1" name="PHPUnit\TestFixture\Basic\StatusTest" time="2026-05-31T07:24:32.505365Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Test result status with and without message"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="23"/>
@@ -16,6 +19,9 @@
   </sources>
  </e:started>
  <e:started id="2" parentId="1" name="testError" time="2026-05-31T07:24:32.505488Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Error"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="37"/>
@@ -37,6 +43,9 @@
   </result>
  </e:finished>
  <e:started id="3" parentId="1" name="testErrorWithMessage" time="2026-05-31T07:24:32.506303Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Error with message"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="66"/>
@@ -58,6 +67,9 @@
   </result>
  </e:finished>
  <e:started id="4" parentId="1" name="testFailure" time="2026-05-31T07:24:32.506555Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Failure"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="32"/>
@@ -79,6 +91,9 @@
   </result>
  </e:finished>
  <e:started id="5" parentId="1" name="testFailureWithMessage" time="2026-05-31T07:24:32.506847Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Failure with message"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="61"/>
@@ -102,6 +117,9 @@ Failed asserting that false is true.
   </result>
  </e:finished>
  <e:started id="6" parentId="1" name="testSuccess" time="2026-05-31T07:24:32.507115Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Success"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="25"/>
@@ -117,6 +135,9 @@ Failed asserting that false is true.
   <result status="SUCCESSFUL"/>
  </e:finished>
  <e:started id="7" parentId="1" name="testIncomplete" time="2026-05-31T07:24:32.507421Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Incomplete"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="42"/>
@@ -137,6 +158,9 @@ Failed asserting that false is true.
   </result>
  </e:finished>
  <e:started id="8" parentId="1" name="testSkipped" time="2026-05-31T07:24:32.507662Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Skipped"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="47"/>
@@ -154,6 +178,9 @@ Failed asserting that false is true.
   </result>
  </e:finished>
  <e:started id="9" parentId="1" name="testRisky" time="2026-05-31T07:24:32.507813Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Risky"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="52"/>
@@ -174,6 +201,9 @@ Failed asserting that false is true.
   <result status="SUCCESSFUL"/>
  </e:finished>
  <e:started id="10" parentId="1" name="testSuccessWithMessage" time="2026-05-31T07:24:32.507977Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Success with message"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="56"/>
@@ -189,6 +219,9 @@ Failed asserting that false is true.
   <result status="SUCCESSFUL"/>
  </e:finished>
  <e:started id="11" parentId="1" name="testIncompleteWithMessage" time="2026-05-31T07:24:32.508133Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Incomplete with message"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="71"/>
@@ -210,6 +243,9 @@ Failed asserting that false is true.
   </result>
  </e:finished>
  <e:started id="12" parentId="1" name="testSkippedByMetadata" time="2026-05-31T07:24:32.508370Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Skipped by metadata"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="77"/>
@@ -223,6 +259,9 @@ Failed asserting that false is true.
   </result>
  </e:finished>
  <e:started id="13" parentId="1" name="testSkippedWithMessage" time="2026-05-31T07:24:32.508424Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Skipped with message"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="81"/>
@@ -240,6 +279,9 @@ Failed asserting that false is true.
   </result>
  </e:finished>
  <e:started id="14" parentId="1" name="testRiskyWithMessage" time="2026-05-31T07:24:32.508573Z">
+  <metadata>
+   <phpunit:testDox prettifiedMethodName="Risky with message"/>
+  </metadata>
   <sources>
    <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="86"/>

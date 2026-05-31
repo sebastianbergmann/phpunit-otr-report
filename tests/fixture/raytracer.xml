@@ -14,6 +14,9 @@
  <e:started id="1" name="/path/to/raytracer/phpunit.xml" time="2026-05-24T08:58:25.786969Z"/>
  <e:started id="2" parentId="1" name="unit" time="2026-05-24T08:58:25.787180Z"/>
  <e:started id="3" parentId="2" name="SebastianBergmann\Raytracer\CameraTest" time="2026-05-24T08:58:25.787224Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Camera (SebastianBergmann\Raytracer\Camera)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
     <filePosition line="30"/>
@@ -26,6 +29,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Constructing a camera"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
@@ -46,6 +50,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The pixel size for a horizontal canvas"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
@@ -66,6 +71,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The pixel size for a vertical canvas"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
@@ -86,6 +92,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Constructing a ray through the center of the canvas"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
@@ -106,6 +113,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Constructing a ray through a corner of the canvas"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
@@ -126,6 +134,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Constructing a ray when the camera is transformed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
@@ -146,6 +155,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Rendering a world with a camera"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/CameraTest.php">
@@ -167,6 +177,9 @@
   </attachments>
  </e:finished>
  <e:started id="11" parentId="2" name="SebastianBergmann\Raytracer\ColorTest" time="2026-05-24T08:58:25.814739Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Color (SebastianBergmann\Raytracer\Color)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
     <filePosition line="11"/>
@@ -179,6 +192,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Colors are (red, green, blue) tuples"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
@@ -199,6 +213,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Float components can be represented as integers"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
@@ -219,6 +234,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Another color can be added"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
@@ -239,6 +255,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Another color can be subtracted"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
@@ -259,6 +276,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can be multiplied by a scalar"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
@@ -279,6 +297,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The product of two colors can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
@@ -299,6 +318,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can be compared to another color"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/ColorTest.php">
@@ -320,6 +340,9 @@
   </attachments>
  </e:finished>
  <e:started id="19" parentId="2" name="SebastianBergmann\Raytracer\PointLightTest" time="2026-05-24T08:58:25.817005Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Point Light (SebastianBergmann\Raytracer\PointLight)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/PointLightTest.php">
     <filePosition line="13"/>
@@ -332,6 +355,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A point light has a position and intensity"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/PointLightTest.php">
@@ -353,6 +377,9 @@
   </attachments>
  </e:finished>
  <e:started id="21" parentId="2" name="SebastianBergmann\Raytracer\WorldTest" time="2026-05-24T08:58:25.817474Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="World (SebastianBergmann\Raytracer\World)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
     <filePosition line="26"/>
@@ -365,6 +392,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Creating a world"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -385,6 +413,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The default world"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -405,6 +434,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Intersect a world with a ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -425,6 +455,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Shading an intersection"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -445,6 +476,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Shading an intersection from the inside"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -465,6 +497,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The color when a ray misses"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -485,6 +518,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The color when a ray hits"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -505,6 +539,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The color with an intersection behind the ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -525,6 +560,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="There is no shadow when nothing is collinear with the point and light"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -545,6 +581,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The shadow when an object is between the point and the light"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -565,6 +602,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="There is no shadow when an object is behind the light"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -585,6 +623,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="There is no shadow when an object is behind the point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -605,6 +644,7 @@
    <tags>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="shadeHit() is given an intersection in shadow"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/WorldTest.php">
@@ -626,6 +666,9 @@
   </attachments>
  </e:finished>
  <e:started id="35" parentId="2" name="SebastianBergmann\Raytracer\AnsiMapperTest" time="2026-05-24T08:58:25.824589Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Ansi Mapper (SebastianBergmann\Raytracer\AnsiMapper)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/AnsiMapperTest.php">
     <filePosition line="15"/>
@@ -639,6 +682,7 @@
     <tag>canvas</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can map Canvas to ANSI string"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/AnsiMapperTest.php">
@@ -660,6 +704,9 @@
   </attachments>
  </e:finished>
  <e:started id="37" parentId="2" name="SebastianBergmann\Raytracer\CanvasTest" time="2026-05-24T08:58:25.825286Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Canvas (SebastianBergmann\Raytracer\Canvas)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
     <filePosition line="17"/>
@@ -673,6 +720,7 @@
     <tag>canvas</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Has width and height"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
@@ -694,6 +742,7 @@
     <tag>canvas</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Is initially black"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
@@ -715,6 +764,7 @@
     <tag>canvas</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A pixel can be written to a canvas"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
@@ -736,6 +786,7 @@
     <tag>canvas</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can be iterated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/CanvasTest.php">
@@ -757,6 +808,9 @@
   </attachments>
  </e:finished>
  <e:started id="42" parentId="2" name="SebastianBergmann\Raytracer\PortablePixmapMapperTest" time="2026-05-24T08:58:25.826816Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Portable Pixmap Mapper (SebastianBergmann\Raytracer\PortablePixmapMapper)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/PortablePixmapMapperTest.php">
     <filePosition line="16"/>
@@ -770,6 +824,7 @@
     <tag>canvas</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can map Canvas to PPM string"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/canvas/PortablePixmapMapperTest.php">
@@ -791,6 +846,9 @@
   </attachments>
  </e:finished>
  <e:started id="44" parentId="2" name="SebastianBergmann\Raytracer\IntersectionCollectionTest" time="2026-05-24T08:58:25.827540Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Intersection Collection (SebastianBergmann\Raytracer\IntersectionCollection)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
     <filePosition line="21"/>
@@ -804,6 +862,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Aggregating intersections"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
@@ -825,6 +884,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can be merged"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
@@ -846,6 +906,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The hit when all intersections have positive t"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
@@ -867,6 +928,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The hit when some intersections have negative t"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
@@ -888,6 +950,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The hit when all intersections have negative t"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
@@ -909,6 +972,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The hit is always the lowest nonnegative intersection"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionCollectionTest.php">
@@ -930,6 +994,9 @@
   </attachments>
  </e:finished>
  <e:started id="51" parentId="2" name="SebastianBergmann\Raytracer\IntersectionTest" time="2026-05-24T08:58:25.829742Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Intersection (SebastianBergmann\Raytracer\Intersection)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
     <filePosition line="22"/>
@@ -943,6 +1010,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="An intersection encapsulates t and shape"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
@@ -964,6 +1032,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The hit when an intersection occurs on the outside"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
@@ -985,6 +1054,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The hit when an intersection occurs on the inside"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
@@ -1006,6 +1076,7 @@
     <tag>intersection</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The hit should offset the point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/intersection/IntersectionTest.php">
@@ -1027,6 +1098,9 @@
   </attachments>
  </e:finished>
  <e:started id="56" parentId="2" name="SebastianBergmann\Raytracer\CheckersPatternTest" time="2026-05-24T08:58:25.831696Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Checkers Pattern (SebastianBergmann\Raytracer\CheckersPattern)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
     <filePosition line="20"/>
@@ -1040,6 +1114,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Checkers should repeat in x"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
@@ -1061,6 +1136,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Checkers should repeat in y"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
@@ -1082,6 +1158,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Checkers should repeat in z"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/CheckersPatternTest.php">
@@ -1103,6 +1180,9 @@
   </attachments>
  </e:finished>
  <e:started id="60" parentId="2" name="SebastianBergmann\Raytracer\GradientPatternTest" time="2026-05-24T08:58:25.834188Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Gradient Pattern (SebastianBergmann\Raytracer\GradientPattern)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/GradientPatternTest.php">
     <filePosition line="20"/>
@@ -1116,6 +1196,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A gradient linearly interpolates between colors"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/GradientPatternTest.php">
@@ -1137,6 +1218,9 @@
   </attachments>
  </e:finished>
  <e:started id="62" parentId="2" name="SebastianBergmann\Raytracer\MaterialTest" time="2026-05-24T08:58:25.835256Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Material (SebastianBergmann\Raytracer\Material)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
     <filePosition line="23"/>
@@ -1150,6 +1234,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The default material"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1171,6 +1256,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Color can be changed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1192,6 +1278,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Ambient can be changed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1213,6 +1300,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Diffuse can be changed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1234,6 +1322,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Specular can be changed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1255,6 +1344,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Shininess can be changed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1276,6 +1366,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Lighting with the eye between the light and the surface"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1297,6 +1388,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Lighting with the eye between the light and the surface, eye offset 45&#xB0;"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1318,6 +1410,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Lighting with the eye opposite the surface, light offset 45&#xB0;"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1339,6 +1432,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Lighting with the eye in the path of the reflection vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1360,6 +1454,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Lighting with the light behind the surface"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1381,6 +1476,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Lighting with the surface in shadow"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1402,6 +1498,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Lighting with a pattern applied"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/MaterialTest.php">
@@ -1423,6 +1520,9 @@
   </attachments>
  </e:finished>
  <e:started id="76" parentId="2" name="SebastianBergmann\Raytracer\PatternTest" time="2026-05-24T08:58:25.839687Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Pattern (SebastianBergmann\Raytracer\Pattern)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
     <filePosition line="20"/>
@@ -1436,6 +1536,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The default pattern transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
@@ -1457,6 +1558,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Assigning a transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
@@ -1478,6 +1580,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A pattern with an object transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
@@ -1499,6 +1602,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A pattern with a pattern transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
@@ -1520,6 +1624,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A pattern with both an object and a pattern transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/PatternTest.php">
@@ -1541,6 +1646,9 @@
   </attachments>
  </e:finished>
  <e:started id="82" parentId="2" name="SebastianBergmann\Raytracer\RingPatternTest" time="2026-05-24T08:58:25.841664Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Ring Pattern (SebastianBergmann\Raytracer\RingPattern)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/RingPatternTest.php">
     <filePosition line="20"/>
@@ -1554,6 +1662,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A ring should extend in both x and z"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/RingPatternTest.php">
@@ -1575,6 +1684,9 @@
   </attachments>
  </e:finished>
  <e:started id="84" parentId="2" name="SebastianBergmann\Raytracer\StripePatternTest" time="2026-05-24T08:58:25.842781Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Stripe Pattern (SebastianBergmann\Raytracer\StripePattern)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
     <filePosition line="20"/>
@@ -1588,6 +1700,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A stripe pattern is constant in y"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
@@ -1609,6 +1722,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A stripe pattern is constant in z"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
@@ -1630,6 +1744,7 @@
     <tag>material</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A stripe pattern alternates in x"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/material/StripePatternTest.php">
@@ -1651,6 +1766,9 @@
   </attachments>
  </e:finished>
  <e:started id="88" parentId="2" name="SebastianBergmann\Raytracer\MatrixTest" time="2026-05-24T08:58:25.845283Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Matrix (SebastianBergmann\Raytracer\Matrix)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
     <filePosition line="16"/>
@@ -1664,6 +1782,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A 2x2 matrix can be represented"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1685,6 +1804,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A 3x3 matrix can be represented"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1706,6 +1826,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A 4x4 matrix can be represented"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1727,6 +1848,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The 4x4 identity matrix can be created"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1748,6 +1870,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="An MxN matrix cannot be represented"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1769,6 +1892,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Two matrices can be compared"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1790,6 +1914,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Two matrices of same size can be multiplied together"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1811,6 +1936,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A 4x4 matrix can be multiplied by the 4x4 identity matrix"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1832,6 +1958,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A 4x4 matrix can be multiplied by a tuple"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1853,6 +1980,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Other matrices cannot be multiplied by a tuple"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1874,6 +2002,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A matrix can be transposed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1895,6 +2024,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The identity matrix can be transposed"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1916,6 +2046,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The determinant of a 2x2 matrix can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1937,6 +2068,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A submatrix of a 3x3 matrix is a 2x2 matrix"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1958,6 +2090,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A submatrix of a 4x4 matrix is a 3x3 matrix"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -1979,6 +2112,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The minor of a 3x3 matrix can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2000,6 +2134,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The cofactor of a 3x3 matrix can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2021,6 +2156,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The determinant of a 3x3 matrix can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2042,6 +2178,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The determinant of a 4x4 matrix can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2063,6 +2200,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="An invertible matrix is recognized as invertible"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2084,6 +2222,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A non-invertible matrix is recognized as non-invertible"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2106,6 +2245,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The inverse of a matrix can be calculated for with data set &quot;4x4 matrix&quot;"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2127,6 +2267,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The inverse of a matrix can be calculated for with data set &quot;another 4x4 matrix&quot;"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2148,6 +2289,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The inverse of a matrix can be calculated for with data set &quot;yet another 4x4 matrix&quot;"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2174,6 +2316,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The product of two matrices can be multiplied by its inverse"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/MatrixTest.php">
@@ -2195,6 +2338,9 @@
   </attachments>
  </e:finished>
  <e:started id="115" parentId="2" name="SebastianBergmann\Raytracer\RayTest" time="2026-05-24T08:58:25.852390Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Ray (SebastianBergmann\Raytracer\Ray)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
     <filePosition line="16"/>
@@ -2208,6 +2354,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Creating and querying a ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
@@ -2229,6 +2376,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Computing a point from a distance"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
@@ -2250,6 +2398,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Translating a ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
@@ -2271,6 +2420,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Scaling a ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/RayTest.php">
@@ -2292,6 +2442,9 @@
   </attachments>
  </e:finished>
  <e:started id="120" parentId="2" name="SebastianBergmann\Raytracer\TransformationsTest" time="2026-05-24T08:58:25.853582Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Transformations (SebastianBergmann\Raytracer\Transformations)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
     <filePosition line="18"/>
@@ -2305,6 +2458,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Multiplying a point by a translation matrix moves the point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2326,6 +2480,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Multiplying a point by a the inverse of a translation matrix moves the point in reverse"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2347,6 +2502,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Translation does not affect vectors"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2368,6 +2524,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Applying a scaling matrix to a point scales the point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2389,6 +2546,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Applying a scaling matrix to a vector scales the vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2410,6 +2568,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Applying the inverse of a scaling matrix to a vector scales the vector in reverse"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2431,6 +2590,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Reflection is scaling by a negative value"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2452,6 +2612,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A point can be rotated around the X axis"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2473,6 +2634,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The inverse of an X rotation rotates in the opposite direction"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2494,6 +2656,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A point can be rotated around the Y axis"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2515,6 +2678,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A point can be rotated around the Z axis"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2536,6 +2700,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A shearing transformation moves X in proportion to Y"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2557,6 +2722,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A shearing transformation moves X in proportion to Z"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2578,6 +2744,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A shearing transformation moves Y in proportion to X"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2599,6 +2766,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A shearing transformation moves Y in proportion to Z"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2620,6 +2788,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A shearing transformation moves Z in proportion to X"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2641,6 +2810,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A shearing transformation moves Z in proportion to Y"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2662,6 +2832,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Individual transformations are applied in sequence"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2683,6 +2854,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Chained transformations must be applied in reverse order"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2704,6 +2876,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The view transformation matrix for the default orientation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2725,6 +2898,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A view transformation matrix looking in positive Z direction"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2746,6 +2920,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The view transformation moves the world"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2767,6 +2942,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="An arbitrary view transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TransformationsTest.php">
@@ -2788,6 +2964,9 @@
   </attachments>
  </e:finished>
  <e:started id="144" parentId="2" name="SebastianBergmann\Raytracer\TupleTest" time="2026-05-24T08:58:25.859999Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Tuple (SebastianBergmann\Raytracer\Tuple)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
     <filePosition line="15"/>
@@ -2801,6 +2980,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A tuple with w=1.0 is a point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2822,6 +3002,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A tuple with w=0.0 is a vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2843,6 +3024,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A tuple with w!=1.0 and w!=0.0 is neither a point nor a vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2864,6 +3046,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A vector can be added to a point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2885,6 +3068,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A vector can be added to another vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2906,6 +3090,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A point cannot be added to a point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2927,6 +3112,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A point can be subtracted from another point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2948,6 +3134,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A vector can be subtracted from a point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2969,6 +3156,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A vector can be subtracted from another vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -2990,6 +3178,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A point cannot be subtracted from a vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3011,6 +3200,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can be negated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3032,6 +3222,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can be multiplied by a scalar"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3053,6 +3244,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Can be divided by a scalar"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3075,6 +3267,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The magnitude of vector (1.0, 0.0, 0.0) is calculated to be 1.0"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3096,6 +3289,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The magnitude of vector (0.0, 1.0, 0.0) is calculated to be 1.0"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3117,6 +3311,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The magnitude of vector (0.0, 0.0, 1.0) is calculated to be 1.0"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3138,6 +3333,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The magnitude of vector (1.0, 2.0, 3.0) is calculated to be 3.7416573867739413"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3159,6 +3355,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The magnitude of vector (-1.0, -2.0, -3.0) is calculated to be 3.7416573867739413"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3186,6 +3383,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The vector (4.0, 0.0, 0.0) is normalized to (1.0, 0.0, 0.0)"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3207,6 +3405,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The vector (1.0, 2.0, 3.0) is normalized to (0.2672612419124244, 0.5345224838248488, 0.8017837257372732)"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3233,6 +3432,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The dot product of two vectors can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3254,6 +3454,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The cross product of two vectors can be calculated"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3275,6 +3476,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Two tuples can be compared"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3296,6 +3498,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Reflecting a vector approaching at 45&#xB0;"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3317,6 +3520,7 @@
     <tag>math</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Reflecting a vector off a slanted surface"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/math/TupleTest.php">
@@ -3338,6 +3542,9 @@
   </attachments>
  </e:finished>
  <e:started id="172" parentId="2" name="SebastianBergmann\Raytracer\PlaneTest" time="2026-05-24T08:58:25.867142Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Plane (SebastianBergmann\Raytracer\Plane)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
     <filePosition line="21"/>
@@ -3351,6 +3558,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The normal of a plane is constant everywhere"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
@@ -3372,6 +3580,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Intersect with a ray parallel to the plane"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
@@ -3393,6 +3602,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Intersect with a coplanar ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
@@ -3414,6 +3624,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A ray intersecting a plane from above"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
@@ -3435,6 +3646,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A ray intersecting a plane from below"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/PlaneTest.php">
@@ -3456,6 +3668,9 @@
   </attachments>
  </e:finished>
  <e:started id="178" parentId="2" name="SebastianBergmann\Raytracer\ShapeCollectionTest" time="2026-05-24T08:58:25.869375Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Shape Collection (SebastianBergmann\Raytracer\ShapeCollection)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeCollectionTest.php">
     <filePosition line="20"/>
@@ -3469,6 +3684,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Aggregating objects"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeCollectionTest.php">
@@ -3490,6 +3706,9 @@
   </attachments>
  </e:finished>
  <e:started id="180" parentId="2" name="SebastianBergmann\Raytracer\ShapeTest" time="2026-05-24T08:58:25.869870Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Shape (SebastianBergmann\Raytracer\Shape)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
     <filePosition line="22"/>
@@ -3503,6 +3722,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The default transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3524,6 +3744,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Assigning a transformation"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3545,6 +3766,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The default material"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3566,6 +3788,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Assigning a material"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3587,6 +3810,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Intersecting a scaled shape with a ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3608,6 +3832,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Intersecting a translated shape with a ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3629,6 +3854,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Computing the normal on a translated shape"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3650,6 +3876,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Computing the normal on a transformed shape"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/ShapeTest.php">
@@ -3671,6 +3898,9 @@
   </attachments>
  </e:finished>
  <e:started id="189" parentId="2" name="SebastianBergmann\Raytracer\SphereTest" time="2026-05-24T08:58:25.873096Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Sphere (SebastianBergmann\Raytracer\Sphere)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
     <filePosition line="23"/>
@@ -3684,6 +3914,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Creating and querying a sphere"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3705,6 +3936,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A ray intersects a sphere at two points"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3726,6 +3958,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A ray intersects a sphere at a tangent"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3747,6 +3980,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A ray misses a sphere"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3768,6 +4002,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A ray originates inside a sphere"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3789,6 +4024,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="A sphere is behind a ray"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3810,6 +4046,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The normal on a sphere at a point on the x axis"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3831,6 +4068,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The normal on a sphere at a point on the y axis"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3852,6 +4090,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The normal on a sphere at a point on the z axis"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3873,6 +4112,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The normal on a sphere at a nonaxial point"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3894,6 +4134,7 @@
     <tag>shape</tag>
     <tag>small</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="The normal is a normalized vector"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/unit/shapes/SphereTest.php">
@@ -3921,6 +4162,9 @@
  </e:finished>
  <e:started id="201" parentId="1" name="integration" time="2026-05-24T08:58:25.877728Z"/>
  <e:started id="202" parentId="201" name="SebastianBergmann\Raytracer\PuttingItTogetherTest" time="2026-05-24T08:58:25.877759Z">
+  <metadata>
+   <phpunit:testDox prettifiedClassName="Putting It Together (SebastianBergmann\Raytracer\PuttingItTogether)"/>
+  </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
     <filePosition line="10"/>
@@ -3933,6 +4177,7 @@
    <tags>
     <tag>medium</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Chapter 4"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
@@ -3953,6 +4198,7 @@
    <tags>
     <tag>medium</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Chapter 5"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
@@ -3973,6 +4219,7 @@
    <tags>
     <tag>medium</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Chapter 6"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
@@ -3993,6 +4240,7 @@
    <tags>
     <tag>medium</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Chapter 8"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
@@ -4013,6 +4261,7 @@
    <tags>
     <tag>medium</tag>
    </tags>
+   <phpunit:testDox prettifiedMethodName="Chapter 10"/>
   </metadata>
   <sources>
    <fileSource path="/path/to/raytracer/tests/integration/PuttingItTogetherTest.php">
