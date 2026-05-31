@@ -15,7 +15,9 @@ use function array_pop;
 use function array_slice;
 use function array_values;
 use function assert;
+use function basename;
 use function count;
+use function dirname;
 use function explode;
 use function htmlspecialchars;
 use function implode;
@@ -26,7 +28,7 @@ use function usort;
 use SebastianBergmann\Template\Template;
 
 /**
- * @phpstan-type IndexedResult array{testId: non-empty-string, result: TestResult}
+ * @phpstan-type IndexedResult array{testId: non-empty-string, methodDisplayName: non-empty-string, result: TestResult}
  * @phpstan-type IndexedClass array{className: non-empty-string, classDisplayName: non-empty-string, classId: non-empty-string, results: non-empty-list<IndexedResult>}
  */
 final readonly class HtmlTestReport
@@ -50,7 +52,7 @@ final readonly class HtmlTestReport
                 'skipped'    => (string) $run->countOf(TestStatus::Skipped),
                 'issues'     => (string) $run->issueCount(),
                 'sidebar'    => $this->sidebar($classes, $testdox),
-                'classes'    => $this->classes($classes, $testdox),
+                'classes'    => $this->classes($classes),
             ],
         );
 
@@ -71,18 +73,20 @@ final readonly class HtmlTestReport
         $testCounter  = 0;
 
         foreach ($results as $result) {
-            $className = $result->className();
             $testCounter++;
 
+            $groupKey = $this->groupKey($result);
+
             $indexedResult = [
-                'testId' => 'test-' . $testCounter,
-                'result' => $result,
+                'testId'            => 'test-' . $testCounter,
+                'methodDisplayName' => $this->methodDisplayName($result, $testdox),
+                'result'            => $result,
             ];
 
-            if (!isset($byClass[$className])) {
+            if (!isset($byClass[$groupKey])) {
                 $classCounter++;
-                $byClass[$className] = [
-                    'className'        => $className,
+                $byClass[$groupKey] = [
+                    'className'        => $groupKey,
                     'classDisplayName' => $this->classDisplayName($result, $testdox),
                     'classId'          => 'class-' . $classCounter,
                     'results'          => [$indexedResult],
@@ -91,7 +95,7 @@ final readonly class HtmlTestReport
                 continue;
             }
 
-            $byClass[$className]['results'][] = $indexedResult;
+            $byClass[$groupKey]['results'][] = $indexedResult;
         }
 
         return array_values($byClass);
@@ -100,7 +104,7 @@ final readonly class HtmlTestReport
     /**
      * @param list<IndexedClass> $classes
      */
-    private function classes(array $classes, bool $testdox): string
+    private function classes(array $classes): string
     {
         $template = new Template(__DIR__ . '/html/test_class.html');
         $output   = '';
@@ -115,7 +119,7 @@ final readonly class HtmlTestReport
                     'classStatusClass' => $this->statusClass($worst),
                     'classStatusLabel' => $worst->value,
                     'classTime'        => sprintf('%.6f', $this->totalTimeForClass($class)),
-                    'results'          => $this->results($class['results'], $testdox),
+                    'results'          => $this->results($class['results']),
                 ],
             );
 
@@ -128,7 +132,7 @@ final readonly class HtmlTestReport
     /**
      * @param non-empty-list<IndexedResult> $results
      */
-    private function results(array $results, bool $testdox): string
+    private function results(array $results): string
     {
         $template = new Template(__DIR__ . '/html/test_result.html');
         $output   = '';
@@ -144,7 +148,7 @@ final readonly class HtmlTestReport
                     'open'         => !$result->status()->isPassing() && $hasDetails ? 'open' : '',
                     'statusClass'  => $this->statusClass($result->status()),
                     'statusLabel'  => $result->status()->value,
-                    'methodName'   => $this->escape($this->methodDisplayName($result, $testdox)),
+                    'methodName'   => $this->escape($entry['methodDisplayName']),
                     'issuePills'   => $this->issuePills($result->issues()),
                     'time'         => $result->time() === null ? '' : sprintf('%.6f s', $result->time()),
                     'body'         => $hasDetails ? $this->resultBody($result) : '',
@@ -160,8 +164,30 @@ final readonly class HtmlTestReport
     /**
      * @return non-empty-string
      */
+    private function groupKey(TestResult $result): string
+    {
+        if ($result->isPhpt()) {
+            /** @noinspection PhpParamsInspection */
+            return $this->directory($result);
+        }
+
+        assert($result instanceof TestMethodResult);
+
+        return $result->className();
+    }
+
+    /**
+     * @return non-empty-string
+     */
     private function classDisplayName(TestResult $result, bool $testdox): string
     {
+        if ($result->isPhpt()) {
+            /** @noinspection PhpParamsInspection */
+            return $this->directory($result);
+        }
+
+        assert($result instanceof TestMethodResult);
+
         if ($testdox && ($prettified = $result->prettifiedClassName()) !== null) {
             return $prettified;
         }
@@ -174,11 +200,34 @@ final readonly class HtmlTestReport
      */
     private function methodDisplayName(TestResult $result, bool $testdox): string
     {
+        if ($result->isPhpt()) {
+            /** @noinspection PhpPossiblePolymorphicInvocationInspection */
+            $name = basename($result->path());
+
+            assert($name !== '');
+
+            return $name;
+        }
+
+        assert($result instanceof TestMethodResult);
+
         if ($testdox && ($prettified = $result->prettifiedMethodName()) !== null) {
             return $prettified;
         }
 
         return $result->displayName();
+    }
+
+    /**
+     * @return non-empty-string
+     */
+    private function directory(PhptResult $result): string
+    {
+        $directory = dirname($result->path());
+
+        assert($directory !== '');
+
+        return $directory;
     }
 
     private function resultBody(TestResult $result): string
@@ -252,7 +301,7 @@ final readonly class HtmlTestReport
             $output = '<ul class="tree tree-root">';
 
             foreach ($sorted as $class) {
-                $output .= $this->renderClassNode($class['classDisplayName'], $class, $testdox);
+                $output .= $this->renderClassNode($class['classDisplayName'], $class);
             }
 
             $output .= '</ul>';
@@ -289,7 +338,7 @@ final readonly class HtmlTestReport
                 );
             }
 
-            $output .= $this->renderClassNode($shortName, $class, $testdox);
+            $output .= $this->renderClassNode($shortName, $class);
 
             $currentSegments = $segments;
         }
@@ -336,7 +385,7 @@ final readonly class HtmlTestReport
     /**
      * @param IndexedClass $class
      */
-    private function renderClassNode(string $shortName, array $class, bool $testdox): string
+    private function renderClassNode(string $shortName, array $class): string
     {
         $worst = $this->worstStatusForClass($class);
 
@@ -347,7 +396,7 @@ final readonly class HtmlTestReport
                 '<li class="m"><a href="#%s"><span class="dot %s"></span><span class="seg">%s</span></a></li>',
                 $this->escape($entry['testId']),
                 $this->statusClass($entry['result']->status()),
-                $this->escape($this->methodDisplayName($entry['result'], $testdox)),
+                $this->escape($entry['methodDisplayName']),
             );
         }
 

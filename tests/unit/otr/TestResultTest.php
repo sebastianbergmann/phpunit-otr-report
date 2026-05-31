@@ -23,26 +23,13 @@ use PHPUnit\Framework\TestCase;
 #[Small]
 final class TestResultTest extends TestCase
 {
-    public function testExposesTheValuesItWasCreatedFrom(): void
+    public function testExposesTheStatusReasonThrowableIssuesAndTimeItWasCreatedFrom(): void
     {
         $throwable = new Throwable('RuntimeException', false, 'boom');
         $issue     = new Issue('risky', 'no assertions');
 
-        $result = new TestResult(
-            'Vendor\ExampleTest',
-            'test_one',
-            'test_one',
-            TestStatus::Errored,
-            'something went wrong',
-            $throwable,
-            [$issue],
-            0.125,
-        );
+        $result = $this->createResult(TestStatus::Errored, 'something went wrong', $throwable, [$issue], 0.125);
 
-        $this->assertSame('Vendor\ExampleTest', $result->className());
-        $this->assertSame('test_one', $result->methodName());
-        $this->assertSame('test_one', $result->displayName());
-        $this->assertSame('Vendor\ExampleTest::test_one', $result->name());
         $this->assertSame(TestStatus::Errored, $result->status());
         $this->assertSame('something went wrong', $result->reason());
         $this->assertTrue($result->hasReason());
@@ -52,36 +39,9 @@ final class TestResultTest extends TestCase
         $this->assertSame(0.125, $result->time());
     }
 
-    public function testPreservesParameterizedDisplayNamesInItsName(): void
-    {
-        $result = new TestResult(
-            'Vendor\ExampleTest',
-            'test_one',
-            'test_one with data set #2',
-            TestStatus::Successful,
-            '',
-            null,
-            [],
-            0.001,
-        );
-
-        $this->assertSame('Vendor\ExampleTest::test_one with data set #2', $result->name());
-        $this->assertSame('test_one', $result->methodName());
-        $this->assertSame('test_one with data set #2', $result->displayName());
-    }
-
     public function testKnowsWhenItHasNoReasonOrIssues(): void
     {
-        $result = new TestResult(
-            'Vendor\ExampleTest',
-            'test_one',
-            'test_one',
-            TestStatus::Successful,
-            '',
-            null,
-            [],
-            0.0,
-        );
+        $result = $this->createResult(TestStatus::Successful, '', null, [], 0.0);
 
         $this->assertFalse($result->hasReason());
         $this->assertFalse($result->hasIssues());
@@ -90,53 +50,17 @@ final class TestResultTest extends TestCase
 
     public function testAllowsTheTimeToBeUnknown(): void
     {
-        $result = new TestResult(
-            'Vendor\ExampleTest',
-            'test_one',
-            'test_one',
-            TestStatus::Skipped,
-            'skipped by metadata',
-            null,
-            [],
-            null,
-        );
+        $result = $this->createResult(TestStatus::Skipped, 'skipped by metadata', null, [], null);
 
         $this->assertNull($result->time());
     }
 
-    public function testHasNoTestDoxNamesByDefault(): void
+    /**
+     * @param list<Issue> $issues
+     */
+    private function createResult(TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time): TestResult
     {
-        $result = new TestResult(
-            'Vendor\ExampleTest',
-            'test_one',
-            'test_one',
-            TestStatus::Successful,
-            '',
-            null,
-            [],
-            0.0,
-        );
-
-        $this->assertNull($result->prettifiedClassName());
-        $this->assertNull($result->prettifiedMethodName());
-    }
-
-    public function testExposesTestDoxPrettifiedClassAndMethodNames(): void
-    {
-        $result = new TestResult(
-            'Vendor\ExampleTest',
-            'test_one',
-            'test_one',
-            TestStatus::Successful,
-            '',
-            null,
-            [],
-            0.0,
-            'Example behavior',
-            'Does the thing',
-        );
-
-        $this->assertSame('Example behavior', $result->prettifiedClassName());
-        $this->assertSame('Does the thing', $result->prettifiedMethodName());
+        return new readonly class($status, $reason, $throwable, $issues, $time) extends TestResult
+        {};
     }
 }

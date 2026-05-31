@@ -14,6 +14,7 @@ use function glob;
 use function libxml_clear_errors;
 use function libxml_get_errors;
 use function libxml_use_internal_errors;
+use function substr;
 use function usort;
 use DateTimeImmutable;
 use DOMDocument;
@@ -65,7 +66,7 @@ final readonly class OtrReader
             }
         }
 
-        /** @var array<string, array{className: non-empty-string, methodName: non-empty-string, displayName: non-empty-string, prettifiedClassName: ?non-empty-string, prettifiedMethodName: ?non-empty-string}> $tests */
+        /** @var array<string, array{kind: 'method', className: non-empty-string, methodName: non-empty-string, displayName: non-empty-string, name: non-empty-string, prettifiedClassName: ?non-empty-string, prettifiedMethodName: ?non-empty-string}|array{kind: 'phpt', path: non-empty-string, name: non-empty-string}> $tests */
         $tests = [];
 
         $startedNodes = $xpath->query('//e:started[.//phpunit:methodSource]');
@@ -103,11 +104,41 @@ final readonly class OtrReader
             $prettifiedClassName = $parentId !== '' ? ($prettifiedClassNames[$parentId] ?? null) : null;
 
             $tests[$id] = [
+                'kind'                 => 'method',
                 'className'            => $className,
                 'methodName'           => $methodName,
                 'displayName'          => $displayName,
+                'name'                 => $className . '::' . $displayName,
                 'prettifiedClassName'  => $prettifiedClassName,
                 'prettifiedMethodName' => $prettifiedMethodName,
+            ];
+        }
+
+        $phptCandidateNodes = $xpath->query('//e:started[not(.//phpunit:methodSource) and not(.//phpunit:classSource)]');
+
+        assert($phptCandidateNodes !== false);
+
+        foreach ($phptCandidateNodes as $candidate) {
+            assert($candidate instanceof DOMElement);
+
+            $fileSource = $this->queryFirst($xpath, './/core:fileSource', $candidate);
+
+            if ($fileSource === null) {
+                continue;
+            }
+
+            $path = $fileSource->getAttribute('path');
+
+            if (substr($path, -5) !== '.phpt') {
+                continue;
+            }
+
+            $id = $candidate->getAttribute('id');
+
+            $tests[$id] = [
+                'kind' => 'phpt',
+                'path' => $path,
+                'name' => $path,
             ];
         }
 
@@ -165,7 +196,7 @@ final readonly class OtrReader
                 if ($id === '1') {
                     $totalTime = $time;
                 } elseif (isset($tests[$id])) {
-                    $name              = $tests[$id]['className'] . '::' . $tests[$id]['displayName'];
+                    $name              = $tests[$id]['name'];
                     $times[$name]      = $time;
                     $cpuTimes[$name]   = (float) $usage->getAttribute('cpuTime');
                     $peakMemory[$name] = (float) $usage->getAttribute('peakMemoryUsage');
@@ -206,17 +237,33 @@ final readonly class OtrReader
                 }
             }
 
-            $results[] = new TestResult(
-                $tests[$id]['className'],
-                $tests[$id]['methodName'],
-                $tests[$id]['displayName'],
+            $test   = $tests[$id];
+            $issues = $issuesById[$id] ?? [];
+
+            if ($test['kind'] === 'phpt') {
+                $results[] = new PhptResult(
+                    $test['path'],
+                    $status,
+                    $reason,
+                    $throwable,
+                    $issues,
+                    $time,
+                );
+
+                continue;
+            }
+
+            $results[] = new TestMethodResult(
+                $test['className'],
+                $test['methodName'],
+                $test['displayName'],
                 $status,
                 $reason,
                 $throwable,
-                $issuesById[$id] ?? [],
+                $issues,
                 $time,
-                $tests[$id]['prettifiedClassName'],
-                $tests[$id]['prettifiedMethodName'],
+                $test['prettifiedClassName'],
+                $test['prettifiedMethodName'],
             );
         }
 

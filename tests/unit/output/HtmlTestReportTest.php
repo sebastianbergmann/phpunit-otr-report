@@ -23,6 +23,8 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(HtmlTestReport::class)]
 #[UsesClass(Issue::class)]
+#[UsesClass(PhptResult::class)]
+#[UsesClass(TestMethodResult::class)]
 #[UsesClass(TestResult::class)]
 #[UsesClass(TestRun::class)]
 #[UsesClass(TestStatus::class)]
@@ -49,10 +51,10 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001),
-                new TestResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'Failed asserting that false is true.', new Throwable('PHPUnit\Framework\ExpectationFailedException', true, 'Failed asserting that false is true.'), [], 0.002),
-                new TestResult('Vendor\OtherTest', 'test_error', 'test_error', TestStatus::Errored, 'boom', new Throwable('RuntimeException', false, 'boom'), [], 0.003),
-                new TestResult('Vendor\OtherTest', 'test_risky', 'test_risky', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.001),
+                new TestMethodResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001),
+                new TestMethodResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'Failed asserting that false is true.', new Throwable('PHPUnit\Framework\ExpectationFailedException', true, 'Failed asserting that false is true.'), [], 0.002),
+                new TestMethodResult('Vendor\OtherTest', 'test_error', 'test_error', TestStatus::Errored, 'boom', new Throwable('RuntimeException', false, 'boom'), [], 0.003),
+                new TestMethodResult('Vendor\OtherTest', 'test_risky', 'test_risky', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.001),
             ],
         );
 
@@ -74,11 +76,11 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'c', 'c', TestStatus::Errored, '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'd', 'd', TestStatus::Aborted, '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'e', 'e', TestStatus::Skipped, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'c', 'c', TestStatus::Errored, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'd', 'd', TestStatus::Aborted, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'e', 'e', TestStatus::Skipped, '', null, [], 0.0),
             ],
         );
 
@@ -95,9 +97,9 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'reason', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'test_risky', 'test_risky', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'reason', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'test_risky', 'test_risky', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.0),
             ],
         );
 
@@ -112,7 +114,7 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 't', 't', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 't', 't', TestStatus::Successful, '', null, [], 0.0),
             ],
         );
 
@@ -125,9 +127,9 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.001),
-                new TestResult('Vendor\ExampleTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.002),
-                new TestResult('Vendor\ExampleTest', 'c', 'c', TestStatus::Skipped, '', null, [], null),
+                new TestMethodResult('Vendor\ExampleTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.001),
+                new TestMethodResult('Vendor\ExampleTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.002),
+                new TestMethodResult('Vendor\ExampleTest', 'c', 'c', TestStatus::Skipped, '', null, [], null),
             ],
         );
 
@@ -140,7 +142,7 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult(
+                new TestMethodResult(
                     'Vendor\ExampleTest',
                     'test_many_issues',
                     'test_many_issues',
@@ -165,9 +167,9 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0),
-                new TestResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('OtherTest', 'c', 'c', TestStatus::Skipped, '', null, [], 0.0),
+                new TestMethodResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0),
+                new TestMethodResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('OtherTest', 'c', 'c', TestStatus::Skipped, '', null, [], 0.0),
             ],
         );
 
@@ -203,9 +205,9 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('A\B\C\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('OtherTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('Z\Y\X\OmegaTest', 'c', 'c', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('A\B\C\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('OtherTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Z\Y\X\OmegaTest', 'c', 'c', TestStatus::Successful, '', null, [], 0.0),
             ],
         );
 
@@ -222,9 +224,9 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'first', 'first', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'second', 'second', TestStatus::Failed, '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'third', 'third', TestStatus::Skipped, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'first', 'first', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'second', 'second', TestStatus::Failed, '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'third', 'third', TestStatus::Skipped, '', null, [], 0.0),
             ],
         );
 
@@ -239,8 +241,8 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\PkgA\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('Vendor\PkgB\BetaTest', 'b', 'b', TestStatus::Errored, 'boom', null, [], 0.0),
+                new TestMethodResult('Vendor\PkgA\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Vendor\PkgB\BetaTest', 'b', 'b', TestStatus::Errored, 'boom', null, [], 0.0),
             ],
         );
 
@@ -268,8 +270,8 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'a', 'a', $statuses[0], '', null, [], 0.0),
-                new TestResult('Vendor\ExampleTest', 'b', 'b', $statuses[1], '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'a', 'a', $statuses[0], '', null, [], 0.0),
+                new TestMethodResult('Vendor\ExampleTest', 'b', 'b', $statuses[1], '', null, [], 0.0),
             ],
         );
 
@@ -285,8 +287,8 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001, 'Example behavior', 'Succeeds'),
-                new TestResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'reason', null, [], 0.002, 'Example behavior', 'Fails loudly'),
+                new TestMethodResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001, 'Example behavior', 'Succeeds'),
+                new TestMethodResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'reason', null, [], 0.002, 'Example behavior', 'Fails loudly'),
             ],
         );
 
@@ -304,7 +306,7 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001),
+                new TestMethodResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001),
             ],
         );
 
@@ -318,8 +320,8 @@ final class HtmlTestReportTest extends TestCase
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0, 'Alpha behavior', 'a'),
-                new TestResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0, 'Beta behavior', 'b'),
+                new TestMethodResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0, 'Alpha behavior', 'a'),
+                new TestMethodResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0, 'Beta behavior', 'b'),
             ],
         );
 
@@ -331,11 +333,32 @@ final class HtmlTestReportTest extends TestCase
         $this->assertStringContainsString('Beta behavior', $sidebar);
     }
 
+    public function testGroupsPhptTestsByTheirDirectoryRatherThanPerFile(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new PhptResult('/path/to/tests/end-to-end/testdox/diff.phpt', TestStatus::Successful, '', null, [], 0.001),
+                new PhptResult('/path/to/tests/end-to-end/testdox/diff-colorized.phpt', TestStatus::Failed, 'nope', null, [], 0.002),
+                new PhptResult('/path/to/tests/end-to-end/generic/output.phpt', TestStatus::Successful, '', null, [], 0.003),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertSame(2, substr_count($html, '<details class="class"'));
+        $this->assertStringContainsString('<span class="class-name">/path/to/tests/end-to-end/testdox</span>', $html);
+        $this->assertStringContainsString('<span class="class-name">/path/to/tests/end-to-end/generic</span>', $html);
+        $this->assertStringContainsString('<span class="method">diff.phpt</span>', $html);
+        $this->assertStringContainsString('<span class="method">diff-colorized.phpt</span>', $html);
+        $this->assertStringContainsString('<span class="method">output.phpt</span>', $html);
+        $this->assertStringNotContainsString('<span class="method">/path/to/tests/end-to-end/testdox/diff.phpt</span>', $html);
+    }
+
     public function testEscapesUserSuppliedStrings(): void
     {
         $run = $this->createTestRun(
             [
-                new TestResult(
+                new TestMethodResult(
                     'Vendor\ExampleTest',
                     'test_one',
                     'test_one',

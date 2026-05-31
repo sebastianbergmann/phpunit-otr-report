@@ -29,7 +29,9 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(OtrReader::class)]
 #[UsesClass(Issue::class)]
 #[UsesClass(Metric::class)]
+#[UsesClass(PhptResult::class)]
 #[UsesClass(SchemaValidationException::class)]
+#[UsesClass(TestMethodResult::class)]
 #[UsesClass(TestResult::class)]
 #[UsesClass(TestRun::class)]
 #[UsesClass(TestRunCollection::class)]
@@ -109,6 +111,42 @@ final class OtrReaderTest extends TestCase
         $this->assertSame(1.5, $run->totalTime());
         $this->assertSame(['Vendor\GroupTest::test_alpha' => 0.25], $run->tests());
         $this->assertSame(1, $run->testCount());
+    }
+
+    public function testCollectsPhptTestsKeyedByTheirFilePath(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('phpunit.xml'));
+
+        $name       = '/path/to/phpunit/tests/end-to-end/testdox/diff.phpt';
+        $tests      = $run->tests();
+        $cpuTimes   = $run->valuesFor(Metric::Cpu);
+        $peakMemory = $run->valuesFor(Metric::Memory);
+
+        if (!array_key_exists($name, $tests) ||
+            !array_key_exists($name, $cpuTimes) ||
+            !array_key_exists($name, $peakMemory)) {
+            $this->fail('Expected PHPT test was not found in the parsed metrics');
+        }
+
+        $this->assertEqualsWithDelta(0.294980159, $tests[$name], 1e-12);
+        $this->assertEqualsWithDelta(0.001841, $cpuTimes[$name], 1e-9);
+        $this->assertSame(60843576.0, $peakMemory[$name]);
+    }
+
+    public function testRepresentsPhptTestsAsPhptResultsCarryingTheirFilePath(): void
+    {
+        $run  = (new OtrReader)->read($this->fixture('phpunit.xml'));
+        $path = '/path/to/phpunit/tests/end-to-end/testdox/diff.phpt';
+
+        foreach ($run->results() as $result) {
+            if ($result instanceof PhptResult && $result->path() === $path) {
+                $this->assertSame(TestStatus::Successful, $result->status());
+
+                return;
+            }
+        }
+
+        $this->fail('Expected a PhptResult for ' . $path);
     }
 
     public function testReadsALogfileWithoutTests(): void
@@ -245,10 +283,10 @@ final class OtrReaderTest extends TestCase
         }
     }
 
-    private function findByMethod(TestRun $run, string $methodName): TestResult
+    private function findByMethod(TestRun $run, string $methodName): TestMethodResult
     {
         foreach ($run->results() as $result) {
-            if ($result->methodName() === $methodName) {
+            if ($result instanceof TestMethodResult && $result->methodName() === $methodName) {
                 return $result;
             }
         }

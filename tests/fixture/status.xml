@@ -12,7 +12,7 @@
    <phpunit:testDox prettifiedClassName="Test result status with and without message"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="23"/>
    </fileSource>
    <phpunit:classSource className="PHPUnit\TestFixture\Basic\StatusTest"/>
@@ -23,7 +23,7 @@
    <phpunit:testDox prettifiedMethodName="Error"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="37"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testError"/>
@@ -36,9 +36,9 @@
   </attachments>
   <result status="ERRORED">
    <reason></reason>
-   <phpunit:throwable type="RuntimeException" assertionError="false"><![CDATA[RuntimeException: 
+   <phpunit:throwable type="RuntimeException" assertionError="false"><![CDATA[RuntimeException:
 
-/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:39
+/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:39
 ]]></phpunit:throwable>
   </result>
  </e:finished>
@@ -47,7 +47,7 @@
    <phpunit:testDox prettifiedMethodName="Error with message"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="66"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testErrorWithMessage"/>
@@ -62,7 +62,7 @@
    <reason>error with custom message</reason>
    <phpunit:throwable type="RuntimeException" assertionError="false"><![CDATA[RuntimeException: error with custom message
 
-/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:68
+/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:68
 ]]></phpunit:throwable>
   </result>
  </e:finished>
@@ -71,7 +71,7 @@
    <phpunit:testDox prettifiedMethodName="Failure"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="32"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testFailure"/>
@@ -86,7 +86,7 @@
    <reason>Failed asserting that false is true.</reason>
    <phpunit:throwable type="PHPUnit\Framework\ExpectationFailedException" assertionError="true"><![CDATA[Failed asserting that false is true.
 
-/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:34
+/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:34
 ]]></phpunit:throwable>
   </result>
  </e:finished>
@@ -95,7 +95,7 @@
    <phpunit:testDox prettifiedMethodName="Failure with message"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="61"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testFailureWithMessage"/>
@@ -112,7 +112,7 @@ Failed asserting that false is true.</reason>
    <phpunit:throwable type="PHPUnit\Framework\ExpectationFailedException" assertionError="true"><![CDATA[failure with custom message
 Failed asserting that false is true.
 
-/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:63
+/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:63
 ]]></phpunit:throwable>
   </result>
  </e:finished>
@@ -121,7 +121,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Success"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="25"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSuccess"/>
@@ -139,7 +139,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Incomplete"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="42"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testIncomplete"/>
@@ -153,7 +153,7 @@ Failed asserting that false is true.
   <result status="ABORTED">
    <reason></reason>
    <phpunit:throwable type="PHPUnit\Framework\IncompleteTestError" assertionError="false"><![CDATA[
-/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:44
+/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:44
 ]]></phpunit:throwable>
   </result>
  </e:finished>
@@ -162,7 +162,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Skipped"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="47"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSkipped"/>
@@ -182,7 +182,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Risky"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="52"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testRisky"/>
@@ -205,7 +205,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Success with message"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="56"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSuccessWithMessage"/>
@@ -223,7 +223,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Incomplete with message"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="71"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testIncompleteWithMessage"/>
@@ -238,7 +238,7 @@ Failed asserting that false is true.
    <reason>incomplete with custom message</reason>
    <phpunit:throwable type="PHPUnit\Framework\IncompleteTestError" assertionError="false"><![CDATA[incomplete with custom message
 
-/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:73
+/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:73
 ]]></phpunit:throwable>
   </result>
  </e:finished>
@@ -247,7 +247,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Skipped by metadata"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="77"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSkippedByMetadata"/>
@@ -263,7 +263,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Skipped with message"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="81"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSkippedWithMessage"/>
@@ -283,7 +283,7 @@ Failed asserting that false is true.
    <phpunit:testDox prettifiedMethodName="Risky with message"/>
   </metadata>
   <sources>
-   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+   <fileSource path="/path/to/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
     <filePosition line="86"/>
    </fileSource>
    <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testRiskyWithMessage"/>

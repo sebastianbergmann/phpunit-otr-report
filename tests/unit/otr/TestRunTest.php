@@ -19,6 +19,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(TestRun::class)]
 #[UsesClass(Issue::class)]
 #[UsesClass(Metric::class)]
+#[UsesClass(TestMethodResult::class)]
 #[UsesClass(TestResult::class)]
 #[UsesClass(TestStatus::class)]
 #[TestDox('TestRun')]
@@ -114,10 +115,10 @@ final class TestRunTest extends TestCase
 
     public function testExposesItsTestResults(): void
     {
-        $successful = new TestResult('Vendor\GroupTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.1);
-        $failed     = new TestResult('Vendor\GroupTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.2);
-        $risky      = new TestResult('Vendor\GroupTest', 'c', 'c', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.05);
-        $deprecated = new TestResult('Vendor\GroupTest', 'd', 'd', TestStatus::Successful, '', null, [new Issue('deprecation', 'foo'), new Issue('deprecation', 'bar')], 0.05);
+        $successful = new TestMethodResult('Vendor\GroupTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.1);
+        $failed     = new TestMethodResult('Vendor\GroupTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.2);
+        $risky      = new TestMethodResult('Vendor\GroupTest', 'c', 'c', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.05);
+        $deprecated = new TestMethodResult('Vendor\GroupTest', 'd', 'd', TestStatus::Successful, '', null, [new Issue('deprecation', 'foo'), new Issue('deprecation', 'bar')], 0.05);
 
         $run = new TestRun(
             '/path/to/logfile.xml',

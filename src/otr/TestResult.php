@@ -9,32 +9,8 @@
  */
 namespace PHPUnit\OtrReport;
 
-final readonly class TestResult
+abstract readonly class TestResult
 {
-    /**
-     * @var non-empty-string
-     */
-    private string $className;
-
-    /**
-     * @var non-empty-string
-     */
-    private string $methodName;
-
-    /**
-     * @var non-empty-string
-     */
-    private string $displayName;
-
-    /**
-     * @var ?non-empty-string
-     */
-    private ?string $prettifiedClassName;
-
-    /**
-     * @var ?non-empty-string
-     */
-    private ?string $prettifiedMethodName;
     private TestStatus $status;
     private string $reason;
     private ?Throwable $throwable;
@@ -46,91 +22,33 @@ final readonly class TestResult
     private ?float $time;
 
     /**
-     * @param non-empty-string  $className
-     * @param non-empty-string  $methodName
-     * @param non-empty-string  $displayName
-     * @param list<Issue>       $issues
-     * @param ?non-empty-string $prettifiedClassName
-     * @param ?non-empty-string $prettifiedMethodName
+     * @param list<Issue> $issues
      */
-    public function __construct(string $className, string $methodName, string $displayName, TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time, ?string $prettifiedClassName = null, ?string $prettifiedMethodName = null)
+    public function __construct(TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time)
     {
-        $this->className            = $className;
-        $this->methodName           = $methodName;
-        $this->displayName          = $displayName;
-        $this->prettifiedClassName  = $prettifiedClassName;
-        $this->prettifiedMethodName = $prettifiedMethodName;
-        $this->status               = $status;
-        $this->reason               = $reason;
-        $this->throwable            = $throwable;
-        $this->issues               = $issues;
-        $this->time                 = $time;
+        $this->status    = $status;
+        $this->reason    = $reason;
+        $this->throwable = $throwable;
+        $this->issues    = $issues;
+        $this->time      = $time;
     }
 
-    /**
-     * @return non-empty-string
-     */
-    public function className(): string
-    {
-        return $this->className;
-    }
-
-    /**
-     * @return non-empty-string
-     */
-    public function methodName(): string
-    {
-        return $this->methodName;
-    }
-
-    /**
-     * @return non-empty-string
-     */
-    public function displayName(): string
-    {
-        return $this->displayName;
-    }
-
-    /**
-     * @return ?non-empty-string
-     */
-    public function prettifiedClassName(): ?string
-    {
-        return $this->prettifiedClassName;
-    }
-
-    /**
-     * @return ?non-empty-string
-     */
-    public function prettifiedMethodName(): ?string
-    {
-        return $this->prettifiedMethodName;
-    }
-
-    /**
-     * @return non-empty-string
-     */
-    public function name(): string
-    {
-        return $this->className . '::' . $this->displayName;
-    }
-
-    public function status(): TestStatus
+    final public function status(): TestStatus
     {
         return $this->status;
     }
 
-    public function reason(): string
+    final public function reason(): string
     {
         return $this->reason;
     }
 
-    public function hasReason(): bool
+    final public function hasReason(): bool
     {
         return $this->reason !== '';
     }
 
-    public function throwable(): ?Throwable
+    final public function throwable(): ?Throwable
     {
         return $this->throwable;
     }
@@ -138,18 +56,34 @@ final readonly class TestResult
     /**
      * @return list<Issue>
      */
-    public function issues(): array
+    final public function issues(): array
     {
         return $this->issues;
     }
 
-    public function hasIssues(): bool
+    final public function hasIssues(): bool
     {
         return $this->issues !== [];
     }
 
-    public function time(): ?float
+    final public function time(): ?float
     {
         return $this->time;
+    }
+
+    /**
+     * @phpstan-assert-if-true TestMethodResult $this
+     */
+    public function isTestMethod(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @phpstan-assert-if-true PhptResult $this
+     */
+    public function isPhpt(): bool
+    {
+        return false;
     }
 }
