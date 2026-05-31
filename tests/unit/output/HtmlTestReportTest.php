@@ -131,6 +131,39 @@ final class HtmlTestReportTest extends TestCase
         );
     }
 
+    public function testRendersTestDoxNamesWhenEnabled(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001, 'Example behavior', 'Succeeds'),
+                new TestResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'reason', null, [], 0.002, 'Example behavior', 'Fails loudly'),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run, true);
+
+        $this->assertStringContainsString('Example behavior', $html);
+        $this->assertStringContainsString('Succeeds', $html);
+        $this->assertStringContainsString('Fails loudly', $html);
+        $this->assertStringNotContainsString('Vendor\ExampleTest', $html);
+        $this->assertStringNotContainsString('test_ok', $html);
+        $this->assertStringNotContainsString('test_fail', $html);
+    }
+
+    public function testFallsBackToOriginalNamesWhenTestDoxIsEnabledButMissing(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.001),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run, true);
+
+        $this->assertStringContainsString('Vendor\ExampleTest', $html);
+        $this->assertStringContainsString('test_ok', $html);
+    }
+
     public function testEscapesUserSuppliedStrings(): void
     {
         $run = $this->createTestRun(

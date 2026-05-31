@@ -28,6 +28,7 @@ final readonly class Arguments
      */
     private int $limit;
     private Metric $sort;
+    private bool $testdox;
     private bool $version;
 
     /**
@@ -35,7 +36,7 @@ final readonly class Arguments
      * @param list<string>          $arguments
      * @param positive-int          $limit
      */
-    public function __construct(?string $command, array $arguments, bool $help, bool $aboveMean, int $limit, Metric $sort, bool $version)
+    public function __construct(?string $command, array $arguments, bool $help, bool $aboveMean, int $limit, Metric $sort, bool $testdox, bool $version)
     {
         $this->command   = $command;
         $this->arguments = $arguments;
@@ -43,6 +44,7 @@ final readonly class Arguments
         $this->aboveMean = $aboveMean;
         $this->limit     = $limit;
         $this->sort      = $sort;
+        $this->testdox   = $testdox;
         $this->version   = $version;
     }
 
@@ -83,6 +85,11 @@ final readonly class Arguments
     public function sort(): Metric
     {
         return $this->sort;
+    }
+
+    public function testdox(): bool
+    {
+        return $this->testdox;
     }
 
     public function version(): bool

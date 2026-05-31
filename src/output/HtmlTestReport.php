@@ -25,13 +25,13 @@ use SebastianBergmann\Template\Template;
 
 /**
  * @phpstan-type IndexedResult array{testId: non-empty-string, result: TestResult}
- * @phpstan-type IndexedClass array{className: non-empty-string, classId: non-empty-string, results: non-empty-list<IndexedResult>}
+ * @phpstan-type IndexedClass array{className: non-empty-string, classDisplayName: non-empty-string, classId: non-empty-string, results: non-empty-list<IndexedResult>}
  */
 final readonly class HtmlTestReport
 {
-    public function render(TestRun $run): string
+    public function render(TestRun $run, bool $testdox = false): string
     {
-        $classes = $this->index($run->results());
+        $classes = $this->index($run->results(), $testdox);
 
         $template = new Template(__DIR__ . '/html/test_report.html');
 
@@ -47,8 +47,8 @@ final readonly class HtmlTestReport
                 'aborted'    => (string) $run->countOf(TestStatus::Aborted),
                 'skipped'    => (string) $run->countOf(TestStatus::Skipped),
                 'issues'     => (string) $run->issueCount(),
-                'sidebar'    => $this->sidebar($classes),
-                'classes'    => $this->classes($classes),
+                'sidebar'    => $this->sidebar($classes, $testdox),
+                'classes'    => $this->classes($classes, $testdox),
             ],
         );
 
@@ -60,7 +60,7 @@ final readonly class HtmlTestReport
      *
      * @return list<IndexedClass>
      */
-    private function index(array $results): array
+    private function index(array $results, bool $testdox): array
     {
         /** @var array<non-empty-string, IndexedClass> $byClass */
         $byClass = [];
@@ -80,9 +80,10 @@ final readonly class HtmlTestReport
             if (!isset($byClass[$className])) {
                 $classCounter++;
                 $byClass[$className] = [
-                    'className' => $className,
-                    'classId'   => 'class-' . $classCounter,
-                    'results'   => [$indexedResult],
+                    'className'        => $className,
+                    'classDisplayName' => $this->classDisplayName($result, $testdox),
+                    'classId'          => 'class-' . $classCounter,
+                    'results'          => [$indexedResult],
                 ];
 
                 continue;
@@ -97,7 +98,7 @@ final readonly class HtmlTestReport
     /**
      * @param list<IndexedClass> $classes
      */
-    private function classes(array $classes): string
+    private function classes(array $classes, bool $testdox): string
     {
         $template = new Template(__DIR__ . '/html/test_class.html');
         $output   = '';
@@ -108,11 +109,11 @@ final readonly class HtmlTestReport
             $template->setVar(
                 [
                     'classId'          => $class['classId'],
-                    'className'        => $this->escape($class['className']),
+                    'className'        => $this->escape($class['classDisplayName']),
                     'classStatusClass' => $this->statusClass($worst),
                     'classStatusLabel' => $worst->value,
                     'classTime'        => sprintf('%.6f', $this->totalTimeForClass($class)),
-                    'results'          => $this->results($class['results']),
+                    'results'          => $this->results($class['results'], $testdox),
                 ],
             );
 
@@ -125,7 +126,7 @@ final readonly class HtmlTestReport
     /**
      * @param non-empty-list<IndexedResult> $results
      */
-    private function results(array $results): string
+    private function results(array $results, bool $testdox): string
     {
         $template = new Template(__DIR__ . '/html/test_result.html');
         $output   = '';
@@ -141,7 +142,7 @@ final readonly class HtmlTestReport
                     'open'         => !$result->status()->isPassing() && $hasDetails ? 'open' : '',
                     'statusClass'  => $this->statusClass($result->status()),
                     'statusLabel'  => $result->status()->value,
-                    'methodName'   => $this->escape($result->displayName()),
+                    'methodName'   => $this->escape($this->methodDisplayName($result, $testdox)),
                     'issuePills'   => $this->issuePills($result->issues()),
                     'time'         => $result->time() === null ? '' : sprintf('%.6f s', $result->time()),
                     'body'         => $hasDetails ? $this->resultBody($result) : '',
@@ -152,6 +153,30 @@ final readonly class HtmlTestReport
         }
 
         return $output;
+    }
+
+    /**
+     * @return non-empty-string
+     */
+    private function classDisplayName(TestResult $result, bool $testdox): string
+    {
+        if ($testdox && ($prettified = $result->prettifiedClassName()) !== null) {
+            return $prettified;
+        }
+
+        return $result->className();
+    }
+
+    /**
+     * @return non-empty-string
+     */
+    private function methodDisplayName(TestResult $result, bool $testdox): string
+    {
+        if ($testdox && ($prettified = $result->prettifiedMethodName()) !== null) {
+            return $prettified;
+        }
+
+        return $result->displayName();
     }
 
     private function resultBody(TestResult $result): string
@@ -212,7 +237,7 @@ final readonly class HtmlTestReport
     /**
      * @param list<IndexedClass> $classes
      */
-    private function sidebar(array $classes): string
+    private function sidebar(array $classes, bool $testdox): string
     {
         if ($classes === []) {
             return '';
@@ -222,8 +247,20 @@ final readonly class HtmlTestReport
 
         usort(
             $sorted,
-            static fn (array $a, array $b): int => $a['className'] <=> $b['className'],
+            static fn (array $a, array $b): int => $a['classDisplayName'] <=> $b['classDisplayName'],
         );
+
+        if ($testdox) {
+            $output = '<ul class="tree tree-root">';
+
+            foreach ($sorted as $class) {
+                $output .= $this->renderClassNode($class['classDisplayName'], $class, $testdox);
+            }
+
+            $output .= '</ul>';
+
+            return $output;
+        }
 
         $namespaceStatuses = $this->namespaceStatuses($sorted);
 
@@ -254,7 +291,7 @@ final readonly class HtmlTestReport
                 );
             }
 
-            $output .= $this->renderClassNode($shortName, $class);
+            $output .= $this->renderClassNode($shortName, $class, $testdox);
 
             $currentSegments = $segments;
         }
@@ -301,7 +338,7 @@ final readonly class HtmlTestReport
     /**
      * @param IndexedClass $class
      */
-    private function renderClassNode(string $shortName, array $class): string
+    private function renderClassNode(string $shortName, array $class, bool $testdox): string
     {
         $worst = $this->worstStatusForClass($class);
 
@@ -312,7 +349,7 @@ final readonly class HtmlTestReport
                 '<li class="m"><a href="#%s"><span class="dot %s"></span><span class="seg">%s</span></a></li>',
                 $this->escape($entry['testId']),
                 $this->statusClass($entry['result']->status()),
-                $this->escape($entry['result']->displayName()),
+                $this->escape($this->methodDisplayName($entry['result'], $testdox)),
             );
         }
 

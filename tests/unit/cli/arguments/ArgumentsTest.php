@@ -21,7 +21,7 @@ final class ArgumentsTest extends TestCase
 {
     public function testExposesTheValuesItWasCreatedFrom(): void
     {
-        $arguments = new Arguments('slowest', ['logfile.xml'], true, true, 5, Metric::Cpu, true);
+        $arguments = new Arguments('slowest', ['logfile.xml'], true, true, 5, Metric::Cpu, true, true);
 
         $this->assertSame('slowest', $arguments->command());
         $this->assertSame(['logfile.xml'], $arguments->arguments());
@@ -29,12 +29,13 @@ final class ArgumentsTest extends TestCase
         $this->assertTrue($arguments->aboveMean());
         $this->assertSame(5, $arguments->limit());
         $this->assertSame(Metric::Cpu, $arguments->sort());
+        $this->assertTrue($arguments->testdox());
         $this->assertTrue($arguments->version());
     }
 
     public function testCommandCanBeNull(): void
     {
-        $arguments = new Arguments(null, [], false, false, 10, Metric::Time, false);
+        $arguments = new Arguments(null, [], false, false, 10, Metric::Time, false, false);
 
         $this->assertNull($arguments->command());
         $this->assertSame([], $arguments->arguments());
@@ -42,6 +43,7 @@ final class ArgumentsTest extends TestCase
         $this->assertFalse($arguments->aboveMean());
         $this->assertSame(10, $arguments->limit());
         $this->assertSame(Metric::Time, $arguments->sort());
+        $this->assertFalse($arguments->testdox());
         $this->assertFalse($arguments->version());
     }
 }

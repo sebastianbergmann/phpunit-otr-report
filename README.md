@@ -183,3 +183,11 @@ Wrote test results report to /tmp/results.html
 ```
 
 The first argument is the OTR XML logfile, the second argument is the HTML file the report is written to.
+
+#### The `--testdox` option
+
+By default, the report identifies each test class and each test method by its PHP name. With the `--testdox` option, the report uses the TestDox information (the prettified class and method names that PHPUnit records in the OTR XML logfile) instead. When a test does not have TestDox information, the original class or method name is used as a fallback.
+
+```
+$ otr-report results --testdox /tmp/otr/run.xml /tmp/results.html
+```

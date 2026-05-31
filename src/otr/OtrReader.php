@@ -45,7 +45,29 @@ final readonly class OtrReader
 
         $startedAt = new DateTimeImmutable($rootStarted->getAttribute('time'));
 
-        /** @var array<string, array{className: non-empty-string, methodName: non-empty-string, displayName: non-empty-string, order: int}> $tests */
+        /** @var array<string, non-empty-string> $prettifiedClassNames */
+        $prettifiedClassNames = [];
+
+        $classStartedNodes = $xpath->query('//e:started[.//phpunit:classSource]');
+
+        assert($classStartedNodes !== false);
+
+        foreach ($classStartedNodes as $classStarted) {
+            assert($classStarted instanceof DOMElement);
+
+            $classId      = $classStarted->getAttribute('id');
+            $classTestDox = $this->queryFirst($xpath, './/phpunit:testDox', $classStarted);
+
+            if ($classTestDox instanceof DOMElement) {
+                $prettifiedClassName = $classTestDox->getAttribute('prettifiedClassName');
+
+                if ($prettifiedClassName !== '') {
+                    $prettifiedClassNames[$classId] = $prettifiedClassName;
+                }
+            }
+        }
+
+        /** @var array<string, array{className: non-empty-string, methodName: non-empty-string, displayName: non-empty-string, prettifiedClassName: ?non-empty-string, prettifiedMethodName: ?non-empty-string, order: int}> $tests */
         $tests = [];
         $order = 0;
 
@@ -69,11 +91,27 @@ final readonly class OtrReader
             assert($methodName !== '');
             assert($displayName !== '');
 
+            $prettifiedMethodName = null;
+            $methodTestDox        = $this->queryFirst($xpath, './/phpunit:testDox', $started);
+
+            if ($methodTestDox instanceof DOMElement) {
+                $prettifiedMethodNameAttr = $methodTestDox->getAttribute('prettifiedMethodName');
+
+                if ($prettifiedMethodNameAttr !== '') {
+                    $prettifiedMethodName = $prettifiedMethodNameAttr;
+                }
+            }
+
+            $parentId            = $started->getAttribute('parentId');
+            $prettifiedClassName = $parentId !== '' ? ($prettifiedClassNames[$parentId] ?? null) : null;
+
             $tests[$id] = [
-                'className'   => $className,
-                'methodName'  => $methodName,
-                'displayName' => $displayName,
-                'order'       => $order++,
+                'className'            => $className,
+                'methodName'           => $methodName,
+                'displayName'          => $displayName,
+                'prettifiedClassName'  => $prettifiedClassName,
+                'prettifiedMethodName' => $prettifiedMethodName,
+                'order'                => $order++,
             ];
         }
 
@@ -198,6 +236,8 @@ final readonly class OtrReader
                 $finishedById[$id]['throwable'],
                 $issuesById[$id] ?? [],
                 $finishedById[$id]['time'],
+                $test['prettifiedClassName'],
+                $test['prettifiedMethodName'],
             );
         }
 

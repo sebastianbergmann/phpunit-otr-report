@@ -219,6 +219,16 @@ final class OtrReaderTest extends TestCase
         $this->assertSame('PHP > 9000.0.0 is required.', $skippedByMetadata->reason());
     }
 
+    public function testReadsTestDoxPrettifiedClassAndMethodNames(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('status.xml'));
+
+        $error = $this->findByMethod($run, 'testError');
+
+        $this->assertSame('Test result status with and without message', $error->prettifiedClassName());
+        $this->assertSame('Error', $error->prettifiedMethodName());
+    }
+
     public function testReadsADirectoryWithoutLogfiles(): void
     {
         $directory = sys_get_temp_dir() . '/otr-report-' . uniqid();

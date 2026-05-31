@@ -103,4 +103,40 @@ final class TestResultTest extends TestCase
 
         $this->assertNull($result->time());
     }
+
+    public function testHasNoTestDoxNamesByDefault(): void
+    {
+        $result = new TestResult(
+            'Vendor\ExampleTest',
+            'test_one',
+            'test_one',
+            TestStatus::Successful,
+            '',
+            null,
+            [],
+            0.0,
+        );
+
+        $this->assertNull($result->prettifiedClassName());
+        $this->assertNull($result->prettifiedMethodName());
+    }
+
+    public function testExposesTestDoxPrettifiedClassAndMethodNames(): void
+    {
+        $result = new TestResult(
+            'Vendor\ExampleTest',
+            'test_one',
+            'test_one',
+            TestStatus::Successful,
+            '',
+            null,
+            [],
+            0.0,
+            'Example behavior',
+            'Does the thing',
+        );
+
+        $this->assertSame('Example behavior', $result->prettifiedClassName());
+        $this->assertSame('Does the thing', $result->prettifiedMethodName());
+    }
 }

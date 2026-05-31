@@ -17,7 +17,7 @@ final readonly class HelpCommand implements Command
 Usage:
   otr-report slowest [--above-mean] [--limit <n>] [--sort <metric>] <file>
   otr-report trends <directory> <output>
-  otr-report results <file> <output>
+  otr-report results [--testdox] <file> <output>
 
 Arguments for "otr-report slowest":
   <file>          OTR XML logfile of a single test-suite run
@@ -34,6 +34,9 @@ Arguments for "otr-report trends":
 Arguments for "otr-report results":
   <file>         OTR XML logfile of a single test-suite run
   <output>       HTML file the test results report is written to
+
+Options for "otr-report results":
+  --testdox      Use TestDox names instead of class and method names
 
 EOT;
 

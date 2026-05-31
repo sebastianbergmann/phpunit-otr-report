@@ -34,6 +34,7 @@ final class ArgumentsBuilderTest extends TestCase
         $this->assertFalse($arguments->aboveMean());
         $this->assertSame(10, $arguments->limit());
         $this->assertSame(Metric::Time, $arguments->sort());
+        $this->assertFalse($arguments->testdox());
         $this->assertFalse($arguments->version());
     }
 
@@ -109,6 +110,24 @@ final class ArgumentsBuilderTest extends TestCase
 
         $this->assertSame('trends', $arguments->command());
         $this->assertSame(['logfiles', 'report.html'], $arguments->arguments());
+    }
+
+    public function testParsesTheResultsCommand(): void
+    {
+        $arguments = (new ArgumentsBuilder)->build(['otr-report', 'results', 'logfile.xml', 'report.html']);
+
+        $this->assertSame('results', $arguments->command());
+        $this->assertSame(['logfile.xml', 'report.html'], $arguments->arguments());
+        $this->assertFalse($arguments->testdox());
+    }
+
+    public function testParsesTheTestdoxOption(): void
+    {
+        $arguments = (new ArgumentsBuilder)->build(['otr-report', 'results', '--testdox', 'logfile.xml', 'report.html']);
+
+        $this->assertSame('results', $arguments->command());
+        $this->assertSame(['logfile.xml', 'report.html'], $arguments->arguments());
+        $this->assertTrue($arguments->testdox());
     }
 
     public function testParsesTheHelpOption(): void

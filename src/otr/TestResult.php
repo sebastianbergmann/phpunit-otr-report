@@ -25,6 +25,16 @@ final readonly class TestResult
      * @var non-empty-string
      */
     private string $displayName;
+
+    /**
+     * @var ?non-empty-string
+     */
+    private ?string $prettifiedClassName;
+
+    /**
+     * @var ?non-empty-string
+     */
+    private ?string $prettifiedMethodName;
     private TestStatus $status;
     private string $reason;
     private ?Throwable $throwable;
@@ -36,21 +46,25 @@ final readonly class TestResult
     private ?float $time;
 
     /**
-     * @param non-empty-string $className
-     * @param non-empty-string $methodName
-     * @param non-empty-string $displayName
-     * @param list<Issue>      $issues
+     * @param non-empty-string  $className
+     * @param non-empty-string  $methodName
+     * @param non-empty-string  $displayName
+     * @param list<Issue>       $issues
+     * @param ?non-empty-string $prettifiedClassName
+     * @param ?non-empty-string $prettifiedMethodName
      */
-    public function __construct(string $className, string $methodName, string $displayName, TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time)
+    public function __construct(string $className, string $methodName, string $displayName, TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time, ?string $prettifiedClassName = null, ?string $prettifiedMethodName = null)
     {
-        $this->className   = $className;
-        $this->methodName  = $methodName;
-        $this->displayName = $displayName;
-        $this->status      = $status;
-        $this->reason      = $reason;
-        $this->throwable   = $throwable;
-        $this->issues      = $issues;
-        $this->time        = $time;
+        $this->className            = $className;
+        $this->methodName           = $methodName;
+        $this->displayName          = $displayName;
+        $this->prettifiedClassName  = $prettifiedClassName;
+        $this->prettifiedMethodName = $prettifiedMethodName;
+        $this->status               = $status;
+        $this->reason               = $reason;
+        $this->throwable            = $throwable;
+        $this->issues               = $issues;
+        $this->time                 = $time;
     }
 
     /**
@@ -75,6 +89,22 @@ final readonly class TestResult
     public function displayName(): string
     {
         return $this->displayName;
+    }
+
+    /**
+     * @return ?non-empty-string
+     */
+    public function prettifiedClassName(): ?string
+    {
+        return $this->prettifiedClassName;
+    }
+
+    /**
+     * @return ?non-empty-string
+     */
+    public function prettifiedMethodName(): ?string
+    {
+        return $this->prettifiedMethodName;
     }
 
     /**

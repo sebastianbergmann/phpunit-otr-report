@@ -49,7 +49,7 @@ final readonly class ResultsCommand implements Command
             return 1;
         }
 
-        file_put_contents($output, (new HtmlTestReport)->render($run));
+        file_put_contents($output, (new HtmlTestReport)->render($run, $arguments->testdox()));
 
         printf(
             'Wrote test results report to %s' . PHP_EOL,

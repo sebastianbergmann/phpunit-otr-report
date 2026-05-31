@@ -41,6 +41,7 @@ final readonly class ArgumentsBuilder
         ],
         'results' => [
             'longOptions' => [
+                'testdox',
             ],
             'arguments' => [
                 'file',
@@ -96,6 +97,7 @@ final readonly class ArgumentsBuilder
         $aboveMean = false;
         $limit     = 10;
         $sort      = Metric::Time;
+        $testdox   = false;
         $version   = false;
 
         foreach ($options[0] as $option) {
@@ -121,6 +123,11 @@ final readonly class ArgumentsBuilder
 
                     break;
 
+                case '--testdox':
+                    $testdox = true;
+
+                    break;
+
                 case 'v':
                 case '--version':
                     $version = true;
@@ -136,6 +143,7 @@ final readonly class ArgumentsBuilder
             $aboveMean,
             $limit,
             $sort,
+            $testdox,
             $version,
         );
     }
