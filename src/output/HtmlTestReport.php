@@ -10,6 +10,7 @@
 namespace PHPUnit\OtrReport;
 
 use const ENT_QUOTES;
+use function array_map;
 use function array_pop;
 use function array_slice;
 use function array_values;
@@ -18,6 +19,7 @@ use function count;
 use function explode;
 use function htmlspecialchars;
 use function implode;
+use function in_array;
 use function sprintf;
 use function strtolower;
 use function usort;
@@ -218,10 +220,6 @@ final readonly class HtmlTestReport
      */
     private function issuePills(array $issues): string
     {
-        if ($issues === []) {
-            return '';
-        }
-
         $output = '';
 
         foreach ($issues as $issue) {
@@ -312,24 +310,24 @@ final readonly class HtmlTestReport
      */
     private function namespaceStatuses(array $classes): array
     {
-        /** @var array<string, TestStatus> $statuses */
-        $statuses = [];
-        $rank     = $this->statusRank();
+        /** @var array<string, list<TestStatus>> $bucket */
+        $bucket = [];
 
         foreach ($classes as $class) {
             $segments = explode('\\', $class['className']);
-            array_pop($segments);
-
-            $worst  = $this->worstStatusForClass($class);
-            $prefix = '';
+            $worst    = $this->worstStatusForClass($class);
+            $prefix   = '';
 
             foreach ($segments as $segment) {
-                $prefix = $prefix === '' ? $segment : $prefix . '\\' . $segment;
-
-                if (!isset($statuses[$prefix]) || $rank[$worst->value] > $rank[$statuses[$prefix]->value]) {
-                    $statuses[$prefix] = $worst;
-                }
+                $prefix            = $prefix === '' ? $segment : $prefix . '\\' . $segment;
+                $bucket[$prefix][] = $worst;
             }
+        }
+
+        $statuses = [];
+
+        foreach ($bucket as $prefix => $candidates) {
+            $statuses[$prefix] = $this->worstStatus($candidates);
         }
 
         return $statuses;
@@ -385,30 +383,24 @@ final readonly class HtmlTestReport
      */
     private function worstStatusForClass(array $class): TestStatus
     {
-        $worst = TestStatus::Successful;
-        $rank  = $this->statusRank();
-
-        foreach ($class['results'] as $entry) {
-            if ($rank[$entry['result']->status()->value] > $rank[$worst->value]) {
-                $worst = $entry['result']->status();
-            }
-        }
-
-        return $worst;
+        return $this->worstStatus(array_map(
+            static fn (array $entry): TestStatus => $entry['result']->status(),
+            $class['results'],
+        ));
     }
 
     /**
-     * @return array{SUCCESSFUL: int, FAILED: int, ERRORED: int, ABORTED: int, SKIPPED: int}
+     * @param list<TestStatus> $statuses
      */
-    private function statusRank(): array
+    private function worstStatus(array $statuses): TestStatus
     {
-        return [
-            TestStatus::Successful->value => 1,
-            TestStatus::Skipped->value    => 2,
-            TestStatus::Aborted->value    => 3,
-            TestStatus::Failed->value     => 4,
-            TestStatus::Errored->value    => 5,
-        ];
+        foreach ([TestStatus::Errored, TestStatus::Failed, TestStatus::Aborted, TestStatus::Skipped] as $severity) {
+            if (in_array($severity, $statuses, true)) {
+                return $severity;
+            }
+        }
+
+        return TestStatus::Successful;
     }
 
     /**

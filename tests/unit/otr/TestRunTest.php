@@ -117,6 +117,7 @@ final class TestRunTest extends TestCase
         $successful = new TestResult('Vendor\GroupTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.1);
         $failed     = new TestResult('Vendor\GroupTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.2);
         $risky      = new TestResult('Vendor\GroupTest', 'c', 'c', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.05);
+        $deprecated = new TestResult('Vendor\GroupTest', 'd', 'd', TestStatus::Successful, '', null, [new Issue('deprecation', 'foo'), new Issue('deprecation', 'bar')], 0.05);
 
         $run = new TestRun(
             '/path/to/logfile.xml',
@@ -125,16 +126,16 @@ final class TestRunTest extends TestCase
             [],
             [],
             [],
-            [$successful, $failed, $risky],
+            [$successful, $failed, $risky, $deprecated],
         );
 
-        $this->assertSame([$successful, $failed, $risky], $run->results());
-        $this->assertSame(3, $run->resultCount());
+        $this->assertSame([$successful, $failed, $risky, $deprecated], $run->results());
+        $this->assertSame(4, $run->resultCount());
         $this->assertTrue($run->hasResults());
-        $this->assertSame(1, $run->issueCount());
+        $this->assertSame(3, $run->issueCount());
         $this->assertSame(
             [
-                'SUCCESSFUL' => 2,
+                'SUCCESSFUL' => 3,
                 'FAILED'     => 1,
                 'ERRORED'    => 0,
                 'ABORTED'    => 0,

@@ -9,10 +9,8 @@
  */
 namespace PHPUnit\OtrReport;
 
-use function array_values;
 use function assert;
 use function glob;
-use function ksort;
 use function libxml_clear_errors;
 use function libxml_get_errors;
 use function libxml_use_internal_errors;
@@ -67,9 +65,8 @@ final readonly class OtrReader
             }
         }
 
-        /** @var array<string, array{className: non-empty-string, methodName: non-empty-string, displayName: non-empty-string, prettifiedClassName: ?non-empty-string, prettifiedMethodName: ?non-empty-string, order: int}> $tests */
+        /** @var array<string, array{className: non-empty-string, methodName: non-empty-string, displayName: non-empty-string, prettifiedClassName: ?non-empty-string, prettifiedMethodName: ?non-empty-string}> $tests */
         $tests = [];
-        $order = 0;
 
         $startedNodes = $xpath->query('//e:started[.//phpunit:methodSource]');
 
@@ -111,7 +108,6 @@ final readonly class OtrReader
                 'displayName'          => $displayName,
                 'prettifiedClassName'  => $prettifiedClassName,
                 'prettifiedMethodName' => $prettifiedMethodName,
-                'order'                => $order++,
             ];
         }
 
@@ -149,9 +145,7 @@ final readonly class OtrReader
         $cpuTimes   = [];
         $peakMemory = [];
         $totalTime  = 0.0;
-
-        /** @var array<string, array{status: TestStatus, reason: string, throwable: ?Throwable, time: ?float}> $finishedById */
-        $finishedById = [];
+        $results    = [];
 
         $finishedNodes = $xpath->query('//e:finished');
 
@@ -212,38 +206,21 @@ final readonly class OtrReader
                 }
             }
 
-            $finishedById[$id] = [
-                'status'    => $status,
-                'reason'    => $reason,
-                'throwable' => $throwable,
-                'time'      => $id === '1' ? null : $time,
-            ];
-        }
-
-        $results = [];
-
-        foreach ($tests as $id => $test) {
-            if (!isset($finishedById[$id])) {
-                continue;
-            }
-
-            $results[$test['order']] = new TestResult(
-                $test['className'],
-                $test['methodName'],
-                $test['displayName'],
-                $finishedById[$id]['status'],
-                $finishedById[$id]['reason'],
-                $finishedById[$id]['throwable'],
+            $results[] = new TestResult(
+                $tests[$id]['className'],
+                $tests[$id]['methodName'],
+                $tests[$id]['displayName'],
+                $status,
+                $reason,
+                $throwable,
                 $issuesById[$id] ?? [],
-                $finishedById[$id]['time'],
-                $test['prettifiedClassName'],
-                $test['prettifiedMethodName'],
+                $time,
+                $tests[$id]['prettifiedClassName'],
+                $tests[$id]['prettifiedMethodName'],
             );
         }
 
-        ksort($results);
-
-        return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory, array_values($results));
+        return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory, $results);
     }
 
     /**

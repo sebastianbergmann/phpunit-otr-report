@@ -9,8 +9,13 @@
  */
 namespace PHPUnit\OtrReport;
 
+use function strpos;
+use function strtolower;
+use function substr;
+use function substr_count;
 use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Small;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -26,6 +31,20 @@ use PHPUnit\Framework\TestCase;
 #[Small]
 final class HtmlTestReportTest extends TestCase
 {
+    /**
+     * @return iterable<string, array{0: array{0: TestStatus, 1: TestStatus}, 1: TestStatus}>
+     */
+    public static function worstStatusPairs(): iterable
+    {
+        yield 'successful vs skipped' => [[TestStatus::Successful, TestStatus::Skipped], TestStatus::Skipped];
+
+        yield 'skipped vs aborted' => [[TestStatus::Skipped, TestStatus::Aborted], TestStatus::Aborted];
+
+        yield 'aborted vs failed' => [[TestStatus::Aborted, TestStatus::Failed], TestStatus::Failed];
+
+        yield 'failed vs errored' => [[TestStatus::Failed, TestStatus::Errored], TestStatus::Errored];
+    }
+
     public function testRendersATestResultsReportForASingleRun(): void
     {
         $run = $this->createTestRun(
@@ -40,15 +59,15 @@ final class HtmlTestReportTest extends TestCase
         $html = (new HtmlTestReport)->render($run);
 
         $this->assertStringContainsString('<title>Test Results</title>', $html);
+        $this->assertStringContainsString('<strong>/path/to/run.xml</strong>', $html);
         $this->assertStringContainsString('Vendor\ExampleTest', $html);
         $this->assertStringContainsString('Vendor\OtherTest', $html);
         $this->assertStringContainsString('test_ok', $html);
         $this->assertStringContainsString('test_fail', $html);
         $this->assertStringContainsString('test_error', $html);
-        $this->assertStringContainsString('PHPUnit\Framework\ExpectationFailedException', $html);
-        $this->assertStringContainsString('RuntimeException', $html);
-        $this->assertStringContainsString('pill issue', $html);
-        $this->assertStringContainsString('no assertions', $html);
+        $this->assertStringContainsString('<div class="details-body"><div class="label">Reason</div><pre>Failed asserting that false is true.</pre><div class="label">Throwable (PHPUnit\Framework\ExpectationFailedException)</div><pre>Failed asserting that false is true.</pre>', $html);
+        $this->assertStringContainsString('<div class="details-body"><div class="label">Reason</div><pre>boom</pre><div class="label">Throwable (RuntimeException)</div><pre>boom</pre>', $html);
+        $this->assertStringContainsString('<li><span class="pill issue">risky</span><span class="msg">no assertions</span></li>', $html);
     }
 
     public function testShowsAStatusCountForEveryOtrStatus(): void
@@ -78,21 +97,76 @@ final class HtmlTestReportTest extends TestCase
             [
                 new TestResult('Vendor\ExampleTest', 'test_ok', 'test_ok', TestStatus::Successful, '', null, [], 0.0),
                 new TestResult('Vendor\ExampleTest', 'test_fail', 'test_fail', TestStatus::Failed, 'reason', null, [], 0.0),
+                new TestResult('Vendor\ExampleTest', 'test_risky', 'test_risky', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.0),
             ],
         );
 
         $html = (new HtmlTestReport)->render($run);
 
         $this->assertMatchesRegularExpression('/<details class="result " id="test-\d+" open>\s*<summary><span class="pill failed">/', $html);
-        $this->assertMatchesRegularExpression('/<details class="result no-details" id="test-\d+" >\s*<summary><span class="pill successful">/', $html);
+        $this->assertMatchesRegularExpression('/<details class="result no-details" id="test-\d+" >\s*<summary><span class="pill successful">[^<]*<\/span><span class="method">test_ok/', $html);
+        $this->assertMatchesRegularExpression('/<details class="result " id="test-\d+" >\s*<summary><span class="pill successful">[^<]*<\/span><span class="method">test_risky/', $html);
+    }
+
+    public function testRendersClassIdAsAnchorTarget(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('Vendor\ExampleTest', 't', 't', TestStatus::Successful, '', null, [], 0.0),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertMatchesRegularExpression('/<details class="class" id="class-\d+" open>/', $html);
+    }
+
+    public function testRendersClassTotalTimeAsTheSumOfItsTestTimes(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('Vendor\ExampleTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.001),
+                new TestResult('Vendor\ExampleTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.002),
+                new TestResult('Vendor\ExampleTest', 'c', 'c', TestStatus::Skipped, '', null, [], null),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertStringContainsString('<span class="time">0.003000 s</span>', $html);
+    }
+
+    public function testRendersMultipleIssuePillsAsSummaryBadges(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult(
+                    'Vendor\ExampleTest',
+                    'test_many_issues',
+                    'test_many_issues',
+                    TestStatus::Successful,
+                    '',
+                    null,
+                    [new Issue('risky', 'r'), new Issue('deprecation', 'd')],
+                    0.0,
+                ),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertStringContainsString(
+            '<span class="pill issue">risky</span><span class="pill issue">deprecation</span>',
+            $html,
+        );
     }
 
     public function testRendersASidebarTreeWithNamespacesClassesAndMethods(): void
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
                 new TestResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0),
+                new TestResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
                 new TestResult('OtherTest', 'c', 'c', TestStatus::Skipped, '', null, [], 0.0),
             ],
         );
@@ -108,14 +182,65 @@ final class HtmlTestReportTest extends TestCase
         $this->assertStringContainsString('class="seg">OtherTest</span>', $html);
         $this->assertMatchesRegularExpression('/<a href="#class-\d+" class="cls-link">/', $html);
         $this->assertMatchesRegularExpression('/<li class="m"><a href="#test-\d+">/', $html);
+
+        $sidebar = $this->sidebarMarkup($html);
+
+        $this->assertSame(1, substr_count($sidebar, 'class="seg">Vendor</span>'));
+        $this->assertSame(1, substr_count($sidebar, 'class="seg">Pkg</span>'));
+
+        $alpha = strpos($sidebar, 'AlphaTest');
+        $beta  = strpos($sidebar, 'BetaTest');
+        $other = strpos($sidebar, 'OtherTest');
+
+        $this->assertNotFalse($alpha);
+        $this->assertNotFalse($beta);
+        $this->assertNotFalse($other);
+        $this->assertLessThan($beta, $alpha);
+        $this->assertLessThan($alpha, $other);
+    }
+
+    public function testClosesEveryOpenNamespaceInTheSidebar(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('A\B\C\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestResult('OtherTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.0),
+                new TestResult('Z\Y\X\OmegaTest', 'c', 'c', TestStatus::Successful, '', null, [], 0.0),
+            ],
+        );
+
+        $html    = (new HtmlTestReport)->render($run);
+        $sidebar = $this->sidebarMarkup($html);
+
+        $this->assertSame(
+            substr_count($sidebar, '<details open><summary>'),
+            substr_count($sidebar, '</ul></details></li>'),
+        );
+    }
+
+    public function testRendersEveryMethodOfAClassInTheSidebar(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('Vendor\ExampleTest', 'first', 'first', TestStatus::Successful, '', null, [], 0.0),
+                new TestResult('Vendor\ExampleTest', 'second', 'second', TestStatus::Failed, '', null, [], 0.0),
+                new TestResult('Vendor\ExampleTest', 'third', 'third', TestStatus::Skipped, '', null, [], 0.0),
+            ],
+        );
+
+        $sidebar = $this->sidebarMarkup((new HtmlTestReport)->render($run));
+
+        $this->assertStringContainsString('class="seg">first</span>', $sidebar);
+        $this->assertStringContainsString('class="seg">second</span>', $sidebar);
+        $this->assertStringContainsString('class="seg">third</span>', $sidebar);
     }
 
     public function testPropagatesTheWorstStatusUpTheSidebarTree(): void
     {
         $run = $this->createTestRun(
             [
-                new TestResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
-                new TestResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Errored, 'boom', null, [], 0.0),
+                new TestResult('Vendor\PkgA\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestResult('Vendor\PkgB\BetaTest', 'b', 'b', TestStatus::Errored, 'boom', null, [], 0.0),
             ],
         );
 
@@ -126,7 +251,32 @@ final class HtmlTestReportTest extends TestCase
             $html,
         );
         $this->assertMatchesRegularExpression(
-            '/<summary><span class="marker"><\/span><span class="dot errored"><\/span><span class="seg">Pkg<\/span>/',
+            '/<summary><span class="marker"><\/span><span class="dot successful"><\/span><span class="seg">PkgA<\/span>/',
+            $html,
+        );
+        $this->assertMatchesRegularExpression(
+            '/<summary><span class="marker"><\/span><span class="dot errored"><\/span><span class="seg">PkgB<\/span>/',
+            $html,
+        );
+    }
+
+    /**
+     * @param array{0: TestStatus, 1: TestStatus} $statuses
+     */
+    #[DataProvider('worstStatusPairs')]
+    public function testPicksTheWorseStatusBetweenTwoTestsInAClass(array $statuses, TestStatus $expected): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('Vendor\ExampleTest', 'a', 'a', $statuses[0], '', null, [], 0.0),
+                new TestResult('Vendor\ExampleTest', 'b', 'b', $statuses[1], '', null, [], 0.0),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertMatchesRegularExpression(
+            '/<span class="class-name">Vendor\\\\ExampleTest<\/span><span class="pill ' . strtolower($expected->value) . '">' . $expected->value . '<\/span>/',
             $html,
         );
     }
@@ -162,6 +312,23 @@ final class HtmlTestReportTest extends TestCase
 
         $this->assertStringContainsString('Vendor\ExampleTest', $html);
         $this->assertStringContainsString('test_ok', $html);
+    }
+
+    public function testRendersAFlatSidebarTreeWithEveryClassWhenTestDoxIsEnabled(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0, 'Alpha behavior', 'a'),
+                new TestResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.0, 'Beta behavior', 'b'),
+            ],
+        );
+
+        $sidebar = $this->sidebarMarkup((new HtmlTestReport)->render($run, true));
+
+        $this->assertStringNotContainsString('class="seg">Vendor</span>', $sidebar);
+        $this->assertStringNotContainsString('class="seg">Pkg</span>', $sidebar);
+        $this->assertStringContainsString('Alpha behavior', $sidebar);
+        $this->assertStringContainsString('Beta behavior', $sidebar);
     }
 
     public function testEscapesUserSuppliedStrings(): void
@@ -204,5 +371,16 @@ final class HtmlTestReportTest extends TestCase
             [],
             $results,
         );
+    }
+
+    private function sidebarMarkup(string $html): string
+    {
+        $start = strpos($html, '<aside class="sidebar">');
+        $end   = strpos($html, '</aside>', $start === false ? 0 : $start);
+
+        $this->assertNotFalse($start);
+        $this->assertNotFalse($end);
+
+        return substr($html, $start, $end - $start);
     }
 }
