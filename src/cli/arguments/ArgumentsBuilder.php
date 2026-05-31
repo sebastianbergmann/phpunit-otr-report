@@ -39,6 +39,14 @@ final readonly class ArgumentsBuilder
                 'output',
             ],
         ],
+        'results' => [
+            'longOptions' => [
+            ],
+            'arguments' => [
+                'file',
+                'output',
+            ],
+        ],
     ];
 
     /**

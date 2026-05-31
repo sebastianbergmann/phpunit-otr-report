@@ -159,3 +159,27 @@ Wrote trends report to /tmp/trends.html
 ```
 
 The first argument is the directory containing the OTR XML logfiles, the second argument is the HTML file the trend report is written to.
+
+### Generating a test results report
+
+The `otr-report results` command reads the OTR XML logfile of a single test-suite run and generates a self-contained HTML report that visualises the outcome of every test.
+
+The generated HTML report includes:
+
+* A summary of the run (total tests, status counts, total runtime, and the number of reported issues)
+* A sticky sidebar with a collapsible tree that groups tests by namespace, then class, then method, with a status indicator at every level
+* One collapsible section per test class, headed by the worst status in the class
+* For each test: its status (`SUCCESSFUL`, `FAILED`, `ERRORED`, `ABORTED`, or `SKIPPED`), runtime, reason, throwable, and any reported issues such as `risky`
+
+Tests that did not pass are expanded by default; successful tests are collapsed. Clicking a class or method in the sidebar scrolls to its entry in the main pane.
+
+#### Example
+
+```
+$ otr-report results /tmp/otr/run.xml /tmp/results.html
+otr-report 1.0 by Sebastian Bergmann.
+
+Wrote test results report to /tmp/results.html
+```
+
+The first argument is the OTR XML logfile, the second argument is the HTML file the report is written to.

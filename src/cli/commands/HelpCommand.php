@@ -17,6 +17,7 @@ final readonly class HelpCommand implements Command
 Usage:
   otr-report slowest [--above-mean] [--limit <n>] [--sort <metric>] <file>
   otr-report trends <directory> <output>
+  otr-report results <file> <output>
 
 Arguments for "otr-report slowest":
   <file>          OTR XML logfile of a single test-suite run
@@ -27,8 +28,12 @@ Options for "otr-report slowest":
   --sort <metric> Metric to sort by: time, cpu, or memory (default: time)
 
 Arguments for "otr-report trends":
-  <directory>   Directory containing OTR XML logfiles
-  <output>      HTML file the trend report is written to
+  <directory>    Directory containing OTR XML logfiles
+  <output>       HTML file the trend report is written to
+
+Arguments for "otr-report results":
+  <file>         OTR XML logfile of a single test-suite run
+  <output>       HTML file the test results report is written to
 
 EOT;
 

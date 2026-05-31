@@ -9,8 +9,10 @@
  */
 namespace PHPUnit\OtrReport;
 
+use function array_values;
 use function assert;
 use function glob;
+use function ksort;
 use function libxml_clear_errors;
 use function libxml_get_errors;
 use function libxml_use_internal_errors;
@@ -33,6 +35,7 @@ final readonly class OtrReader
         $this->validate($dom, $file);
 
         $xpath = new DOMXPath($dom);
+        $xpath->registerNamespace('core', 'https://schemas.opentest4j.org/reporting/core/0.2.0');
         $xpath->registerNamespace('e', 'https://schemas.opentest4j.org/reporting/events/0.2.0');
         $xpath->registerNamespace('phpunit', 'https://schema.phpunit.de/otr/phpunit/0.2.0');
 
@@ -42,7 +45,9 @@ final readonly class OtrReader
 
         $startedAt = new DateTimeImmutable($rootStarted->getAttribute('time'));
 
+        /** @var array<string, array{className: non-empty-string, methodName: non-empty-string, displayName: non-empty-string, order: int}> $tests */
         $tests = [];
+        $order = 0;
 
         $startedNodes = $xpath->query('//e:started[.//phpunit:methodSource]');
 
@@ -56,13 +61,59 @@ final readonly class OtrReader
 
             assert($source instanceof DOMElement);
 
-            $tests[$id] = $source->getAttribute('className') . '::' . $started->getAttribute('name');
+            $className   = $source->getAttribute('className');
+            $methodName  = $source->getAttribute('methodName');
+            $displayName = $started->getAttribute('name');
+
+            assert($className !== '');
+            assert($methodName !== '');
+            assert($displayName !== '');
+
+            $tests[$id] = [
+                'className'   => $className,
+                'methodName'  => $methodName,
+                'displayName' => $displayName,
+                'order'       => $order++,
+            ];
+        }
+
+        /** @var array<string, list<Issue>> $issuesById */
+        $issuesById    = [];
+        $reportedNodes = $xpath->query('//e:reported');
+
+        assert($reportedNodes !== false);
+
+        foreach ($reportedNodes as $reported) {
+            assert($reported instanceof DOMElement);
+
+            $id = $reported->getAttribute('id');
+
+            if (!isset($tests[$id])) {
+                continue;
+            }
+
+            $issueNodes = $xpath->query('.//phpunit:issue', $reported);
+
+            assert($issueNodes !== false);
+
+            foreach ($issueNodes as $issue) {
+                assert($issue instanceof DOMElement);
+
+                $type = $issue->getAttribute('type');
+
+                assert($type !== '');
+
+                $issuesById[$id][] = new Issue($type, $issue->getAttribute('message'));
+            }
         }
 
         $times      = [];
         $cpuTimes   = [];
         $peakMemory = [];
         $totalTime  = 0.0;
+
+        /** @var array<string, array{status: TestStatus, reason: string, throwable: ?Throwable, time: ?float}> $finishedById */
+        $finishedById = [];
 
         $finishedNodes = $xpath->query('//e:finished');
 
@@ -74,22 +125,85 @@ final readonly class OtrReader
             $id    = $finished->getAttribute('id');
             $usage = $this->queryFirst($xpath, './/phpunit:resourceUsage', $finished);
 
-            if (!($usage instanceof DOMElement)) {
+            $time = null;
+
+            if ($usage instanceof DOMElement) {
+                $time = (float) $usage->getAttribute('time');
+
+                if ($id === '1') {
+                    $totalTime = $time;
+                } elseif (isset($tests[$id])) {
+                    $name              = $tests[$id]['className'] . '::' . $tests[$id]['displayName'];
+                    $times[$name]      = $time;
+                    $cpuTimes[$name]   = (float) $usage->getAttribute('cpuTime');
+                    $peakMemory[$name] = (float) $usage->getAttribute('peakMemoryUsage');
+                }
+            }
+
+            if (!isset($tests[$id])) {
                 continue;
             }
 
-            if ($id === '1') {
-                $totalTime = (float) $usage->getAttribute('time');
-            } elseif (isset($tests[$id])) {
-                $name = $tests[$id];
+            $result = $this->queryFirst($xpath, './core:result', $finished);
 
-                $times[$name]      = (float) $usage->getAttribute('time');
-                $cpuTimes[$name]   = (float) $usage->getAttribute('cpuTime');
-                $peakMemory[$name] = (float) $usage->getAttribute('peakMemoryUsage');
+            if (!($result instanceof DOMElement)) {
+                continue;
             }
+
+            $status = TestStatus::tryFrom($result->getAttribute('status'));
+
+            if ($status === null) {
+                continue;
+            }
+
+            $reasonNode = $this->queryFirst($xpath, './core:reason', $result);
+            $reason     = $reasonNode instanceof DOMElement ? $reasonNode->textContent : '';
+
+            $throwable = null;
+            $throwNode = $this->queryFirst($xpath, './phpunit:throwable', $result);
+
+            if ($throwNode instanceof DOMElement) {
+                $type = $throwNode->getAttribute('type');
+
+                if ($type !== '') {
+                    $throwable = new Throwable(
+                        $type,
+                        $throwNode->getAttribute('assertionError') === 'true',
+                        $throwNode->textContent,
+                    );
+                }
+            }
+
+            $finishedById[$id] = [
+                'status'    => $status,
+                'reason'    => $reason,
+                'throwable' => $throwable,
+                'time'      => $id === '1' ? null : $time,
+            ];
         }
 
-        return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory);
+        $results = [];
+
+        foreach ($tests as $id => $test) {
+            if (!isset($finishedById[$id])) {
+                continue;
+            }
+
+            $results[$test['order']] = new TestResult(
+                $test['className'],
+                $test['methodName'],
+                $test['displayName'],
+                $finishedById[$id]['status'],
+                $finishedById[$id]['reason'],
+                $finishedById[$id]['throwable'],
+                $issuesById[$id] ?? [],
+                $finishedById[$id]['time'],
+            );
+        }
+
+        ksort($results);
+
+        return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory, array_values($results));
     }
 
     /**

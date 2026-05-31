@@ -27,10 +27,14 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(OtrReader::class)]
+#[UsesClass(Issue::class)]
 #[UsesClass(Metric::class)]
 #[UsesClass(SchemaValidationException::class)]
+#[UsesClass(TestResult::class)]
 #[UsesClass(TestRun::class)]
 #[UsesClass(TestRunCollection::class)]
+#[UsesClass(TestStatus::class)]
+#[UsesClass(Throwable::class)]
 #[TestDox('OtrReader')]
 #[Small]
 final class OtrReaderTest extends TestCase
@@ -154,6 +158,67 @@ final class OtrReaderTest extends TestCase
         $this->assertEquals(new DateTimeImmutable('2026-02-02T10:00:00.000000Z'), $runs[1]->startedAt());
     }
 
+    public function testCollectsTestResultsWithStatusReasonThrowableAndIssues(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('status.xml'));
+
+        $this->assertSame(13, $run->resultCount());
+        $this->assertTrue($run->hasResults());
+        $this->assertSame(
+            [
+                'SUCCESSFUL' => 4,
+                'FAILED'     => 2,
+                'ERRORED'    => 2,
+                'ABORTED'    => 2,
+                'SKIPPED'    => 3,
+            ],
+            $run->statusCounts(),
+        );
+        $this->assertSame(2, $run->issueCount());
+
+        $error = $this->findByMethod($run, 'testError');
+        $this->assertSame(TestStatus::Errored, $error->status());
+
+        $errorThrowable = $error->throwable();
+
+        if ($errorThrowable === null) {
+            $this->fail('Expected testError to carry a throwable');
+        }
+
+        $this->assertSame('RuntimeException', $errorThrowable->type());
+        $this->assertFalse($errorThrowable->assertionError());
+
+        $failure = $this->findByMethod($run, 'testFailure');
+        $this->assertSame(TestStatus::Failed, $failure->status());
+        $this->assertSame('Failed asserting that false is true.', $failure->reason());
+
+        $failureThrowable = $failure->throwable();
+
+        if ($failureThrowable === null) {
+            $this->fail('Expected testFailure to carry a throwable');
+        }
+
+        $this->assertTrue($failureThrowable->assertionError());
+
+        $this->assertSame(TestStatus::Aborted, $this->findByMethod($run, 'testIncomplete')->status());
+        $this->assertSame(TestStatus::Skipped, $this->findByMethod($run, 'testSkipped')->status());
+
+        $risky = $this->findByMethod($run, 'testRisky');
+        $this->assertSame(TestStatus::Successful, $risky->status());
+        $issues = $risky->issues();
+        $this->assertCount(1, $issues);
+
+        if (!isset($issues[0])) {
+            $this->fail('Expected at least one issue on testRisky');
+        }
+
+        $this->assertSame('risky', $issues[0]->type());
+
+        $skippedByMetadata = $this->findByMethod($run, 'testSkippedByMetadata');
+        $this->assertNull($skippedByMetadata->time());
+        $this->assertSame('PHP > 9000.0.0 is required.', $skippedByMetadata->reason());
+    }
+
     public function testReadsADirectoryWithoutLogfiles(): void
     {
         $directory = sys_get_temp_dir() . '/otr-report-' . uniqid();
@@ -168,6 +233,17 @@ final class OtrReaderTest extends TestCase
         } finally {
             rmdir($directory);
         }
+    }
+
+    private function findByMethod(TestRun $run, string $methodName): TestResult
+    {
+        foreach ($run->results() as $result) {
+            if ($result->methodName() === $methodName) {
+                return $result;
+            }
+        }
+
+        $this->fail('No result found for ' . $methodName);
     }
 
     private function fixture(string $name): string

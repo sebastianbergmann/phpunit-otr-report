@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<e:events xmlns="https://schemas.opentest4j.org/reporting/core/0.2.0" xmlns:e="https://schemas.opentest4j.org/reporting/events/0.2.0" xmlns:php="https://schema.phpunit.de/otr/php/0.1.0" xmlns:phpunit="https://schema.phpunit.de/otr/phpunit/0.2.0">
+ <infrastructure>
+  <hostName>macbook.local</hostName>
+  <userName>sb</userName>
+  <operatingSystem>Darwin macbook.local 25.5.0 Darwin Kernel Version 25.5.0: Mon Apr 27 20:41:19 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T8122 arm64</operatingSystem>
+  <php:phpVersion>8.5.6</php:phpVersion>
+  <php:threadModel>NTS</php:threadModel>
+ </infrastructure>
+ <e:started id="1" name="PHPUnit\TestFixture\Basic\StatusTest" time="2026-05-31T07:24:32.505365Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="23"/>
+   </fileSource>
+   <phpunit:classSource className="PHPUnit\TestFixture\Basic\StatusTest"/>
+  </sources>
+ </e:started>
+ <e:started id="2" parentId="1" name="testError" time="2026-05-31T07:24:32.505488Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="37"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testError"/>
+  </sources>
+ </e:started>
+ <e:finished id="2" time="2026-05-31T07:24:32.506236Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000750958" memoryUsage="17818752" peakMemoryUsage="17913992" userCpuTime="0.000439000" systemCpuTime="0.000311000" cpuTime="0.000750000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="ERRORED">
+   <reason></reason>
+   <phpunit:throwable type="RuntimeException" assertionError="false"><![CDATA[RuntimeException: 
+
+/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:39
+]]></phpunit:throwable>
+  </result>
+ </e:finished>
+ <e:started id="3" parentId="1" name="testErrorWithMessage" time="2026-05-31T07:24:32.506303Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="66"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testErrorWithMessage"/>
+  </sources>
+ </e:started>
+ <e:finished id="3" time="2026-05-31T07:24:32.506508Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000206000" memoryUsage="17819200" peakMemoryUsage="17855376" userCpuTime="0.000050000" systemCpuTime="0.000156000" cpuTime="0.000206000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="ERRORED">
+   <reason>error with custom message</reason>
+   <phpunit:throwable type="RuntimeException" assertionError="false"><![CDATA[RuntimeException: error with custom message
+
+/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:68
+]]></phpunit:throwable>
+  </result>
+ </e:finished>
+ <e:started id="4" parentId="1" name="testFailure" time="2026-05-31T07:24:32.506555Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="32"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testFailure"/>
+  </sources>
+ </e:started>
+ <e:finished id="4" time="2026-05-31T07:24:32.506799Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000245000" memoryUsage="17827720" peakMemoryUsage="17863680" userCpuTime="0.000070000" systemCpuTime="0.000175000" cpuTime="0.000245000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="FAILED">
+   <reason>Failed asserting that false is true.</reason>
+   <phpunit:throwable type="PHPUnit\Framework\ExpectationFailedException" assertionError="true"><![CDATA[Failed asserting that false is true.
+
+/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:34
+]]></phpunit:throwable>
+  </result>
+ </e:finished>
+ <e:started id="5" parentId="1" name="testFailureWithMessage" time="2026-05-31T07:24:32.506847Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="61"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testFailureWithMessage"/>
+  </sources>
+ </e:started>
+ <e:finished id="5" time="2026-05-31T07:24:32.507072Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000226042" memoryUsage="17828296" peakMemoryUsage="17864440" userCpuTime="0.000050000" systemCpuTime="0.000176000" cpuTime="0.000226000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="FAILED">
+   <reason>failure with custom message
+Failed asserting that false is true.</reason>
+   <phpunit:throwable type="PHPUnit\Framework\ExpectationFailedException" assertionError="true"><![CDATA[failure with custom message
+Failed asserting that false is true.
+
+/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:63
+]]></phpunit:throwable>
+  </result>
+ </e:finished>
+ <e:started id="6" parentId="1" name="testSuccess" time="2026-05-31T07:24:32.507115Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="25"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSuccess"/>
+  </sources>
+ </e:started>
+ <e:finished id="6" time="2026-05-31T07:24:32.507378Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000264041" memoryUsage="17831768" peakMemoryUsage="17886800" userCpuTime="0.000138000" systemCpuTime="0.000126000" cpuTime="0.000264000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="7" parentId="1" name="testIncomplete" time="2026-05-31T07:24:32.507421Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="42"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testIncomplete"/>
+  </sources>
+ </e:started>
+ <e:finished id="7" time="2026-05-31T07:24:32.507618Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000197542" memoryUsage="17840928" peakMemoryUsage="17876968" userCpuTime="0.000048000" systemCpuTime="0.000150000" cpuTime="0.000198000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="ABORTED">
+   <reason></reason>
+   <phpunit:throwable type="PHPUnit\Framework\IncompleteTestError" assertionError="false"><![CDATA[
+/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:44
+]]></phpunit:throwable>
+  </result>
+ </e:finished>
+ <e:started id="8" parentId="1" name="testSkipped" time="2026-05-31T07:24:32.507662Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="47"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSkipped"/>
+  </sources>
+ </e:started>
+ <e:finished id="8" time="2026-05-31T07:24:32.507772Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000110792" memoryUsage="17841272" peakMemoryUsage="17877552" userCpuTime="0.000033000" systemCpuTime="0.000078000" cpuTime="0.000111000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="SKIPPED">
+   <reason></reason>
+  </result>
+ </e:finished>
+ <e:started id="9" parentId="1" name="testRisky" time="2026-05-31T07:24:32.507813Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="52"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testRisky"/>
+  </sources>
+ </e:started>
+ <e:reported id="9" time="2026-05-31T07:24:32.507921Z">
+  <attachments>
+   <phpunit:issue type="risky" message="This test did not perform any assertions"/>
+  </attachments>
+ </e:reported>
+ <e:finished id="9" time="2026-05-31T07:24:32.507933Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000120500" memoryUsage="17833144" peakMemoryUsage="17868440" userCpuTime="0.000042000" systemCpuTime="0.000079000" cpuTime="0.000121000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="10" parentId="1" name="testSuccessWithMessage" time="2026-05-31T07:24:32.507977Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="56"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSuccessWithMessage"/>
+  </sources>
+ </e:started>
+ <e:finished id="10" time="2026-05-31T07:24:32.508090Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000113417" memoryUsage="17833048" peakMemoryUsage="17870104" userCpuTime="0.000030000" systemCpuTime="0.000084000" cpuTime="0.000114000"/>
+   <phpunit:assertions count="1"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:started id="11" parentId="1" name="testIncompleteWithMessage" time="2026-05-31T07:24:32.508133Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="71"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testIncompleteWithMessage"/>
+  </sources>
+ </e:started>
+ <e:finished id="11" time="2026-05-31T07:24:32.508324Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000191292" memoryUsage="17842256" peakMemoryUsage="17878456" userCpuTime="0.000043000" systemCpuTime="0.000148000" cpuTime="0.000191000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="ABORTED">
+   <reason>incomplete with custom message</reason>
+   <phpunit:throwable type="PHPUnit\Framework\IncompleteTestError" assertionError="false"><![CDATA[incomplete with custom message
+
+/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php:73
+]]></phpunit:throwable>
+  </result>
+ </e:finished>
+ <e:started id="12" parentId="1" name="testSkippedByMetadata" time="2026-05-31T07:24:32.508370Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="77"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSkippedByMetadata"/>
+  </sources>
+ </e:started>
+ <e:finished id="12" time="2026-05-31T07:24:32.508375Z">
+  <result status="SKIPPED">
+   <reason>PHP &gt; 9000.0.0 is required.</reason>
+  </result>
+ </e:finished>
+ <e:started id="13" parentId="1" name="testSkippedWithMessage" time="2026-05-31T07:24:32.508424Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="81"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testSkippedWithMessage"/>
+  </sources>
+ </e:started>
+ <e:finished id="13" time="2026-05-31T07:24:32.508532Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000109458" memoryUsage="17842544" peakMemoryUsage="17879040" userCpuTime="0.000030000" systemCpuTime="0.000080000" cpuTime="0.000110000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="SKIPPED">
+   <reason>skipped with custom message</reason>
+  </result>
+ </e:finished>
+ <e:started id="14" parentId="1" name="testRiskyWithMessage" time="2026-05-31T07:24:32.508573Z">
+  <sources>
+   <fileSource path="/Users/sb/Work/OpenSource/phpunit/tests/end-to-end/_files/basic/unit/StatusTest.php">
+    <filePosition line="86"/>
+   </fileSource>
+   <phpunit:methodSource className="PHPUnit\TestFixture\Basic\StatusTest" methodName="testRiskyWithMessage"/>
+  </sources>
+ </e:started>
+ <e:reported id="14" time="2026-05-31T07:24:32.508679Z">
+  <attachments>
+   <phpunit:issue type="risky" message="This test did not perform any assertions"/>
+  </attachments>
+ </e:reported>
+ <e:finished id="14" time="2026-05-31T07:24:32.508688Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.000116042" memoryUsage="17833848" peakMemoryUsage="17869520" userCpuTime="0.000037000" systemCpuTime="0.000079000" cpuTime="0.000116000"/>
+   <phpunit:assertions count="0"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="1" time="2026-05-31T07:24:32.508708Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.003373583" memoryUsage="17831752" peakMemoryUsage="17869520" userCpuTime="0.001539000" systemCpuTime="0.001835000" cpuTime="0.003374000"/>
+  </attachments>
+ </e:finished>
+</e:events>

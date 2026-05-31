@@ -74,6 +74,7 @@ final class Application
         return match ($arguments->command()) {
             'slowest' => (new SlowestCommand)->run($arguments),
             'trends'  => (new TrendsCommand)->run($arguments),
+            'results' => (new ResultsCommand)->run($arguments),
             default   => (new HelpCommand)->run($arguments),
         };
     }

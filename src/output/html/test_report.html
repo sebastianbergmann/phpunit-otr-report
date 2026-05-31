@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Test Results</title>
+    <style>
+        :root {
+            --bg: #fff;
+            --fg: #2d3748;
+            --muted: #4a5568;
+            --soft: #718096;
+            --line: #e2e8f0;
+            --line-soft: #edf2f7;
+            --panel: #f7fafc;
+            --accent: #2b6cb0;
+            --successful: #2f855a;
+            --failed: #c05621;
+            --errored: #c53030;
+            --aborted: #b7791f;
+            --skipped: #4a5568;
+            --sidebar-w: 320px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            margin: 0;
+            color: var(--fg);
+            line-height: 1.4;
+            background: var(--bg)
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            min-height: 100vh
+        }
+
+        aside.sidebar {
+            position: sticky;
+            top: 0;
+            align-self: start;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid var(--line);
+            background: var(--panel);
+            padding: 1em .8em 2em
+        }
+
+        aside.sidebar h2 {
+            font-size: .75em;
+            color: var(--soft);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin: 0 0 .8em;
+            padding: 0 .4em
+        }
+
+        main {
+            padding: 2em 2em 4em;
+            max-width: 1100px;
+            min-width: 0
+        }
+
+        h1 {
+            font-weight: 600;
+            margin: 0 0 .5em
+        }
+
+        h2 {
+            font-weight: 600;
+            margin: 0 0 .8em;
+            font-size: 1.2em;
+            color: var(--muted)
+        }
+
+        .meta {
+            color: var(--soft);
+            font-size: .9em
+        }
+
+        .meta strong {
+            color: var(--fg);
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace
+        }
+
+        .summary {
+            display: flex;
+            gap: 1em;
+            margin: 1.2em 0 2em;
+            flex-wrap: wrap
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: .7em 1.2em;
+            min-width: 110px
+        }
+
+        .card .v {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--accent)
+        }
+
+        .card .l {
+            font-size: .8em;
+            color: var(--soft);
+            text-transform: uppercase;
+            letter-spacing: .04em
+        }
+
+        .card.errored .v {
+            color: var(--errored)
+        }
+
+        .card.failed .v {
+            color: var(--failed)
+        }
+
+        .card.aborted .v {
+            color: var(--aborted)
+        }
+
+        .card.skipped .v {
+            color: var(--skipped)
+        }
+
+        .card.successful .v {
+            color: var(--successful)
+        }
+
+        .card.issues .v {
+            color: var(--aborted)
+        }
+
+        section {
+            margin: 1.6em 0
+        }
+
+        details.class {
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            margin: 0 0 .8em;
+            background: #fff;
+            scroll-margin-top: 1em
+        }
+
+        details.class > summary {
+            cursor: pointer;
+            padding: .6em .9em;
+            font-weight: 600;
+            color: var(--fg);
+            background: var(--panel);
+            border-radius: 6px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: .6em
+        }
+
+        details.class[open] > summary {
+            border-bottom: 1px solid var(--line);
+            border-radius: 6px 6px 0 0
+        }
+
+        details.class > summary::-webkit-details-marker {
+            display: none
+        }
+
+        details.class > summary::before {
+            content: "\25B8";
+            display: inline-block;
+            width: 1em;
+            color: #a0aec0
+        }
+
+        details.class[open] > summary::before {
+            transform: rotate(90deg)
+        }
+
+        .class-name {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: .9em;
+            flex: 1
+        }
+
+        .pill {
+            display: inline-block;
+            padding: .1em .55em;
+            border-radius: 999px;
+            font-size: .72em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .04em
+        }
+
+        .pill.successful {
+            background: #c6f6d5;
+            color: #22543d
+        }
+
+        .pill.failed {
+            background: #feebc8;
+            color: #7b341e
+        }
+
+        .pill.errored {
+            background: #fed7d7;
+            color: #742a2a
+        }
+
+        .pill.aborted {
+            background: #fefcbf;
+            color: #744210
+        }
+
+        .pill.skipped {
+            background: #e2e8f0;
+            color: #2d3748
+        }
+
+        .pill.issue {
+            background: #fefcbf;
+            color: #744210
+        }
+
+        details.result {
+            border-top: 1px solid var(--line-soft);
+            scroll-margin-top: 1em
+        }
+
+        details.result:first-of-type {
+            border-top: none
+        }
+
+        details.result > summary {
+            cursor: pointer;
+            padding: .45em .9em .45em 2em;
+            display: flex;
+            align-items: center;
+            gap: .6em;
+            list-style: none;
+            font-size: .9em
+        }
+
+        details.result > summary::-webkit-details-marker {
+            display: none
+        }
+
+        details.result > summary::before {
+            content: "\25B8";
+            display: inline-block;
+            width: 1em;
+            color: #cbd5e0;
+            margin-left: -1.2em
+        }
+
+        details.result[open] > summary::before {
+            transform: rotate(90deg)
+        }
+
+        details.result.no-details > summary {
+            cursor: default
+        }
+
+        details.result.no-details > summary::before {
+            visibility: hidden
+        }
+
+        details.result:target > summary,
+        details.class:target > summary {
+            background: #ebf8ff
+        }
+
+        .method {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            flex: 1
+        }
+
+        .time {
+            color: var(--soft);
+            font-variant-numeric: tabular-nums;
+            font-size: .85em
+        }
+
+        .details-body {
+            padding: .2em .9em 1em 2.6em;
+            font-size: .88em
+        }
+
+        .details-body .label {
+            font-size: .75em;
+            font-weight: 600;
+            color: var(--soft);
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            margin: .8em 0 .2em
+        }
+
+        .details-body .label:first-child {
+            margin-top: 0
+        }
+
+        pre {
+            background: var(--panel);
+            border: 1px solid var(--line-soft);
+            border-radius: 4px;
+            padding: .6em .8em;
+            margin: 0;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: .85em;
+            white-space: pre-wrap;
+            word-break: break-word
+        }
+
+        ul.issues {
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+
+        ul.issues li {
+            padding: .25em 0;
+            display: flex;
+            gap: .6em;
+            align-items: baseline
+        }
+
+        ul.issues .msg {
+            color: var(--muted)
+        }
+
+        ul.tree {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: .85em
+        }
+
+        ul.tree ul.tree {
+            padding-left: 1em;
+            border-left: 1px solid var(--line)
+        }
+
+        ul.tree details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: .35em;
+            padding: .15em .35em;
+            border-radius: 4px
+        }
+
+        ul.tree details > summary:hover {
+            background: rgba(255, 255, 255, .6)
+        }
+
+        ul.tree details > summary::-webkit-details-marker {
+            display: none
+        }
+
+        ul.tree .marker {
+            display: inline-block;
+            width: .8em;
+            color: #a0aec0;
+            transition: transform .1s ease
+        }
+
+        ul.tree .marker::before {
+            content: "\25B8"
+        }
+
+        ul.tree details[open] > summary > .marker {
+            transform: rotate(90deg)
+        }
+
+        ul.tree .dot {
+            display: inline-block;
+            width: .55em;
+            height: .55em;
+            border-radius: 50%;
+            background: #cbd5e0;
+            flex-shrink: 0
+        }
+
+        ul.tree .dot.successful {
+            background: var(--successful)
+        }
+
+        ul.tree .dot.failed {
+            background: var(--failed)
+        }
+
+        ul.tree .dot.errored {
+            background: var(--errored)
+        }
+
+        ul.tree .dot.aborted {
+            background: var(--aborted)
+        }
+
+        ul.tree .dot.skipped {
+            background: var(--skipped)
+        }
+
+        ul.tree .seg {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--fg)
+        }
+
+        ul.tree li.ns > details > summary > .seg {
+            color: var(--muted);
+            font-family: inherit;
+            font-weight: 500
+        }
+
+        ul.tree li.cls > details > summary > .cls-link {
+            display: flex;
+            align-items: center;
+            gap: .35em;
+            text-decoration: none;
+            color: inherit;
+            flex: 1;
+            min-width: 0
+        }
+
+        ul.tree li.cls > details > summary > .cls-link > .seg {
+            font-weight: 600
+        }
+
+        ul.tree li.m {
+            padding-left: 1em
+        }
+
+        ul.tree li.m a {
+            display: flex;
+            align-items: center;
+            gap: .35em;
+            padding: .15em .35em;
+            border-radius: 4px;
+            text-decoration: none;
+            color: inherit
+        }
+
+        ul.tree li.m a:hover {
+            background: rgba(255, 255, 255, .6)
+        }
+
+        @media (max-width: 800px) {
+            .layout {
+                grid-template-columns: 1fr
+            }
+
+            aside.sidebar {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--line)
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+    <h2>Tests</h2>
+    {sidebar}
+</aside>
+<main>
+<h1>Test Results</h1>
+<div class="meta">
+    <strong>{file}</strong> &middot; started {startedAt} &middot; total {totalTime} s
+</div>
+<div class="summary">
+    <div class="card">
+        <div class="v">{total}</div>
+        <div class="l">tests</div>
+    </div>
+    <div class="card successful">
+        <div class="v">{successful}</div>
+        <div class="l">successful</div>
+    </div>
+    <div class="card failed">
+        <div class="v">{failed}</div>
+        <div class="l">failed</div>
+    </div>
+    <div class="card errored">
+        <div class="v">{errored}</div>
+        <div class="l">errored</div>
+    </div>
+    <div class="card aborted">
+        <div class="v">{aborted}</div>
+        <div class="l">aborted</div>
+    </div>
+    <div class="card skipped">
+        <div class="v">{skipped}</div>
+        <div class="l">skipped</div>
+    </div>
+    <div class="card issues">
+        <div class="v">{issues}</div>
+        <div class="l">issues</div>
+    </div>
+</div>
+<section>
+{classes}
+</section>
+</main>
+</div>
+</body>
+</html>

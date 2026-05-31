@@ -17,7 +17,10 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(TestRun::class)]
+#[UsesClass(Issue::class)]
 #[UsesClass(Metric::class)]
+#[UsesClass(TestResult::class)]
+#[UsesClass(TestStatus::class)]
 #[TestDox('TestRun')]
 #[Small]
 final class TestRunTest extends TestCase
@@ -104,5 +107,40 @@ final class TestRunTest extends TestCase
 
         $this->assertSame(0, $run->testCount());
         $this->assertTrue($run->isEmpty());
+        $this->assertSame(0, $run->resultCount());
+        $this->assertFalse($run->hasResults());
+        $this->assertSame([], $run->results());
+    }
+
+    public function testExposesItsTestResults(): void
+    {
+        $successful = new TestResult('Vendor\GroupTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.1);
+        $failed     = new TestResult('Vendor\GroupTest', 'b', 'b', TestStatus::Failed, '', null, [], 0.2);
+        $risky      = new TestResult('Vendor\GroupTest', 'c', 'c', TestStatus::Successful, '', null, [new Issue('risky', 'no assertions')], 0.05);
+
+        $run = new TestRun(
+            '/path/to/logfile.xml',
+            new DateTimeImmutable('2026-01-01T08:00:00.000000Z'),
+            1.5,
+            [],
+            [],
+            [],
+            [$successful, $failed, $risky],
+        );
+
+        $this->assertSame([$successful, $failed, $risky], $run->results());
+        $this->assertSame(3, $run->resultCount());
+        $this->assertTrue($run->hasResults());
+        $this->assertSame(1, $run->issueCount());
+        $this->assertSame(
+            [
+                'SUCCESSFUL' => 2,
+                'FAILED'     => 1,
+                'ERRORED'    => 0,
+                'ABORTED'    => 0,
+                'SKIPPED'    => 0,
+            ],
+            $run->statusCounts(),
+        );
     }
 }
