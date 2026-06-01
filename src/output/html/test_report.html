@@ -18,7 +18,7 @@
             --errored: #c53030;
             --aborted: #b7791f;
             --skipped: #4a5568;
-            --sidebar-w: 320px
+            --sidebar-w: 380px
         }
 
         * {
@@ -36,7 +36,8 @@
         .layout {
             display: grid;
             grid-template-columns: var(--sidebar-w) 1fr;
-            min-height: 100vh
+            min-height: 100vh;
+            position: relative
         }
 
         aside.sidebar {
@@ -48,6 +49,29 @@
             border-right: 1px solid var(--line);
             background: var(--panel);
             padding: 1em .8em 2em
+        }
+
+        .resizer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: var(--sidebar-w);
+            width: 7px;
+            transform: translateX(-3px);
+            cursor: col-resize;
+            z-index: 2;
+            touch-action: none
+        }
+
+        .resizer:hover,
+        .resizer.dragging {
+            background: var(--accent);
+            opacity: .35
+        }
+
+        body.resizing {
+            cursor: col-resize;
+            user-select: none
         }
 
         aside.sidebar h2 {
@@ -504,6 +528,10 @@
                 border-right: none;
                 border-bottom: 1px solid var(--line)
             }
+
+            .resizer {
+                display: none
+            }
         }
     </style>
 </head>
@@ -513,6 +541,7 @@
     <h2>Tests</h2>
     {sidebar}
 </aside>
+<div class="resizer" role="separator" aria-orientation="vertical" title="Drag to resize"></div>
 <main>
 <h1>Test Results</h1>
 <div class="meta">
@@ -553,5 +582,61 @@
 </section>
 </main>
 </div>
+<script>
+    (function () {
+        var root = document.documentElement;
+        var resizer = document.querySelector('.resizer');
+        if (!resizer) {
+            return;
+        }
+
+        var MIN = 200;
+
+        function maxWidth() {
+            return Math.max(MIN, window.innerWidth - 320);
+        }
+
+        var stored = null;
+        try {
+            stored = window.localStorage.getItem('otr-sidebar-w');
+        } catch (e) {
+        }
+        if (stored) {
+            root.style.setProperty('--sidebar-w', stored);
+        }
+
+        function drag(event) {
+            var w = Math.min(maxWidth(), Math.max(MIN, event.clientX));
+            root.style.setProperty('--sidebar-w', w + 'px');
+        }
+
+        function stop() {
+            document.body.classList.remove('resizing');
+            resizer.classList.remove('dragging');
+            window.removeEventListener('pointermove', drag);
+            window.removeEventListener('pointerup', stop);
+            try {
+                window.localStorage.setItem('otr-sidebar-w', getComputedStyle(root).getPropertyValue('--sidebar-w').trim());
+            } catch (e) {
+            }
+        }
+
+        resizer.addEventListener('pointerdown', function (event) {
+            event.preventDefault();
+            document.body.classList.add('resizing');
+            resizer.classList.add('dragging');
+            window.addEventListener('pointermove', drag);
+            window.addEventListener('pointerup', stop);
+        });
+
+        resizer.addEventListener('dblclick', function () {
+            root.style.removeProperty('--sidebar-w');
+            try {
+                window.localStorage.removeItem('otr-sidebar-w');
+            } catch (e) {
+            }
+        });
+    }());
+</script>
 </body>
 </html>
