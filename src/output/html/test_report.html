@@ -143,6 +143,24 @@
             margin: 1.6em 0
         }
 
+        section.suite {
+            margin: 2.4em 0
+        }
+
+        h2.suite-name {
+            display: flex;
+            align-items: center;
+            gap: .6em;
+            font-size: 1.1em;
+            padding-bottom: .4em;
+            border-bottom: 2px solid var(--line);
+            margin-bottom: 1em
+        }
+
+        h2.suite-name .suite-label {
+            flex: 1
+        }
+
         details.class {
             border: 1px solid var(--line);
             border-radius: 6px;
@@ -436,6 +454,25 @@
 
         ul.tree li.cls > details > summary > .cls-link > .seg {
             font-weight: 600
+        }
+
+        ul.tree li.suite > details > summary > .suite-link {
+            display: flex;
+            align-items: center;
+            gap: .35em;
+            text-decoration: none;
+            color: inherit;
+            flex: 1;
+            min-width: 0
+        }
+
+        ul.tree li.suite > details > summary > .suite-link > .seg {
+            font-family: inherit;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            font-size: .95em
         }
 
         ul.tree li.m {

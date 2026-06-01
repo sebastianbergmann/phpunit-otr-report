@@ -149,6 +149,41 @@ final class OtrReaderTest extends TestCase
         $this->fail('Expected a PhptResult for ' . $path);
     }
 
+    public function testAssociatesTestsWithTheirConfiguredTestSuite(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('phpunit.xml'));
+
+        $methodSuite = null;
+        $phptSuite   = null;
+
+        foreach ($run->results() as $result) {
+            if ($result instanceof TestMethodResult &&
+                $result->className() === 'PHPUnit\Framework\assertArraysAreEqualIgnoringOrderTest') {
+                $methodSuite = $result->suite();
+            }
+
+            if ($result instanceof PhptResult &&
+                $result->path() === '/path/to/phpunit/tests/end-to-end/testdox/diff.phpt') {
+                $phptSuite = $result->suite();
+            }
+        }
+
+        $this->assertSame('unit', $methodSuite);
+        $this->assertSame('end-to-end', $phptSuite);
+    }
+
+    public function testLeavesTestsWithoutAConfiguredSuiteUnassigned(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('status.xml'));
+
+        $this->assertNotSame([], $run->results());
+
+        foreach ($run->results() as $result) {
+            $this->assertNull($result->suite());
+            $this->assertFalse($result->hasSuite());
+        }
+    }
+
     public function testReadsALogfileWithoutTests(): void
     {
         $run = (new OtrReader)->read($this->fixture('empty.xml'));

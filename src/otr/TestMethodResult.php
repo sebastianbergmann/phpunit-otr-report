@@ -43,8 +43,9 @@ final readonly class TestMethodResult extends TestResult
      * @param list<Issue>       $issues
      * @param ?non-empty-string $prettifiedClassName
      * @param ?non-empty-string $prettifiedMethodName
+     * @param ?non-empty-string $suite
      */
-    public function __construct(string $className, string $methodName, string $displayName, TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time, ?string $prettifiedClassName = null, ?string $prettifiedMethodName = null)
+    public function __construct(string $className, string $methodName, string $displayName, TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time, ?string $prettifiedClassName = null, ?string $prettifiedMethodName = null, ?string $suite = null)
     {
         $this->className            = $className;
         $this->methodName           = $methodName;
@@ -52,7 +53,7 @@ final readonly class TestMethodResult extends TestResult
         $this->prettifiedClassName  = $prettifiedClassName;
         $this->prettifiedMethodName = $prettifiedMethodName;
 
-        parent::__construct($status, $reason, $throwable, $issues, $time);
+        parent::__construct($status, $reason, $throwable, $issues, $time, $suite);
     }
 
     /**

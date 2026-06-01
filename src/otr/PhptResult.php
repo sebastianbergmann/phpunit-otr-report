@@ -17,14 +17,15 @@ final readonly class PhptResult extends TestResult
     private string $path;
 
     /**
-     * @param non-empty-string $path
-     * @param list<Issue>      $issues
+     * @param non-empty-string  $path
+     * @param list<Issue>       $issues
+     * @param ?non-empty-string $suite
      */
-    public function __construct(string $path, TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time)
+    public function __construct(string $path, TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time, ?string $suite = null)
     {
         $this->path = $path;
 
-        parent::__construct($status, $reason, $throwable, $issues, $time);
+        parent::__construct($status, $reason, $throwable, $issues, $time, $suite);
     }
 
     /**

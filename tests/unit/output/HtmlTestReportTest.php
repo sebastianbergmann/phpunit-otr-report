@@ -354,6 +354,53 @@ final class HtmlTestReportTest extends TestCase
         $this->assertStringNotContainsString('<span class="method">/path/to/tests/end-to-end/testdox/diff.phpt</span>', $html);
     }
 
+    public function testGroupsTestsByTestSuiteWhenMoreThanOneSuiteIsPresent(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestMethodResult('Vendor\UnitTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.001, null, null, 'unit'),
+                new TestMethodResult('Vendor\E2ETest', 'b', 'b', TestStatus::Failed, 'nope', null, [], 0.002, null, null, 'end-to-end'),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertStringContainsString('<section class="suite" id="suite-1">', $html);
+        $this->assertStringContainsString('<section class="suite" id="suite-2">', $html);
+        $this->assertStringContainsString('<span class="suite-label">unit</span>', $html);
+        $this->assertStringContainsString('<span class="suite-label">end-to-end</span>', $html);
+        $this->assertStringContainsString('<span class="suite-label">end-to-end</span><span class="pill failed">FAILED</span>', $html);
+
+        $sidebar = $this->sidebarMarkup($html);
+
+        $this->assertStringContainsString('<li class="ns suite">', $sidebar);
+        $this->assertStringContainsString('class="suite-link"', $sidebar);
+
+        $unit = strpos($html, 'suite-label">unit');
+        $e2e  = strpos($html, 'suite-label">end-to-end');
+
+        $this->assertNotFalse($unit);
+        $this->assertNotFalse($e2e);
+        $this->assertLessThan($e2e, $unit);
+    }
+
+    public function testDoesNotRenderASuiteTierWhenOnlyOneSuiteIsPresent(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestMethodResult('Vendor\UnitTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.001, null, null, 'unit'),
+                new TestMethodResult('Vendor\UnitTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.001, null, null, 'unit'),
+            ],
+        );
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertStringNotContainsString('<section class="suite"', $html);
+        $this->assertStringNotContainsString('<li class="ns suite"', $html);
+        $this->assertStringNotContainsString('class="suite-link"', $html);
+        $this->assertStringContainsString('Vendor\UnitTest', $html);
+    }
+
     public function testEscapesUserSuppliedStrings(): void
     {
         $run = $this->createTestRun(

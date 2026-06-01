@@ -42,7 +42,40 @@ final readonly class OtrReader
 
         assert($rootStarted instanceof DOMElement);
 
+        $rootId    = $rootStarted->getAttribute('id');
         $startedAt = new DateTimeImmutable($rootStarted->getAttribute('time'));
+
+        /** @var array<string, string> $parentOf */
+        $parentOf = [];
+
+        /** @var array<string, non-empty-string> $suiteNames */
+        $suiteNames = [];
+
+        $allStartedNodes = $xpath->query('//e:started');
+
+        assert($allStartedNodes !== false);
+
+        foreach ($allStartedNodes as $node) {
+            assert($node instanceof DOMElement);
+
+            $nodeId   = $node->getAttribute('id');
+            $parentId = $node->getAttribute('parentId');
+
+            if ($parentId !== '') {
+                $parentOf[$nodeId] = $parentId;
+            }
+
+            // A configured test suite is a direct child of the root event that
+            // carries no source of its own (unlike test classes, methods, or
+            // PHPT files, which all reference a source).
+            if ($parentId === $rootId && !$this->hasSource($xpath, $node)) {
+                $name = $node->getAttribute('name');
+
+                if ($name !== '') {
+                    $suiteNames[$nodeId] = $name;
+                }
+            }
+        }
 
         /** @var array<string, non-empty-string> $prettifiedClassNames */
         $prettifiedClassNames = [];
@@ -239,6 +272,7 @@ final readonly class OtrReader
 
             $test   = $tests[$id];
             $issues = $issuesById[$id] ?? [];
+            $suite  = $this->suiteFor($id, $parentOf, $suiteNames);
 
             if ($test['kind'] === 'phpt') {
                 $results[] = new PhptResult(
@@ -248,23 +282,23 @@ final readonly class OtrReader
                     $throwable,
                     $issues,
                     $time,
+                    $suite,
                 );
-
-                continue;
+            } else {
+                $results[] = new TestMethodResult(
+                    $test['className'],
+                    $test['methodName'],
+                    $test['displayName'],
+                    $status,
+                    $reason,
+                    $throwable,
+                    $issues,
+                    $time,
+                    $test['prettifiedClassName'],
+                    $test['prettifiedMethodName'],
+                    $suite,
+                );
             }
-
-            $results[] = new TestMethodResult(
-                $test['className'],
-                $test['methodName'],
-                $test['displayName'],
-                $status,
-                $reason,
-                $throwable,
-                $issues,
-                $time,
-                $test['prettifiedClassName'],
-                $test['prettifiedMethodName'],
-            );
         }
 
         return new TestRun($file, $startedAt, $totalTime, $times, $cpuTimes, $peakMemory, $results);
@@ -312,6 +346,37 @@ final readonly class OtrReader
 
         if (!$valid) {
             throw new SchemaValidationException($file, $errors);
+        }
+    }
+
+    private function hasSource(DOMXPath $xpath, DOMElement $node): bool
+    {
+        $sources = $xpath->query('.//phpunit:methodSource | .//phpunit:classSource | .//core:fileSource', $node);
+
+        return $sources !== false && $sources->length > 0;
+    }
+
+    /**
+     * Resolves the test suite a test belongs to by walking up the parent chain
+     * until a configured test suite is reached.
+     *
+     * @param array<string, string>           $parentOf
+     * @param array<string, non-empty-string> $suiteNames
+     *
+     * @return ?non-empty-string
+     */
+    private function suiteFor(string $id, array $parentOf, array $suiteNames): ?string
+    {
+        while (true) {
+            if (isset($suiteNames[$id])) {
+                return $suiteNames[$id];
+            }
+
+            if (!isset($parentOf[$id])) {
+                return null;
+            }
+
+            $id = $parentOf[$id];
         }
     }
 

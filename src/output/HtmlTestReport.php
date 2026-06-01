@@ -30,12 +30,15 @@ use SebastianBergmann\Template\Template;
 /**
  * @phpstan-type IndexedResult array{testId: non-empty-string, methodDisplayName: non-empty-string, result: TestResult}
  * @phpstan-type IndexedClass array{className: non-empty-string, classDisplayName: non-empty-string, classId: non-empty-string, results: non-empty-list<IndexedResult>}
+ * @phpstan-type IndexedSuite array{suiteName: ?non-empty-string, suiteId: non-empty-string, classes: non-empty-list<IndexedClass>}
  */
 final readonly class HtmlTestReport
 {
     public function render(TestRun $run, bool $testdox = false): string
     {
-        $classes = $this->index($run->results(), $testdox);
+        $suites = $this->index($run->results(), $testdox);
+
+        $grouped = count($suites) > 1;
 
         $template = new Template(__DIR__ . '/html/test_report.html');
 
@@ -51,8 +54,8 @@ final readonly class HtmlTestReport
                 'aborted'    => (string) $run->countOf(TestStatus::Aborted),
                 'skipped'    => (string) $run->countOf(TestStatus::Skipped),
                 'issues'     => (string) $run->issueCount(),
-                'sidebar'    => $this->sidebar($classes, $testdox),
-                'classes'    => $this->classes($classes),
+                'sidebar'    => $this->sidebar($suites, $testdox, $grouped),
+                'classes'    => $this->body($suites, $grouped),
             ],
         );
 
@@ -62,20 +65,35 @@ final readonly class HtmlTestReport
     /**
      * @param list<TestResult> $results
      *
-     * @return list<IndexedClass>
+     * @return list<IndexedSuite>
      */
     private function index(array $results, bool $testdox): array
     {
-        /** @var array<non-empty-string, IndexedClass> $byClass */
-        $byClass = [];
+        /** @var array<string, array{suiteName: ?non-empty-string, suiteId: non-empty-string}> $suiteMeta */
+        $suiteMeta = [];
 
+        /** @var array<string, array<non-empty-string, IndexedClass>> $suiteClasses */
+        $suiteClasses = [];
+
+        $suiteCounter = 0;
         $classCounter = 0;
         $testCounter  = 0;
 
         foreach ($results as $result) {
             $testCounter++;
 
-            $groupKey = $this->groupKey($result);
+            $suiteName = $result->suite();
+            $suiteKey  = $suiteName ?? '';
+            $groupKey  = $this->groupKey($result);
+
+            if (!isset($suiteMeta[$suiteKey])) {
+                $suiteCounter++;
+                $suiteMeta[$suiteKey] = [
+                    'suiteName' => $suiteName,
+                    'suiteId'   => 'suite-' . $suiteCounter,
+                ];
+                $suiteClasses[$suiteKey] = [];
+            }
 
             $indexedResult = [
                 'testId'            => 'test-' . $testCounter,
@@ -83,9 +101,9 @@ final readonly class HtmlTestReport
                 'result'            => $result,
             ];
 
-            if (!isset($byClass[$groupKey])) {
+            if (!isset($suiteClasses[$suiteKey][$groupKey])) {
                 $classCounter++;
-                $byClass[$groupKey] = [
+                $suiteClasses[$suiteKey][$groupKey] = [
                     'className'        => $groupKey,
                     'classDisplayName' => $this->classDisplayName($result, $testdox),
                     'classId'          => 'class-' . $classCounter,
@@ -95,10 +113,59 @@ final readonly class HtmlTestReport
                 continue;
             }
 
-            $byClass[$groupKey]['results'][] = $indexedResult;
+            $suiteClasses[$suiteKey][$groupKey]['results'][] = $indexedResult;
         }
 
-        return array_values($byClass);
+        $suites = [];
+
+        foreach ($suiteMeta as $suiteKey => $meta) {
+            $classes = $suiteClasses[$suiteKey] ?? [];
+
+            assert($classes !== []);
+
+            $suites[] = [
+                'suiteName' => $meta['suiteName'],
+                'suiteId'   => $meta['suiteId'],
+                'classes'   => array_values($classes),
+            ];
+        }
+
+        return $suites;
+    }
+
+    /**
+     * @param list<IndexedSuite> $suites
+     */
+    private function body(array $suites, bool $grouped): string
+    {
+        if ($suites === []) {
+            return '';
+        }
+
+        if (!$grouped) {
+            return $this->classes($suites[0]['classes']);
+        }
+
+        $template = new Template(__DIR__ . '/html/test_suite.html');
+        $output   = '';
+
+        foreach ($suites as $suite) {
+            $worst = $this->worstStatusForSuite($suite);
+
+            $template->setVar(
+                [
+                    'suiteId'          => $suite['suiteId'],
+                    'suiteName'        => $this->escape($this->suiteDisplayName($suite)),
+                    'suiteStatusClass' => $this->statusClass($worst),
+                    'suiteStatusLabel' => $worst->value,
+                    'classes'          => $this->classes($suite['classes']),
+                ],
+            );
+
+            $output .= $template->render();
+        }
+
+        return $output;
     }
 
     /**
@@ -282,14 +349,50 @@ final readonly class HtmlTestReport
     }
 
     /**
-     * @param list<IndexedClass> $classes
+     * @param list<IndexedSuite> $suites
      */
-    private function sidebar(array $classes, bool $testdox): string
+    private function sidebar(array $suites, bool $testdox, bool $grouped): string
     {
-        if ($classes === []) {
+        if ($suites === []) {
             return '';
         }
 
+        if (!$grouped) {
+            return sprintf(
+                '<ul class="tree tree-root">%s</ul>',
+                $this->treeItems($suites[0]['classes'], $testdox),
+            );
+        }
+
+        return sprintf(
+            '<ul class="tree tree-root">%s</ul>',
+            implode('', array_map(
+                fn (array $suite): string => $this->renderSuiteNode($suite, $testdox),
+                $suites,
+            )),
+        );
+    }
+
+    /**
+     * @param IndexedSuite $suite
+     */
+    private function renderSuiteNode(array $suite, bool $testdox): string
+    {
+        return sprintf(
+            '<li class="ns suite"><details open><summary>%s<a href="#%s" class="suite-link"><span class="dot %s"></span><span class="seg">%s</span></a></summary><ul class="tree">%s</ul></details></li>',
+            $this->treeMarker(),
+            $this->escape($suite['suiteId']),
+            $this->statusClass($this->worstStatusForSuite($suite)),
+            $this->escape($this->suiteDisplayName($suite)),
+            $this->treeItems($suite['classes'], $testdox),
+        );
+    }
+
+    /**
+     * @param non-empty-list<IndexedClass> $classes
+     */
+    private function treeItems(array $classes, bool $testdox): string
+    {
         $sorted = $classes;
 
         usort(
@@ -298,20 +401,18 @@ final readonly class HtmlTestReport
         );
 
         if ($testdox) {
-            $output = '<ul class="tree tree-root">';
+            $output = '';
 
             foreach ($sorted as $class) {
                 $output .= $this->renderClassNode($class['classDisplayName'], $class);
             }
-
-            $output .= '</ul>';
 
             return $output;
         }
 
         $namespaceStatuses = $this->namespaceStatuses($sorted);
 
-        $output          = '<ul class="tree tree-root">';
+        $output          = '';
         $currentSegments = [];
 
         foreach ($sorted as $class) {
@@ -346,8 +447,6 @@ final readonly class HtmlTestReport
         for ($i = count($currentSegments) - 1; $i >= 0; $i--) {
             $output .= '</ul></details></li>';
         }
-
-        $output .= '</ul>';
 
         return $output;
     }
@@ -425,6 +524,27 @@ final readonly class HtmlTestReport
         }
 
         return count($a);
+    }
+
+    /**
+     * @param IndexedSuite $suite
+     *
+     * @return non-empty-string
+     */
+    private function suiteDisplayName(array $suite): string
+    {
+        return $suite['suiteName'] ?? 'Tests without a suite';
+    }
+
+    /**
+     * @param IndexedSuite $suite
+     */
+    private function worstStatusForSuite(array $suite): TestStatus
+    {
+        return $this->worstStatus(array_map(
+            fn (array $class): TestStatus => $this->worstStatusForClass($class),
+            $suite['classes'],
+        ));
     }
 
     /**
