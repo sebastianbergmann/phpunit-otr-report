@@ -237,29 +237,52 @@ final class HtmlTestReportTest extends TestCase
         $this->assertStringContainsString('class="seg">third</span>', $sidebar);
     }
 
-    public function testPropagatesTheWorstStatusUpTheSidebarTree(): void
+    public function testPropagatesTheWorstStatusUpEveryLevelOfTheSidebarTree(): void
     {
         $run = $this->createTestRun(
             [
-                new TestMethodResult('Vendor\PkgA\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
-                new TestMethodResult('Vendor\PkgB\BetaTest', 'b', 'b', TestStatus::Errored, 'boom', null, [], 0.0),
+                new TestMethodResult('Root\Mid\Leaf\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Root\Mid\XtraTest', 'x', 'x', TestStatus::Errored, 'boom', null, [], 0.0),
+                new TestMethodResult('Root\Sibling\GammaTest', 'g', 'g', TestStatus::Successful, '', null, [], 0.0),
             ],
         );
 
         $html = (new HtmlTestReport)->render($run);
 
+        // "Root" is the shared prefix and is collapsed away; "Mid" carries the
+        // errored status of Root\Mid\XtraTest, while its child "Leaf" (which only
+        // contains the successful AlphaTest) stays successful. This distinction
+        // is only correct when each namespace node looks up the status for its
+        // own depth rather than for the full namespace of the class below it.
         $this->assertMatchesRegularExpression(
-            '/<summary><span class="marker"><\/span><span class="dot errored"><\/span><span class="seg">Vendor<\/span>/',
+            '/<summary><span class="marker"><\/span><span class="dot errored"><\/span><span class="seg">Mid<\/span>/',
             $html,
         );
         $this->assertMatchesRegularExpression(
-            '/<summary><span class="marker"><\/span><span class="dot successful"><\/span><span class="seg">PkgA<\/span>/',
+            '/<summary><span class="marker"><\/span><span class="dot successful"><\/span><span class="seg">Leaf<\/span>/',
             $html,
         );
         $this->assertMatchesRegularExpression(
-            '/<summary><span class="marker"><\/span><span class="dot errored"><\/span><span class="seg">PkgB<\/span>/',
+            '/<summary><span class="marker"><\/span><span class="dot successful"><\/span><span class="seg">Sibling<\/span>/',
             $html,
         );
+    }
+
+    public function testCollapsesTheNamespacePrefixSharedByEveryClassInTheSidebar(): void
+    {
+        $run = $this->createTestRun(
+            [
+                new TestMethodResult('Vendor\Pkg\AlphaTest', 'a', 'a', TestStatus::Successful, '', null, [], 0.0),
+                new TestMethodResult('Vendor\Pkg\BetaTest', 'b', 'b', TestStatus::Successful, '', null, [], 0.0),
+            ],
+        );
+
+        $sidebar = $this->sidebarMarkup((new HtmlTestReport)->render($run));
+
+        $this->assertStringNotContainsString('class="seg">Vendor</span>', $sidebar);
+        $this->assertStringNotContainsString('class="seg">Pkg</span>', $sidebar);
+        $this->assertStringContainsString('class="seg">AlphaTest</span>', $sidebar);
+        $this->assertStringContainsString('class="seg">BetaTest</span>', $sidebar);
     }
 
     /**

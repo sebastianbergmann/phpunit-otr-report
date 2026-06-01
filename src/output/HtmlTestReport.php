@@ -22,6 +22,8 @@ use function explode;
 use function htmlspecialchars;
 use function implode;
 use function in_array;
+use function max;
+use function min;
 use function sprintf;
 use function strtolower;
 use function usort;
@@ -411,6 +413,7 @@ final readonly class HtmlTestReport
         }
 
         $namespaceStatuses = $this->namespaceStatuses($sorted);
+        $strip             = $this->commonNamespacePrefixLength($sorted);
 
         $output          = '';
         $currentSegments = [];
@@ -421,7 +424,7 @@ final readonly class HtmlTestReport
 
             assert($shortName !== null && $shortName !== '');
 
-            $common = $this->commonPrefixLength($currentSegments, $segments);
+            $common = max($strip, $this->commonPrefixLength($currentSegments, $segments));
 
             for ($i = count($currentSegments) - 1; $i >= $common; $i--) {
                 $output .= '</ul></details></li>';
@@ -444,11 +447,35 @@ final readonly class HtmlTestReport
             $currentSegments = $segments;
         }
 
-        for ($i = count($currentSegments) - 1; $i >= 0; $i--) {
+        for ($i = count($currentSegments) - 1; $i >= $strip; $i--) {
             $output .= '</ul></details></li>';
         }
 
         return $output;
+    }
+
+    /**
+     * Returns the number of leading namespace segments shared by every class.
+     *
+     * The longest common prefix of the fully-qualified class names is used:
+     * distinct classes always diverge at or before their final (class name)
+     * segment, so that segment never enters the shared prefix and there is no
+     * need to strip it first.
+     *
+     * @param non-empty-list<IndexedClass> $classes
+     *
+     * @return non-negative-int
+     */
+    private function commonNamespacePrefixLength(array $classes): int
+    {
+        $first  = explode('\\', $classes[0]['className']);
+        $length = count($first);
+
+        foreach ($classes as $class) {
+            $length = min($length, $this->commonPrefixLength($first, explode('\\', $class['className'])));
+        }
+
+        return $length;
     }
 
     /**
