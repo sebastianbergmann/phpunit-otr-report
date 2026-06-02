@@ -78,8 +78,8 @@ otr-report 1.0.0 by Sebastian Bergmann.
 
 Mean test runtime: 0.059520 s (177 tests, 4 slower than mean)
 
-Time(s)   x mean    Test
--------   ------    ----
+ Time(s)    x mean  Test
+ -------    ------  ----
 4.441529    74.62x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_8
 3.771325    63.36x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_6
 1.375265    23.11x  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5
