@@ -52,7 +52,7 @@ Use the `--limit` option to list a different number of tests; it defaults to `10
 
 ```
 $ otr-report slowest /tmp/otr/run.xml
-otr-report 1.0 by Sebastian Bergmann.
+otr-report 1.0.0 by Sebastian Bergmann.
 
 Time(s)   Test
 -------   ----
@@ -74,7 +74,7 @@ With the `--above-mean` option, the report first calculates the mean runtime acr
 
 ```
 $ otr-report slowest --above-mean /tmp/otr/run.xml
-otr-report 1.0 by Sebastian Bergmann.
+otr-report 1.0.0 by Sebastian Bergmann.
 
 Mean test runtime: 0.059520 s (177 tests, 4 slower than mean)
 
@@ -92,7 +92,7 @@ By default, the ten slowest tests are listed. Use the `--limit` option to list a
 
 ```
 $ otr-report slowest --limit 3 /tmp/otr/run.xml
-otr-report 1.0 by Sebastian Bergmann.
+otr-report 1.0.0 by Sebastian Bergmann.
 
 Time(s)   Test
 -------   ----
@@ -113,7 +113,7 @@ By default, tests are sorted by their wall-clock runtime. Use the `--sort` optio
 
 ```
 $ otr-report slowest --sort memory --limit 3 /tmp/otr/run.xml
-otr-report 1.0 by Sebastian Bergmann.
+otr-report 1.0.0 by Sebastian Bergmann.
 
 Memory    Test
 -------   ----
@@ -153,7 +153,7 @@ Then generate the trend report:
 
 ```
 $ otr-report trends /tmp/otr /tmp/trends.html
-otr-report 1.0 by Sebastian Bergmann.
+otr-report 1.0.0 by Sebastian Bergmann.
 
 Wrote trends report to /tmp/trends.html
 ```
@@ -177,7 +177,7 @@ Tests that did not pass are expanded by default; successful tests are collapsed.
 
 ```
 $ otr-report results /tmp/otr/run.xml /tmp/results.html
-otr-report 1.0 by Sebastian Bergmann.
+otr-report 1.0.0 by Sebastian Bergmann.
 
 Wrote test results report to /tmp/results.html
 ```
