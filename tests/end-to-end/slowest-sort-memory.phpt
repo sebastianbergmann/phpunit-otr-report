@@ -17,8 +17,8 @@ print 'Exit code: ' . $exitCode . PHP_EOL;
 --EXPECTF--
 otr-report %s by Sebastian Bergmann.
 
-Memory    Test
--------   ----
+  Memory  Test
+ -------  ----
 23489616  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_6
 22907872  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_4
 22044384  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5

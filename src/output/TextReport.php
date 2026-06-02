@@ -50,8 +50,8 @@ final readonly class TextReport
 
         $output = $this->meanSummary($metric, $mean, count($values), count($beyond));
 
-        $output .= sprintf("%-8s  %-8s  %s\n", $this->header($metric), 'x mean', 'Test');
-        $output .= sprintf("%-8s  %-8s  %s\n", '-------', '------', '----');
+        $output .= sprintf("%8s  %8s  %s\n", $this->header($metric), 'x mean', 'Test');
+        $output .= sprintf("%8s  %8s  %s\n", '-------', '------', '----');
 
         foreach ($slowest as $test => $value) {
             $output .= sprintf("%s  %7.2fx  %s\n", $this->formatValue($metric, $value), $value / $mean, $test);
@@ -68,8 +68,8 @@ final readonly class TextReport
     {
         $slowest = array_slice($values, 0, $limit, true);
 
-        $output = sprintf("%-8s  %s\n", $this->header($metric), 'Test');
-        $output .= sprintf("%-8s  %s\n", '-------', '----');
+        $output = sprintf("%8s  %s\n", $this->header($metric), 'Test');
+        $output .= sprintf("%8s  %s\n", '-------', '----');
 
         foreach ($slowest as $test => $value) {
             $output .= sprintf("%s  %s\n", $this->formatValue($metric, $value), $test);

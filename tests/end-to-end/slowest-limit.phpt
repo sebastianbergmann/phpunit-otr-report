@@ -15,8 +15,8 @@ print 'Exit code: ' . $exitCode . PHP_EOL;
 --EXPECTF--
 otr-report %s by Sebastian Bergmann.
 
-Time(s)   Test
--------   ----
+ Time(s)  Test
+ -------  ----
 4.441529  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_8
 3.771325  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_6
 1.375265  SebastianBergmann\Raytracer\PuttingItTogetherTest::test_chapter_5
