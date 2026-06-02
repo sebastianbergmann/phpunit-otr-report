@@ -104,4 +104,24 @@ final class TestMethodResultTest extends TestCase
         $this->assertSame('Example behavior', $result->prettifiedClassName());
         $this->assertSame('Does the thing', $result->prettifiedMethodName());
     }
+
+    public function testIdentifiesAsTestMethod(): void
+    {
+        $result = new TestMethodResult(
+            'Vendor\ExampleTest',
+            'test_one',
+            'test_one',
+            TestStatus::Successful,
+            '',
+            null,
+            [],
+            0.0,
+        );
+
+        /** @phpstan-ignore method.alreadyNarrowedType */
+        $this->assertTrue(
+            /** @phpstan-ignore method.alreadyNarrowedType */
+            $result->isTestMethod(),
+        );
+    }
 }

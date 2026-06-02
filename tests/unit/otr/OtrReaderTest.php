@@ -302,6 +302,35 @@ final class OtrReaderTest extends TestCase
         $this->assertSame('Error', $error->prettifiedMethodName());
     }
 
+    public function testIgnoresStartedNodesWhoseOnlySourceIsANonPhptFile(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('non-phpt-file-source.xml'));
+
+        $this->assertTrue($run->isEmpty());
+        $this->assertSame(0, $run->resultCount());
+    }
+
+    public function testIgnoresReportedEventsThatDoNotBelongToATestMethodOrPhpt(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('reported-without-test.xml'));
+
+        $this->assertSame(1, $run->resultCount());
+
+        $result = $this->findByMethod($run, 'test_alpha');
+
+        $this->assertSame([], $result->issues());
+        $this->assertFalse($result->hasIssues());
+    }
+
+    public function testIgnoresResultsThatDoNotCarryAStatus(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('result-without-status.xml'));
+
+        $this->assertSame(0, $run->resultCount());
+        $this->assertSame(1, $run->testCount());
+        $this->assertSame(['Vendor\GroupTest::test_alpha' => 0.1], $run->tests());
+    }
+
     public function testReadsADirectoryWithoutLogfiles(): void
     {
         $directory = sys_get_temp_dir() . '/otr-report-' . uniqid();

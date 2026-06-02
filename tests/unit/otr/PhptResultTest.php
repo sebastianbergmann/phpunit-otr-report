@@ -45,4 +45,22 @@ final class PhptResultTest extends TestCase
         $this->assertSame([$issue], $result->issues());
         $this->assertSame(0.5, $result->time());
     }
+
+    public function testIdentifiesAsPhptResult(): void
+    {
+        $result = new PhptResult(
+            '/path/to/tests/end-to-end/diff.phpt',
+            TestStatus::Successful,
+            '',
+            null,
+            [],
+            0.1,
+        );
+
+        /** @phpstan-ignore method.alreadyNarrowedType */
+        $this->assertTrue(
+            /** @phpstan-ignore method.alreadyNarrowedType */
+            $result->isPhpt(),
+        );
+    }
 }

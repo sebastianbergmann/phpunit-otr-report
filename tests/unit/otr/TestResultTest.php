@@ -55,12 +55,37 @@ final class TestResultTest extends TestCase
         $this->assertNull($result->time());
     }
 
-    /**
-     * @param list<Issue> $issues
-     */
-    private function createResult(TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time): TestResult
+    public function testKnowsWhenItBelongsToAConfiguredTestSuite(): void
     {
-        return new readonly class($status, $reason, $throwable, $issues, $time) extends TestResult
+        $result = $this->createResult(TestStatus::Successful, '', null, [], 0.0, 'unit');
+
+        $this->assertSame('unit', $result->suite());
+        $this->assertTrue($result->hasSuite());
+    }
+
+    public function testKnowsWhenItDoesNotBelongToAConfiguredTestSuite(): void
+    {
+        $result = $this->createResult(TestStatus::Successful, '', null, [], 0.0);
+
+        $this->assertNull($result->suite());
+        $this->assertFalse($result->hasSuite());
+    }
+
+    public function testIsNotATestMethodOrPhptResultByDefault(): void
+    {
+        $result = $this->createResult(TestStatus::Successful, '', null, [], 0.0);
+
+        $this->assertFalse($result->isTestMethod());
+        $this->assertFalse($result->isPhpt());
+    }
+
+    /**
+     * @param list<Issue>       $issues
+     * @param ?non-empty-string $suite
+     */
+    private function createResult(TestStatus $status, string $reason, ?Throwable $throwable, array $issues, ?float $time, ?string $suite = null): TestResult
+    {
+        return new readonly class($status, $reason, $throwable, $issues, $time, $suite) extends TestResult
         {};
     }
 }

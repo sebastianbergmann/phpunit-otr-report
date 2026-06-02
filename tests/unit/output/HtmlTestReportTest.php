@@ -424,6 +424,18 @@ final class HtmlTestReportTest extends TestCase
         $this->assertStringContainsString('Vendor\UnitTest', $html);
     }
 
+    public function testRendersAReportForATestRunWithoutResults(): void
+    {
+        $run = $this->createTestRun([]);
+
+        $html = (new HtmlTestReport)->render($run);
+
+        $this->assertStringContainsString('<title>Test Results</title>', $html);
+        $this->assertStringContainsString('<aside class="sidebar">', $html);
+        $this->assertStringNotContainsString('<details class="class"', $html);
+        $this->assertStringNotContainsString('ul class="tree tree-root"', $html);
+    }
+
     public function testEscapesUserSuppliedStrings(): void
     {
         $run = $this->createTestRun(
