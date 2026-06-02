@@ -19,7 +19,7 @@ use SebastianBergmann\Version;
 
 final class Application
 {
-    private const string VERSION       = '1.0.0';
+    private const string VERSION       = '1.0.1';
     private static string $pharVersion = '';
 
     /**
