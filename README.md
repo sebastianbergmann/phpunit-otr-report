@@ -1,3 +1,10 @@
+[![CI Status](https://github.com/sebastianbergmann/phpunit-otr-report/workflows/CI/badge.svg)](https://github.com/sebastianbergmann/phpunit-otr-report/actions)
+[![codecov](https://codecov.io/gh/sebastianbergmann/phpunit-otr-report/branch/main/graph/badge.svg?token=0yzBUK8Wri)](https://codecov.io/gh/sebastianbergmann/phpunit-otr-report)
+[![Latest Stable Version](https://poser.pugx.org/phpunit/otr-report/v)](https://packagist.org/packages/phpunit/otr-report)
+[![Total Downloads](https://poser.pugx.org/phpunit/otr-report/downloads)](https://packagist.org/packages/phpunit/otr-report/stats)
+[![Monthly Downloads](https://poser.pugx.org/phpunit/otr-report/d/monthly)](https://packagist.org/packages/phpunit/otr-report/stats)
+[![Daily Downloads](https://poser.pugx.org/phpunit/otr-report/d/daily)](https://packagist.org/packages/phpunit/otr-report/stats)
+
 # otr-report
 
 This tool generates reports from test result data in the Open Test Reporting (OTR) format produced by PHPUnit >= 13.2.
