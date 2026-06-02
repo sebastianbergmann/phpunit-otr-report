@@ -9,11 +9,14 @@
  */
 namespace PHPUnit\OtrReport;
 
+use const PHP_EOL;
 use const PSFS_PASS_ON;
 use const STDERR;
 use const STREAM_FILTER_WRITE;
 use function assert;
 use function copy;
+use function file_exists;
+use function file_get_contents;
 use function is_resource;
 use function mkdir;
 use function rmdir;
@@ -33,8 +36,23 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(TrendsCommand::class)]
 #[UsesClass(Arguments::class)]
+#[UsesClass(HtmlReport::class)]
+#[UsesClass(Chart::class)]
+#[UsesClass(DataSeries::class)]
+#[UsesClass(NumberFormatter::class)]
+#[UsesClass(Sparkline::class)]
+#[UsesClass(Issue::class)]
+#[UsesClass(Metric::class)]
 #[UsesClass(OtrReader::class)]
+#[UsesClass(PhptResult::class)]
 #[UsesClass(SchemaValidationException::class)]
+#[UsesClass(TestMethodResult::class)]
+#[UsesClass(TestResult::class)]
+#[UsesClass(TestRun::class)]
+#[UsesClass(TestRunCollection::class)]
+#[UsesClass(TestRunCollectionIterator::class)]
+#[UsesClass(TestStatus::class)]
+#[UsesClass(Throwable::class)]
 #[TestDox('TrendsCommand')]
 #[Small]
 final class TrendsCommandTest extends TestCase
@@ -48,6 +66,24 @@ final class TrendsCommandTest extends TestCase
 
             self::$filterRegistered = true;
         }
+    }
+
+    public function testReturnsAnErrorExitCodeWhenFewerThanTwoPositionalArgumentsAreProvided(): void
+    {
+        $exitCode = (new TrendsCommand)->run(
+            new Arguments(
+                'trends',
+                ['only-directory'],
+                false,
+                false,
+                10,
+                Metric::Time,
+                false,
+                false,
+            ),
+        );
+
+        $this->assertSame(1, $exitCode);
     }
 
     public function testReportsAnErrorWhenTheDirectoryContainsAnInvalidLogfile(): void
@@ -81,11 +117,45 @@ final class TrendsCommandTest extends TestCase
                 stream_filter_remove($filter);
             }
 
+            $captured = TrendsCommandTestStderrSuppressor::captured();
+
             $this->assertSame(1, $exitCode);
-            $this->assertStringContainsString('is not a valid OTR XML logfile', TrendsCommandTestStderrSuppressor::captured());
+            $this->assertStringStartsWith($directory . '/invalid.xml is not a valid OTR XML logfile', $captured);
+            $this->assertStringEndsWith(PHP_EOL, $captured);
         } finally {
             unlink($directory . '/invalid.xml');
             rmdir($directory);
+        }
+    }
+
+    public function testWritesTheReportToTheOutputPathWhenTheDirectoryContainsValidLogfiles(): void
+    {
+        $directory = __DIR__ . '/../../../fixture/runs';
+        $output    = sys_get_temp_dir() . '/otr-trends-report-' . uniqid() . '.html';
+
+        $this->expectOutputString('Wrote trends report to ' . $output . PHP_EOL);
+
+        try {
+            $exitCode = (new TrendsCommand)->run(
+                new Arguments(
+                    'trends',
+                    [$directory, $output],
+                    false,
+                    false,
+                    10,
+                    Metric::Time,
+                    false,
+                    false,
+                ),
+            );
+
+            $this->assertSame(0, $exitCode);
+            $this->assertTrue(file_exists($output));
+            $this->assertStringContainsString('<title>Test Suite Trends</title>', (string) file_get_contents($output));
+        } finally {
+            if (file_exists($output)) {
+                unlink($output);
+            }
         }
     }
 }

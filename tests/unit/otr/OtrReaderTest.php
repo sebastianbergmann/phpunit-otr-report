@@ -310,6 +310,20 @@ final class OtrReaderTest extends TestCase
         $this->assertSame(0, $run->resultCount());
     }
 
+    public function testContinuesScanningPhptCandidatesAfterEncounteringANonPhptFileSource(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('phpt-after-non-phpt-file-source.xml'));
+
+        $this->assertSame(1, $run->testCount());
+        $this->assertSame(1, $run->resultCount());
+        $this->assertArrayHasKey('/path/to/test.phpt', $run->tests());
+
+        foreach ($run->results() as $result) {
+            $this->assertInstanceOf(PhptResult::class, $result);
+            $this->assertSame('/path/to/test.phpt', $result->path());
+        }
+    }
+
     public function testIgnoresReportedEventsThatDoNotBelongToATestMethodOrPhpt(): void
     {
         $run = (new OtrReader)->read($this->fixture('reported-without-test.xml'));
@@ -322,6 +336,23 @@ final class OtrReaderTest extends TestCase
         $this->assertFalse($result->hasIssues());
     }
 
+    public function testContinuesScanningReportedEventsAfterEncounteringOneWithoutAMatchingTest(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('reported-with-matching-test-after-orphan.xml'));
+
+        $this->assertSame(1, $run->issueCount());
+
+        $issues = $this->findByMethod($run, 'test_alpha')->issues();
+
+        $this->assertCount(1, $issues);
+
+        if (!isset($issues[0])) {
+            $this->fail('Expected at least one issue on test_alpha');
+        }
+
+        $this->assertSame('deprecation', $issues[0]->type());
+    }
+
     public function testIgnoresResultsThatDoNotCarryAStatus(): void
     {
         $run = (new OtrReader)->read($this->fixture('result-without-status.xml'));
@@ -329,6 +360,17 @@ final class OtrReaderTest extends TestCase
         $this->assertSame(0, $run->resultCount());
         $this->assertSame(1, $run->testCount());
         $this->assertSame(['Vendor\GroupTest::test_alpha' => 0.1], $run->tests());
+    }
+
+    public function testContinuesScanningFinishedEventsAfterEncounteringAResultWithoutAStatus(): void
+    {
+        $run = (new OtrReader)->read($this->fixture('result-with-status-after-result-without-status.xml'));
+
+        $this->assertSame(1, $run->resultCount());
+
+        $result = $this->findByMethod($run, 'test_beta');
+
+        $this->assertSame(TestStatus::Successful, $result->status());
     }
 
     public function testReadsADirectoryWithoutLogfiles(): void

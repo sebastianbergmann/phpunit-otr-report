@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<e:events xmlns="https://schemas.opentest4j.org/reporting/core/0.2.0" xmlns:e="https://schemas.opentest4j.org/reporting/events/0.2.0" xmlns:phpunit="https://schema.phpunit.de/otr/phpunit/0.2.0">
+ <e:started id="1" name="suite" time="2026-03-03T09:00:00.000000Z"/>
+ <e:started id="2" parentId="1" name="orphan" time="2026-03-03T09:00:00.100000Z">
+  <sources>
+   <fileSource path="/path/to/orphan.txt"/>
+  </sources>
+ </e:started>
+ <e:started id="3" parentId="1" name="phpt" time="2026-03-03T09:00:00.200000Z">
+  <sources>
+   <fileSource path="/path/to/test.phpt"/>
+  </sources>
+ </e:started>
+ <e:finished id="2" time="2026-03-03T09:00:00.300000Z"/>
+ <e:finished id="3" time="2026-03-03T09:00:00.400000Z">
+  <attachments>
+   <phpunit:resourceUsage time="0.100000" memoryUsage="1000000" peakMemoryUsage="1000000" userCpuTime="0.050000" systemCpuTime="0.050000" cpuTime="0.100000"/>
+  </attachments>
+  <result status="SUCCESSFUL"/>
+ </e:finished>
+ <e:finished id="1" time="2026-03-03T09:00:01.000000Z">
+  <attachments>
+   <phpunit:resourceUsage time="1.000000" memoryUsage="2000000" peakMemoryUsage="2000000" userCpuTime="0.500000" systemCpuTime="0.500000" cpuTime="1.000000"/>
+  </attachments>
+ </e:finished>
+</e:events>

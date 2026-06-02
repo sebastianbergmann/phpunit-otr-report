@@ -11,7 +11,6 @@ namespace PHPUnit\OtrReport;
 
 use const PHP_EOL;
 use const STDERR;
-use function assert;
 use function file_put_contents;
 use function fwrite;
 use function is_dir;
@@ -23,7 +22,9 @@ final readonly class TrendsCommand implements Command
     {
         $positional = $arguments->arguments();
 
-        assert(isset($positional[0], $positional[1]));
+        if (!isset($positional[1])) {
+            return 1;
+        }
 
         $directory = $positional[0];
         $output    = $positional[1];
