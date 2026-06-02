@@ -123,6 +123,9 @@ jobs:
     needs:
       - static-analysis
 
+    env:
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+
     strategy:
       fail-fast: false
       matrix:
@@ -157,6 +160,7 @@ jobs:
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: ${{ matrix.php-version }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
           tools: none
 
@@ -188,6 +192,9 @@ jobs:
     needs:
       - unit-tests
 
+    env:
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+
     strategy:
       fail-fast: false
       matrix:
@@ -222,6 +229,7 @@ jobs:
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: ${{ matrix.php-version }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
           tools: none
 
@@ -253,6 +261,9 @@ jobs:
     needs:
       - end-to-end-tests
 
+    env:
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -281,6 +292,7 @@ jobs:
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: ${{ env.PHP_VERSION }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: xdebug
           tools: none
 
@@ -341,6 +353,9 @@ jobs:
     needs:
       - end-to-end-tests
 
+    env:
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -369,6 +384,7 @@ jobs:
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
         with:
           php-version: ${{ env.PHP_VERSION }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: xdebug
           tools: none
 
