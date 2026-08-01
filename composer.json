@@ -21,7 +21,7 @@
         "ext-dom": "*",
         "ext-libxml": "*",
         "phpunit/php-text-template": "^6.0",
-        "sebastian/cli-parser": "^5.0",
+        "sebastian/cli-parser": "^5.0.1",
         "sebastian/version": "^7.0"
     },
     "config": {
