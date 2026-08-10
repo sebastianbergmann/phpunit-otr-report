@@ -400,6 +400,9 @@ final class OtrReaderTest extends TestCase
         $this->fail('No result found for ' . $methodName);
     }
 
+    /**
+     * @return non-empty-string
+     */
     private function fixture(string $name): string
     {
         return __DIR__ . '/../../fixture/' . $name;

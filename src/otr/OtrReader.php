@@ -24,6 +24,8 @@ use DOMXPath;
 final readonly class OtrReader
 {
     /**
+     * @param non-empty-string $file
+     *
      * @throws SchemaValidationException
      */
     public function read(string $file): TestRun
@@ -320,6 +322,8 @@ final readonly class OtrReader
         $runs = [];
 
         foreach ($files as $file) {
+            assert($file !== '');
+
             $runs[] = $this->read($file);
         }
 

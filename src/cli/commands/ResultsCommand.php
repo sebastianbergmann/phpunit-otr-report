@@ -29,7 +29,7 @@ final readonly class ResultsCommand implements Command
         $file   = $positional[0];
         $output = $positional[1];
 
-        if (!is_file($file) || !is_readable($file)) {
+        if ($file === '' || !is_file($file) || !is_readable($file)) {
             fwrite(STDERR, 'Cannot read ' . $file . PHP_EOL);
 
             return 1;
