@@ -20,7 +20,7 @@
         "ext-ctype": "*",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "phpunit/php-text-template": "^6.0",
+        "phpunit/php-text-template": "^6.0.1",
         "sebastian/cli-parser": "^5.0.1",
         "sebastian/version": "^7.0"
     },
