@@ -89,6 +89,14 @@
             <arg value="--detach-sign"/>
             <arg path="${basedir}/build/artifacts/otr-report-${version}.phar"/>
         </exec>
+
+        <exec executable="gpg" failonerror="true">
+            <arg value="--local-user"/>
+            <arg value="sb@sebastian-bergmann.de"/>
+            <arg value="--armor"/>
+            <arg value="--detach-sign"/>
+            <arg path="${basedir}/build/artifacts/otr-report-${version}.phar.cdx.xml"/>
+        </exec>
     </target>
 
     <target name="phar" depends="-phar-prepare,-phar-determine-version" description="Create PHAR archive of otr-report and all its dependencies">
@@ -107,12 +115,13 @@
         <mkdir dir="${basedir}/build/artifacts"/>
         <mkdir dir="${basedir}/build/tmp/phar"/>
 
-        <copy file="${basedir}/composer.lock" tofile="${basedir}/build/tmp/phar/composer.lock"/>
+        <copy todir="${basedir}/build/tmp/phar/schema">
+            <fileset dir="${basedir}/schema">
+                <include name="**/*.xsd"/>
+            </fileset>
+        </copy>
 
-        <exec executable="${basedir}/build/scripts/phar-manifest.php" failonerror="true">
-            <arg path="${basedir}/build/tmp/phar/manifest.txt"/>
-            <arg path="${basedir}/build/tmp/phar/sbom.xml"/>
-        </exec>
+        <copy file="${basedir}/composer.lock" tofile="${basedir}/build/tmp/phar/composer.lock"/>
 
         <copy file="${basedir}/vendor/phpunit/php-text-template/LICENSE" tofile="${basedir}/build/tmp/phar/php-text-template/LICENSE"/>
         <copy todir="${basedir}/build/tmp/phar/php-text-template">
@@ -144,39 +153,38 @@
             </fileset>
         </copy>
 
-        <copy todir="${basedir}/build/tmp/phar/schema">
-            <fileset dir="${basedir}/schema">
-                <include name="**/*.xsd"/>
-            </fileset>
-        </copy>
-
         <exec executable="${basedir}/build/scripts/phar-version.php" outputproperty="_version" failonerror="true">
             <arg value="${version}"/>
             <arg value="${type}"/>
         </exec>
 
-        <copy file="${basedir}/build/templates/binary-phar-autoload.php.in" tofile="${basedir}/build/tmp/binary-phar-autoload.php"/>
-        <replace file="${basedir}/build/tmp/binary-phar-autoload.php" token="X.Y.Z" value="${_version}"/>
+        <exec executable="${basedir}/build/scripts/phar-manifest.php" taskname="phar-manifest" failonerror="true">
+            <arg path="${basedir}/build/tmp/phar/composer.lock"/>
+            <arg path="${basedir}/build/tmp/phar/manifest.txt"/>
+            <arg path="${basedir}/build/tmp/phar/sbom.xml"/>
+            <arg value="${type}"/>
+        </exec>
 
-        <exec executable="${basedir}/tools/phpab" taskname="phpab" failonerror="true">
-            <arg value="--all" />
-            <arg value="--tolerant" />
-            <arg value="--nolower" />
-            <arg value="--phar" />
-            <arg value="--hash" />
-            <arg value="SHA-512" />
-            <arg value="--output" />
-            <arg path="${basedir}/build/artifacts/otr-report-${_version}.phar" />
-            <arg value="--template" />
-            <arg path="${basedir}/build/tmp/binary-phar-autoload.php" />
+        <copy file="${basedir}/build/templates/phar-autoload.php.in" tofile="${basedir}/build/tmp/phar-autoload.php"/>
+        <replace file="${basedir}/build/tmp/phar-autoload.php" token="X.Y.Z" value="${_version}"/>
+
+        <exec executable="${basedir}/build/scripts/phar-builder/run.php" taskname="phar-builder" failonerror="true">
             <arg path="${basedir}/build/tmp/phar" />
+            <arg path="${basedir}/build/tmp/phar-autoload.php" />
+            <arg path="${basedir}/build/artifacts/otr-report-${_version}.phar" />
         </exec>
 
         <exec executable="${basedir}/build/scripts/phar-set-timestamps/run.php" taskname="phar-set-timestamps" failonerror="true">
             <arg path="${basedir}/build/artifacts/otr-report-${_version}.phar" />
+            <arg value="${type}" />
         </exec>
 
         <chmod file="${basedir}/build/artifacts/otr-report-${_version}.phar" perm="ugo+rx"/>
+
+        <exec executable="${basedir}/build/scripts/phar-sbom.php" taskname="phar-sbom" failonerror="true">
+            <arg path="${basedir}/build/artifacts/otr-report-${_version}.phar" />
+            <arg path="${basedir}/build/artifacts/otr-report-${_version}.phar.cdx.xml" />
+        </exec>
 
         <delete dir="${basedir}/build/tmp"/>
     </target>
