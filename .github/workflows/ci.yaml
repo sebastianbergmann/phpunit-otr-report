@@ -124,7 +124,7 @@ jobs:
       - static-analysis
 
     env:
-      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On, display_startup_errors=On
 
     strategy:
       fail-fast: false
@@ -195,7 +195,7 @@ jobs:
       - unit-tests
 
     env:
-      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On, display_startup_errors=On
 
     strategy:
       fail-fast: false
@@ -266,7 +266,7 @@ jobs:
       - end-to-end-tests
 
     env:
-      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On, display_startup_errors=On
 
     steps:
       - name: Checkout
@@ -358,7 +358,7 @@ jobs:
       - end-to-end-tests
 
     env:
-      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+      PHP_INI_VALUES: memory_limit=-1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On, display_startup_errors=On
 
     steps:
       - name: Checkout
