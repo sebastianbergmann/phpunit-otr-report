@@ -2,7 +2,7 @@
 
 All notable changes in phpunit/otr-report are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
-## [1.0.2] - 2026-MM-DD
+## [1.0.2] - 2026-11-02
 
 ### Changed
 
@@ -20,6 +20,6 @@ All notable changes in phpunit/otr-report are documented in this file using the 
 
 Initial release
 
-[1.0.2]: https://github.com/sebastianbergmann/phpunit-otr-report/compare/1.0.1...main
+[1.0.2]: https://github.com/sebastianbergmann/phpunit-otr-report/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/sebastianbergmann/phpunit-otr-report/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/sebastianbergmann/phpunit-otr-report/compare/72e207ff51ca0e5f174d4cc1971d50edfe59b721...1.0.0
