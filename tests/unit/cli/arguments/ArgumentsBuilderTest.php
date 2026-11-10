@@ -161,7 +161,7 @@ final class ArgumentsBuilderTest extends TestCase
     public function testRejectsTheSlowestCommandWithoutAFile(): void
     {
         $this->expectException(RequiredArgumentMissingException::class);
-        $this->expectExceptionMessage('Required argument "file" is missing');
+        $this->expectExceptionMessageIs('Required argument "file" is missing');
 
         (new ArgumentsBuilder)->build(['otr-report', 'slowest']);
     }
@@ -169,7 +169,7 @@ final class ArgumentsBuilderTest extends TestCase
     public function testRejectsTheTrendsCommandWithoutAnOutput(): void
     {
         $this->expectException(RequiredArgumentMissingException::class);
-        $this->expectExceptionMessage('Required argument "output" is missing');
+        $this->expectExceptionMessageIs('Required argument "output" is missing');
 
         (new ArgumentsBuilder)->build(['otr-report', 'trends', 'logfiles']);
     }
@@ -177,7 +177,7 @@ final class ArgumentsBuilderTest extends TestCase
     public function testRejectsANonPositiveIntegerLimit(): void
     {
         $this->expectException(ArgumentsBuilderException::class);
-        $this->expectExceptionMessage('Value of --limit must be a positive integer, got "0"');
+        $this->expectExceptionMessageIs('Value of --limit must be a positive integer, got "0"');
 
         (new ArgumentsBuilder)->build(['otr-report', 'slowest', '--limit', '0', 'logfile.xml']);
     }
@@ -185,7 +185,7 @@ final class ArgumentsBuilderTest extends TestCase
     public function testRejectsANonNumericLimit(): void
     {
         $this->expectException(ArgumentsBuilderException::class);
-        $this->expectExceptionMessage('Value of --limit must be a positive integer, got "abc"');
+        $this->expectExceptionMessageIs('Value of --limit must be a positive integer, got "abc"');
 
         (new ArgumentsBuilder)->build(['otr-report', 'slowest', '--limit', 'abc', 'logfile.xml']);
     }
@@ -193,7 +193,7 @@ final class ArgumentsBuilderTest extends TestCase
     public function testRejectsAnUnknownSortMetric(): void
     {
         $this->expectException(ArgumentsBuilderException::class);
-        $this->expectExceptionMessage('Value of --sort must be one of "time", "cpu", "memory", got "bogus"');
+        $this->expectExceptionMessageIs('Value of --sort must be one of "time", "cpu", "memory", got "bogus"');
 
         (new ArgumentsBuilder)->build(['otr-report', 'slowest', '--sort', 'bogus', 'logfile.xml']);
     }

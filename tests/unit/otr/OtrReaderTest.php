@@ -44,7 +44,7 @@ final class OtrReaderTest extends TestCase
     public function testRejectsALogfileThatIsNotValidOtrXml(): void
     {
         $this->expectException(SchemaValidationException::class);
-        $this->expectExceptionMessage('invalid.xml is not a valid OTR XML logfile');
+        $this->expectExceptionMessageIsOrContains('invalid.xml is not a valid OTR XML logfile');
 
         (new OtrReader)->read($this->fixture('invalid.xml'));
     }
@@ -280,11 +280,6 @@ final class OtrReaderTest extends TestCase
         $this->assertSame(TestStatus::Successful, $risky->status());
         $issues = $risky->issues();
         $this->assertCount(1, $issues);
-
-        if (!isset($issues[0])) {
-            $this->fail('Expected at least one issue on testRisky');
-        }
-
         $this->assertSame('risky', $issues[0]->type());
 
         $skippedByMetadata = $this->findByMethod($run, 'testSkippedByMetadata');
@@ -345,11 +340,6 @@ final class OtrReaderTest extends TestCase
         $issues = $this->findByMethod($run, 'test_alpha')->issues();
 
         $this->assertCount(1, $issues);
-
-        if (!isset($issues[0])) {
-            $this->fail('Expected at least one issue on test_alpha');
-        }
-
         $this->assertSame('deprecation', $issues[0]->type());
     }
 

@@ -62,8 +62,6 @@ final class TestRunCollectionTest extends TestCase
 
         $collection = TestRunCollection::fromArray([$first, $second]);
 
-        $this->assertInstanceOf(TestRunCollectionIterator::class, $collection->getIterator());
-
         $runs = [];
 
         foreach ($collection as $key => $run) {
