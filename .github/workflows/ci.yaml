@@ -183,7 +183,7 @@ jobs:
         run: ./tools/composer install --no-ansi --no-interaction --no-progress
 
       - name: Run unit tests with PHPUnit
-        run: ./tools/phpunit --testsuite unit
+        run: ./vendor/bin/phpunit --testsuite unit
 
   end-to-end-tests:
     name: End-to-End Tests
@@ -254,7 +254,7 @@ jobs:
         run: ./tools/composer install --no-ansi --no-interaction --no-progress
 
       - name: Run end-to-end tests with PHPUnit
-        run: ./tools/phpunit --testsuite end-to-end
+        run: ./vendor/bin/phpunit --testsuite end-to-end
 
   code-coverage:
     name: Code Coverage
@@ -325,10 +325,10 @@ jobs:
             php-code-coverage-static-analysis-cache-
 
       - name: Warm PHPUnit's static analysis cache
-        run: ./tools/phpunit --warm-coverage-cache
+        run: ./vendor/bin/phpunit --warm-coverage-cache
 
       - name: Collect code coverage with PHPUnit
-        run: ./tools/phpunit --log-junit test-results.xml --coverage-openclover=code-coverage.xml
+        run: ./vendor/bin/phpunit --log-junit test-results.xml --coverage-openclover=code-coverage.xml
 
       - name: Upload test results to Codecov.io
         if: ${{ !cancelled() }}

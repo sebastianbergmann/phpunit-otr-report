@@ -1,8 +1,5 @@
 {
     "$schema": "https://raw.githubusercontent.com/infection/infection/0.33.2/resources/schema.json",
-    "phpUnit": {
-        "customPath": "tools/phpunit"
-    },
     // Infection sets memory_limit for the processes in which it runs the tests for mutants,
     // the resulting PHPUnit warning would make every mutant count as killed
     "testFrameworkOptions": "--do-not-warn-when-php-is-not-configured-for-development",
